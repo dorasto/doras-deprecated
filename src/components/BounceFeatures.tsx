@@ -22,7 +22,9 @@ export const BouncyCardsFeatures = () => {
                     <CardTitle>Brand Accounts</CardTitle>
                     <CardDescription>Brand accounts allow you to manage multiple accounts from one place</CardDescription>
                     <div className="absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl bg-transparent p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]">
-                        <span className="block text-center font-semibold text-indigo-50">FEATURE DEMO HERE</span>
+                        <span className="block text-center font-semibold text-indigo-50">
+                            <img src="./stats-mockup.webp" />
+                        </span>
                     </div>
                 </BounceCard>
                 <BounceCard href="#features" className="col-span-12 md:col-span-4 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-cyan-200 via-orange-200 to-yellow-300 shadow-lg">
