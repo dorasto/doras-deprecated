@@ -1,54 +1,29 @@
-# Astro Starter Kit: Basics
+# Doras.to - Build a beautiful creator page with a full link in bio, link shortener, and media kit
+_previously known as Mystlink_
 
-```sh
-npm create astro@latest -- --template basics
-```
+<img src="https://github.com/doras-to/doras/assets/86270372/4105027f-4a10-432c-aedb-77eacfde94b9)https://github.com/doras-to/doras/assets/86270372/4105027f-4a10-432c-aedb-77eacfde94b9" width="200"/>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### We're currently getting ready for a closed alpha. If you'd like to become a tester, feel free to join [the waitlist](https://doras.to) 🚢
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Doras is a leading creator tool, completely open source by design with the following features (unchecked means it's still WIP):
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+ - [x] Link in bio creator
+ - [ ] Biography w/ Markdown support
+ - [ ] Link Shortening
+ - [ ] MediaKit to share stats with sponsors
+ - [ ] Brand Accounts (account for sharing and managing with a team)
 
-## 🚀 Project Structure
+## Documentation
+All docs are handled on a separate repository, [doras-to/docs](https://github.com/doras-to/docs)
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tech Stack 🚀
+- [AstroJS](https://astro.build)
+- [React](https://react.dev/)
+- [Typescript](https://www.typescriptlang.org/)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+# Contributors
+<a href="https://github.com/doras-to/doras/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=doras-to/doras" />
+</a>
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Made with [contrib.rocks](https://contrib.rocks).
