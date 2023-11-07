@@ -1,0 +1,68 @@
+---
+// import { ViewTransitions } from "astro:transitions";
+import { SEO } from "astro-seo";
+import { ViewTransitions } from "astro:transitions";
+import Navbar from "@/components/navbar/navbar.astro";
+
+import "@fontsource-variable/inter/index.css";
+
+export interface Props {
+    title?: string;
+    footerMargin?: boolean;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL("/opengraph.jpg", Astro.site).toString();
+
+const { title, footerMargin = true } = Astro.props;
+
+const makeTitle = title ? title + " | " + "doras.to" : "doras.to - Build a beautiful link in bio";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+
+        <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+        <SEO
+            title={makeTitle}
+            description="Doras.to is a free tool to create a beautiful link in bio page for you or your business."
+            canonical={canonicalURL}
+            twitter={{
+                creator: "@doras_to",
+                site: "@doras_to",
+                card: "summary_large_image"
+            }}
+            openGraph={{
+                basic: {
+                    url: canonicalURL,
+                    type: "website",
+                    title: `Astroship - Starter Template for Astro`,
+                    image: resolvedImageWithDomain
+                },
+                image: {
+                    alt: "Build a beautiful link in bio"
+                }
+            }}
+        />
+        <style is:global>
+            /* Improve Page speed */
+            /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+            img {
+                content-visibility: auto;
+            }
+        </style>
+        <ViewTransitions />
+    </head>
+    <body class="bg-gradient-to-tr from-surface-50 to-primary-200 min-h-screen">
+        <div class="mx-auto max-w-xl">
+            <slot />
+        </div>
+        <!-- <Footer margin={footerMargin} /> -->
+    </body>
+</html>
