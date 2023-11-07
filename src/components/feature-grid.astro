@@ -1,0 +1,68 @@
+---
+// @ts-ignore
+import { Image } from "astro:assets";
+import Card from "@/components/Card.astro";
+import IntegrationImg from "../assets/integrations.svg?url";
+import FeatureImgOne from "../../public/roundedstats.webp";
+import FeatureImgTwo from "../assets/features/2.png";
+import FeatureImgThree from "../assets/features/3.png";
+import { Button } from "@/components/ui/button";
+---
+
+<div class="mt-24">
+    <h2 class="text-4xl lg:text-5xl font-black text-center lg:tracking-tight text-surface-900">More than a link in bio</h2>
+    <h2 class="text-4xl lg:text-5xl font-extrabold text-center lg:tracking-tight text-primary-500">We're a full suite of tools for creators</h2>
+    <p class="text-lg font-bold text-slate-600 text-center max-w-xl mx-auto">Level up your presence with the power of Doras.</p>
+    <div class="mx-auto items-center place-content-center text-center">
+        <a class="https://admin.doras.to/auth">
+            <Button size="lg" className="text-2xl font-black bg-primary-500 hover:bg-primary-400 shadow-xl p-7">What Are You Waiting For?</Button>
+        </a>
+    </div>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-5 mt-3 gap-4 text-surface-900">
+    <Card class="lg:col-span-3 bg-gradient-to-tr from-teal-100 to-indigo-300/70">
+        <Fragment slot="image">
+            <Image src={FeatureImgOne} alt="Feature image" width="1280" height="800" class="h-full w-full object-contain" />
+        </Fragment>
+        <span class="text-5xl font-black" slot="title">Unmatched Statistic Tracking</span>
+        <span class="text-xl text-text-700" slot="desc">Track your views, clicks, and traffic sources from a simple UI designed for anyone to understand</span>
+        <span slot="cta">Join us</span>
+    </Card>
+    <Card class="lg:col-span-2 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-400 via-violet-200 to-pink-400">
+        <Fragment slot="image">
+            <Image src={FeatureImgTwo} alt="Feature image" width="1280" height="800" class="h-full w-full object-contain" />
+        </Fragment>
+        <span class="text-5xl font-black" slot="title">Tell Your Story</span>
+        <span class="text-xl text-text-700" slot="desc">Write about you, and what your page is about. Tell your fans about yourself, and unleash the power of <a href="https://docs.doras.to/..." class="link">Markdown</a> to format it to your hearts content</span>
+        <span slot="cta">Better yourself</span>
+    </Card>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 mt-4 gap-4 text-surface-900">
+    <Card size="sm" class="bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-violet-200 via-cyan-100 to-fuchsia-100">
+        <Fragment slot="image">
+            <Image src={FeatureImgThree} alt="Feature image" width="1280" height="800" class="h-full w-full object-contain" />
+        </Fragment>
+        <span class="text-5xl font-black" slot="title">Brand Accounts</span>
+        <span class="text-xl text-text-700" slot="desc">Doras is designed for both users who go it alone, and teams to manage their brand. Anyone can create brand accounts!</span>
+        <span slot="cta">Start the journey</span>
+    </Card>
+
+    <Card size="sm" class="bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-rose-200/90 to-indigo-100/90">
+        <Fragment slot="image">
+            <Image src={FeatureImgTwo} alt="Feature image" width="1280" height="800" class="h-full w-full object-contain" />
+        </Fragment>
+        <span class="text-5xl font-black" slot="title">Designed For Anyone</span>
+        <span class="text-xl text-text-700" slot="desc">No matter if you're a business, streamer, content creator, artist, there's a place for you here</span>
+        <span slot="cta">It's free, btw</span>
+    </Card>
+    <Card size="sm" class="bg-gradient-to-tl from-red-300 via-pink-200 to-primary-300/50">
+        <Fragment slot="image">
+            <Image src={IntegrationImg} alt="Feature image" width="909" height="823" class="h-full w-full object-contain" />
+        </Fragment>
+        <span class="text-5xl font-black" slot="title">No BS Behind Paywalls</span>
+        <span class="text-xl text-text-700" slot="desc">We value ourselves on not locking important features behind paywalls. We want to unleash as much power as possible to users for as little as possible.</span>
+        <span slot="cta">C'mon already</span>
+    </Card>
+</div>
