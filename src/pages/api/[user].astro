@@ -1,0 +1,17 @@
+---
+import { downloadImageUser, getUserUsername } from "@/supabase";
+const { user } = Astro.params;
+const user_user = await getUserUsername(user || "");
+if (!user_user) {
+    return new Response(null, {
+        status: 404,
+        statusText: "Not found"
+    });
+} else {
+    let data = { username: user_user.username, displayname: user_user.displayname, pic: downloadImageUser(user_user.pic) };
+    return new Response(JSON.stringify(data), {
+        status: 200,
+        statusText: "Not found"
+    });
+}
+---

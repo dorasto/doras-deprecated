@@ -8,9 +8,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cloud-build": "pnpm build && wrangler pages deploy dist"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^7.6.4",
     "@astrojs/mdx": "^1.1.0",
     "@astrojs/react": "^3.0.4",
     "@astrojs/sitemap": "^3.0.0",
@@ -20,6 +22,9 @@
     "@radix-ui/react-menubar": "^1.0.4",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-slot": "^1.0.2",
+    "@supabase/supabase-js": "^2.38.4",
+    "@types/cookie": "^0.5.4",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
     "astro": "^3.2.0",
@@ -29,8 +34,10 @@
     "astro-seo": "^0.8.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "cookie": "^0.6.0",
     "daisyui": "^3.9.4",
     "framer-motion": "^10.16.4",
+    "js-cookie": "^3.0.5",
     "lucide-react": "^0.292.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
