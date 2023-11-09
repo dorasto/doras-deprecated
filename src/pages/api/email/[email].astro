@@ -8,7 +8,7 @@ if (!email) {
     });
 }
 import { Resend } from "resend";
-import NotionMagicLinkEmail from "@/components/waitlistEmail";
+import WaitlistEmailSend from "@/components/waitlistEmail";
 const resend = new Resend("re_cE3ttg2M_28sMVgieTkxHq1fqGGx5sion");
 (async function () {
     const { error } = await supabase.from("waitlist").upsert({
@@ -22,10 +22,10 @@ const resend = new Resend("re_cE3ttg2M_28sMVgieTkxHq1fqGGx5sion");
     }
     try {
         const data = await resend.emails.send({
-            from: " <test@mail.doras.to>",
+            from: "Doras.to <waitlist@mail.doras.to>",
             to: [email],
-            subject: "Hello World",
-            react: NotionMagicLinkEmail()
+            subject: "You're On The Waitlist - Doras",
+            react: WaitlistEmailSend()
         });
         return new Response(JSON.stringify({ erorr: null }), {
             status: 200,

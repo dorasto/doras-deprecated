@@ -11,7 +11,7 @@ import {
     Text,
 } from '@react-email/components';
 
-export function NotionMagicLinkEmail() {
+export function WaitlistEmailSend() {
 
     return (
         <Html>
@@ -102,4 +102,4 @@ const text = {
 
 
 
-export default NotionMagicLinkEmail;
+export default WaitlistEmailSend;
