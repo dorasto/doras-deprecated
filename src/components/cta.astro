@@ -1,0 +1,12 @@
+---
+import { RiTwitterXFill } from "react-icons/ri/index.js";
+import Link from "./ui/link.astro";
+---
+
+<div class="bg-gradient-to-tl from-slate-600 to-sky-800 p-3 mt-4 flex flex-col items-center text-center rounded-xl">
+    <h2 class="text-white text-4xl font-black md:text-6xl tracking-tight">Keep Informed</h2>
+    <p class="text-white/90 mt-4 text-lg md:text-xl flex items-center">Follow us on <RiTwitterXFill className="mx-2" /> to stay up to date!</p>
+    <div class="flex mt-5">
+        <Link href="https://x.com/doras_to" class="flex items-center" style="inverted"><RiTwitterXFill size="30" className="mx-2" />@doras_to</Link>
+    </div>
+</div>

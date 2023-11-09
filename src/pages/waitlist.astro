@@ -1,0 +1,18 @@
+---
+import { Button } from "@/components/ui/button";
+import Layout from "@/layouts/WaitlistLayout.astro";
+import { RiTwitterXFill, RiDiscordFill } from "react-icons/ri/index.js";
+---
+
+<Layout footerMargin={false}>
+    <main class="text-center py-24">
+        <h1 class="text-5xl font-black text-surface-800">You're in the waitlist!</h1>
+        <p class="text-lg font-bold text-surface-800 py-3">You'll be notified via email about any changes to the status of your account.</p>
+        <p class="text-lg font-bold text-surface-800 py-3">If you previously had a <a class="link" href="https://mystl.ink">Mystl.ink</a> account setup with the same email, it will be migrated over during this transition.</p>
+        <p class="text-lg font-bold text-surface-800 py-3">Got questions? Love it. Feel free to join our Discord or mention us on X and we'll get back to you!</p>
+        <div class="flex flex-row gap-3 w-full">
+            <Button className="w-full"><RiDiscordFill size={30} /></Button>
+            <Button className="w-full"><RiTwitterXFill size={30} /></Button>
+        </div>
+    </main>
+</Layout>

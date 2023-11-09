@@ -1,0 +1,24 @@
+---
+import Container from "@/components/container.astro";
+import { DropdownMenuNav } from "@/components/navbar/Dropdown";
+import { NavMenuDesktop } from "@/components/navbar/NavMenuDesktop";
+import { JoinWaitlist } from "@/components/JoinWaitlist";
+---
+
+<Container>
+    <div class="navbar bg-primary-500 rounded-t-xl text-surface-50">
+        <div class="navbar-start gap-3">
+            <div class="block md:hidden">
+                <DropdownMenuNav client:only />
+            </div>
+            <a class="text-xl flex items-center font-bold gap-2"><img src="/assets/icon.svg" class="w-10 h-10" /><span>Doras.to</span></a>
+        </div>
+        <div class="navbar-center hidden md:flex">
+            <NavMenuDesktop client:only />
+        </div>
+        <div class="navbar-end">
+            <JoinWaitlist text="Join" variant="outline" client:load />
+        </div>
+    </div>
+    <!-- <NavBanner /> -->
+</Container>
