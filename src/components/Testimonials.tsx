@@ -8,7 +8,7 @@ const StackedCardTestimonials = () => {
     const [selected, setSelected] = useState(0);
 
     return (
-        <section className="bg-gradient-to-l from-cyan-500 via-cyan-600 to-indigo-300 py-24 px-4 lg:px-8 grid items-center grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 overflow-hidden rounded-xl text-white">
+        <section className="grid grid-cols-1 items-center gap-8 overflow-hidden rounded-xl bg-gradient-to-l from-cyan-500 via-cyan-600 to-indigo-300 px-4 py-24 text-white lg:grid-cols-2 lg:gap-4 lg:px-8">
             <div className="p-4">
                 <h3 className="text-5xl font-semibold">Words from our community</h3>
                 <p className="my-4">Don't just take our word for it, hear what our community have to say!</p>
@@ -21,13 +21,13 @@ const StackedCardTestimonials = () => {
 
 const SelectBtns = ({ numTracks, setSelected, selected }: { numTracks: number; setSelected: Dispatch<SetStateAction<number>>; selected: number }) => {
     return (
-        <div className="flex gap-1 mt-8">
+        <div className="mt-8 flex gap-1">
             {Array.from(Array(numTracks).keys()).map((n) => {
                 return (
-                    <button key={n} onClick={() => setSelected(n)} className="h-1.5 w-full bg-slate-300 relative">
+                    <button key={n} onClick={() => setSelected(n)} className="relative h-1.5 w-full bg-slate-300">
                         {selected === n ? (
                             <motion.span
-                                className="absolute top-0 left-0 bottom-0 bg-slate-950"
+                                className="absolute bottom-0 left-0 top-0 bg-slate-950"
                                 initial={{
                                     width: "0%"
                                 }}
@@ -43,7 +43,7 @@ const SelectBtns = ({ numTracks, setSelected, selected }: { numTracks: number; s
                             />
                         ) : (
                             <span
-                                className="absolute top-0 left-0 bottom-0 bg-slate-950"
+                                className="absolute bottom-0 left-0 top-0 bg-slate-950"
                                 style={{
                                     width: selected > n ? "100%" : "0%"
                                 }}
@@ -58,7 +58,7 @@ const SelectBtns = ({ numTracks, setSelected, selected }: { numTracks: number; s
 
 const Cards = ({ testimonials, selected, setSelected }: { testimonials: Testimonial[]; selected: number; setSelected: Dispatch<SetStateAction<number>> }) => {
     return (
-        <div className="p-4 relative h-[450px] lg:h-[500px] shadow-xl">
+        <div className="relative h-[450px] p-4 shadow-xl lg:h-[500px]">
             {testimonials.map((t, i) => {
                 return <Card {...t} key={i} position={i} selected={selected} setSelected={setSelected} />;
             })}
@@ -106,12 +106,12 @@ const Card = ({
                 ease: "easeOut"
             }}
             onClick={() => setSelected(position)}
-            className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 cursor-pointer flex flex-col justify-between rounded-3xl"
+            className="absolute left-0 top-0 flex min-h-full w-full cursor-pointer flex-col justify-between rounded-3xl p-8 lg:p-12"
         >
-            <img src={imageSrc} className="w-24 h-24 rounded-full" />
-            <p className="text-lg lg:text-xl font-light italic mb-8">"{description}"</p>
+            <img src={imageSrc} className="h-24 w-24 rounded-full" />
+            <p className="mb-8 text-lg font-light italic lg:text-xl">"{description}"</p>
             <div>
-                <span className="block font-semibold text-lg">{name}</span>
+                <span className="block text-lg font-semibold">{name}</span>
                 <span className="block text-sm">{title}</span>
                 <a href={`https://doras.to/${link}`}>
                     <Button className="bg-primary-500 hover:bg-primary-600">View Profile</Button>

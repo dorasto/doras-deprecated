@@ -8,11 +8,11 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://doras.to",
-	image: {
-		service: sharpImageService()
-	},
-	integrations: [tailwind(), mdx(), sitemap(), react()],
-	output: "server",
-	adapter: cloudflare()
+    site: "https://doras.to",
+    image: {
+        service: sharpImageService()
+    },
+    integrations: [tailwind(), mdx(), sitemap(), react()],
+    output: "server",
+    adapter: cloudflare()
 });

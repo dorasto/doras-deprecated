@@ -4,7 +4,6 @@ about: Suggest an idea for Doras
 title: "[SUG] - title_goes_here"
 labels: enhancement
 assignees: trent-gezel, tommerty
-
 ---
 
 ## Please keep `[SUG]` in the title, but replace `title_goes_here` with your title.

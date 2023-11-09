@@ -4,7 +4,6 @@ about: Create a report to help us improve Doras
 title: "[BUG] - issue_title_here"
 labels: bug
 assignees: tommerty, trent-gezel
-
 ---
 
 ## Please keep `[BUG]` in the issue title, and replace `issue_title_here` with your title.
@@ -14,9 +13,10 @@ Let us know about the bug you're facing in clear detail. Include links, etc.
 
 **To Reproduce**
 How did you produce this error?
+
 1. On "..."
 2. I clicked "..."
-etc
+   etc
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -25,9 +25,10 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+
+-   OS: [e.g. iOS]
+-   Browser [e.g. chrome, safari]
+-   Version [e.g. 22]
 
 **Additional context**
 Add any other context about the problem here.

@@ -17,9 +17,9 @@ export function WindowMockup({ user }: Props) {
         }
     });
     return (
-        <div className="mx-auto border-surface-950 bg-transparent border-[10px] rounded-[2.5rem] h-[600px] w-[300px] overflow-y-auto ">
+        <div className="mx-auto h-[600px] w-[300px] overflow-y-auto rounded-[2.5rem] border-[10px] border-surface-950 bg-transparent ">
             {/* <LinksRender user={user} /> */}
-            <iframe className="w-full h-full" src="https://mystl.ink/mystlink"></iframe>
+            <iframe className="h-full w-full" src="https://mystl.ink/mystlink"></iframe>
         </div>
     );
 }

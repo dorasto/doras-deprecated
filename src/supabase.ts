@@ -44,13 +44,14 @@ export async function getUserUsername(username: string) {
 }
 export async function GetVerifiedLlinks() {
     //@ts-ignore
-    const data: Server = await supabase.from("profiles").select().eq("id", import.meta.env.PUBLIC_DORAS_TO);
-    return data?.data[0].verified_links
-
+    const data: Server = await supabase
+        .from("profiles")
+        .select()
+        .eq("id", import.meta.env.PUBLIC_DORAS_TO);
+    return data?.data[0].verified_links;
 }
 export function downloadImageUser(img: string) {
-    return "https://cdn.blurp.app/doras/user/" + img
-
+    return "https://cdn.blurp.app/doras/user/" + img;
 }
 export async function bunnycdnRemoveImageUser(name: any) {
     const url = `https://storage.bunnycdn.com/gezel/doras/user/${name}`;
