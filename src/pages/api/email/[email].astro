@@ -1,0 +1,41 @@
+---
+import { supabase } from "@/supabase";
+const { email } = Astro.params;
+if (!email) {
+    return new Response(null, {
+        status: 404,
+        statusText: "Not found"
+    });
+}
+import { Resend } from "resend";
+import NotionMagicLinkEmail from "@/components/waitlistEmail";
+const resend = new Resend("re_cE3ttg2M_28sMVgieTkxHq1fqGGx5sion");
+(async function () {
+    const { error } = await supabase.from("waitlist").upsert({
+        email: email
+    });
+    if (error && error.code == "23505") {
+        return new Response(JSON.stringify({ erorr: null }), {
+            status: 200,
+            statusText: "Not found"
+        });
+    }
+    try {
+        const data = await resend.emails.send({
+            from: " <test@mail.doras.to>",
+            to: [email],
+            subject: "Hello World",
+            react: NotionMagicLinkEmail()
+        });
+        return new Response(JSON.stringify({ erorr: null }), {
+            status: 200,
+            statusText: "Not found"
+        });
+    } catch (error) {
+        return new Response(JSON.stringify({ erorr: null }), {
+            status: 200,
+            statusText: "Not found"
+        });
+    }
+})();
+---
