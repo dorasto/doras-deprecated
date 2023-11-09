@@ -7,5 +7,10 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
 	integrations: [tailwind(), react()],
 	output: "server",
+	server: {
+		headers: {
+			"Access-Control-Allow-Origin": "*"
+		}
+	},
 	adapter: cloudflare(),
 });
