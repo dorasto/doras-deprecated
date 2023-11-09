@@ -29,21 +29,6 @@ export function JoinWaitlist({ text, variant, className }: JoinWaitlistProps) {
                         </Label>
                         <Input id="email" placeholder="your@email.com" className="col-span-3 bg-transparent font-bold placeholder:text-white text-white" required />
                     </div>
-                    <div className="">
-                        <Label htmlFor="username" className="text-right font-bold">
-                            Desired Username
-                        </Label>
-                        <Input id="username" placeholder="username" className="col-span-3 bg-transparent font-bold placeholder:text-white text-white" required />
-                    </div>
-                    <div className="">
-                        <Label htmlFor="mystlink" className="text-right font-bold">
-                            Mystlink Username
-                        </Label>
-                        <Input id="mystlink" className="col-span-3 bg-transparent font-bold placeholder:text-white text-white" />
-                        <Label htmlFor="mystlink" className="text-sm font-bold">
-                            This field is only if you had a Mystlink account. It can be ignored if you didn't have one.
-                        </Label>
-                    </div>
                 </div>
                 <DialogFooter>
                     <Button variant="outline" type="submit">
