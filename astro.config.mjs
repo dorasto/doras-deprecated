@@ -14,4 +14,5 @@ export default defineConfig({
 	},
 	integrations: [tailwind(), mdx(), sitemap(), react()],
 	output: "server",
+	adapter: cloudflare()
 });

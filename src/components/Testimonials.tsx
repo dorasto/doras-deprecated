@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
 import type { IconType } from "react-icons";
-import { SiAtlassian, SiDribbble, SiGrubhub, SiKaggle, SiSlack, SiNike } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
 const StackedCardTestimonials = () => {
