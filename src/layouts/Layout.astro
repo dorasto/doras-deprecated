@@ -71,7 +71,9 @@ const makeTitle = title ? title + " | " + "doras.to" : "doras.to - For the dream
         <div class="sticky top-2 z-50">
             <Navbar />
         </div>
-        <slot />
+        <div class="z-0">
+            <slot />
+        </div>
         <!-- <Footer margin={footerMargin} /> -->
     </body>
 </html>
