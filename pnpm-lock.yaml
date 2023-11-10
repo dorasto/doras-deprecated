@@ -53,6 +53,9 @@ dependencies:
   astro:
     specifier: ^3.4.4
     version: 3.4.4
+  astro-google-analytics:
+    specifier: ^1.0.3
+    version: 1.0.3
   astro-seo:
     specifier: ^0.8.0
     version: 0.8.0
@@ -573,6 +576,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2559,6 +2563,10 @@ packages:
     resolution: {integrity: sha512-xvsWESUJn0JN421Xb9MQw6AsMHRCUknCe0Wjlxvjud80mU4E6hQf1A6NzQKcYNmYw62MfzEtXc+badstZP3JpQ==}
     dependencies:
       printable-characters: 1.0.42
+    dev: false
+
+  /astro-google-analytics@1.0.3:
+    resolution: {integrity: sha512-5bD7jA15yxVaUFVVEFG6KKMphYJ4AKP4+HSqCVBpTBnqh8LL0giTdAHpG9KJs3JaFbGQUTWP5Pqt8+twz7f55Q==}
     dev: false
 
   /astro-seo@0.8.0:

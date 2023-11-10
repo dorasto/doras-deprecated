@@ -3,7 +3,7 @@
 import { SEO } from "astro-seo";
 import { ViewTransitions } from "astro:transitions";
 import Navbar from "@/components/navbar/navbar.astro";
-
+import { GoogleAnalytics } from "astro-google-analytics";
 import "@fontsource-variable/inter/index.css";
 
 export interface Props {
@@ -25,6 +25,7 @@ const makeTitle = title ? title + " | " + "doras.to" : "doras.to - For the dream
 <!doctype html>
 <html lang="en" class="scroll-smooth">
     <head>
+        <GoogleAnalytics id="G-EDXTK3TC8Y" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/icon.svg" />
