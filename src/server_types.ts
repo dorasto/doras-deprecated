@@ -13,15 +13,16 @@ export interface Links {
     updated_at: string;
     name: string;
     url?: string;
-    message?: string
     icon?: string;
-    colour?: {
+    colour: {
         text: string;
         background: string;
+        toggle: boolean;
     }
-    type: "link" | "divider" | "textblock" | "twitch" | "youtube" | "kofi" | "soundcloud" | "group";
+    type: "link" | "divider" | "textblock" | "twitch" | "youtube" | "kofi" | "spotify" | "group";
     adult: boolean;
     show: boolean;
+    message: string;
     group?: Links[];
 }
 export interface ServerDataItem {

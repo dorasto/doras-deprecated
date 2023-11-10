@@ -1,0 +1,145 @@
+---
+import Layout from "../layouts/UserLayout.astro";
+import { downloadImageUser, getUserUsername } from "@/supabase";
+import Branding from "@/components/Branding";
+import LinksButton from "@/components/linkspage/LinksButtton";
+import * as lucide from "lucide-react";
+const { user } = Astro.params;
+if (!user) {
+    return Astro.redirect("/");
+}
+const user_user = await getUserUsername(user);
+if (!user_user) {
+    return Astro.redirect("/doras");
+}
+const hexToRgb = (hex: string) => {
+    const bigint = parseInt(hex.slice(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return [r, g, b];
+};
+function getTextColorForBackground(background: string): string {
+    const isGradient = background.includes("radial-gradient") || background.includes("linear-gradient");
+    if (isGradient) {
+        // Handle gradient background
+        const colorStops = background.match(/#[0-9A-Fa-f]{6}/g) || [];
+        if (colorStops.length === 0) {
+            // No color stops found, default to a text color (e.g., black or white)
+            return "black"; // Use black text by default
+        }
+        const totalLuminance = colorStops.reduce((acc, color) => {
+            const [r, g, b] = hexToRgb(color);
+            return acc + (0.299 * r + 0.587 * g + 0.114 * b);
+        }, 0);
+        const averageLuminance = totalLuminance / colorStops.length;
+        if (averageLuminance > 128) {
+            return "black"; // Use black text for light gradients
+        } else {
+            return "white"; // Use white text for dark gradients
+        }
+    } else {
+        // Handle solid background color
+        const [r, g, b] = hexToRgb(background);
+        const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+        if (luminance > 128) {
+            return "black"; // Use black text for light backgrounds
+        } else {
+            return "white"; // Use white text for dark backgrounds
+        }
+    }
+}
+const textColorSolid = getTextColorForBackground(user_user.theme.background);
+let style: any = { backgroundColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
+if (user_user.theme.inset) {
+    style = { backgroundColor: "#00000000", borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
+}
+//mask-circle
+//mask-squircle
+//mask-hexagon
+//mask-hexagon-2
+---
+
+<Layout title={user} theme={user_user.theme}>
+    <main>
+        <div>
+            <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3">
+                <div class="flex flex-col justify-center items-center">
+                    <img src={downloadImageUser(user_user.pic)} class={"w-40 h-40 object-cover mask " + user_user.design.profile_pic_shape} />
+                    <div class="flex items-center mx-auto text-center">
+                        <h2 class="flex items-center" style={{ color: textColorSolid }}>
+                            {user_user.displayname}
+                            {
+                                user_user.account_type == "premium" && (
+                                    <div class="tooltip" data-tip="Premium">
+                                        <lucide.BadgeCheck className="ml-1" />
+                                    </div>
+                                )
+                            }
+                            {
+                                user_user.account_type == "staff" && (
+                                    <div class="tooltip tooltip-primary tooltip-left z-50" data-tip="Staff">
+                                        <lucide.ShieldCheck className="ml-1" />
+                                    </div>
+                                )
+                            }
+                        </h2>
+                    </div>
+                    <p class="pb-2 max-w-xl text-center" style={{ color: textColorSolid }}>{user_user.bio}</p>
+                </div>
+                <div id="items" class="flex flex-col w-full gap-4">
+                    {/* LINK */}
+                    {
+                        user_user.links
+                            .filter((e) => e.show)
+                            .map((link) => {
+                                if (link.type == "youtube") {
+                                    return <iframe class="aspect-video rounded-lg h-full w-full" src={`https://www.youtube.com/embed/${link.url}?enablejsapi=1&autoplay=true&mute=true`} title="user livestream" allow="" />;
+                                }
+                                if (link.type == "twitch") {
+                                    return <iframe class="aspect-video rounded-lg w-full h-full" src={`https://player.twitch.tv/?channel=${link.url}&mute=true&parent=localhost&parent=doras.io`} />;
+                                }
+                                if (link.type == "kofi") {
+                                    return (
+                                        //@ts-ignore
+                                        <iframe id="kofiframe" class="w-full h-full rounded-lg" scrolling="no" frameBorder="0" src={`https://ko-fi.com/${link.url}/?compact=true&hidefeed=true&widget=true&embed=true&preview=true`} />
+                                    );
+                                }
+                                if (link.type == "textblock") {
+                                    return (
+                                        <p class="p-2 rounded-lg" style={{ background: link.colour.toggle ? link.colour.background : "#6c2bd9", color: getTextColorForBackground(link.colour.toggle ? link.colour.background : "#6c2bd9") }}>
+                                            {link.message}
+                                        </p>
+                                    );
+                                }
+                                if (link.type == "spotify") {
+                                    //@ts-ignore
+                                    let type = link.url.split("/")[link.url.split("/").length - 2];
+                                    //@ts-ignore
+                                    link.url = link.url.split("/")[link.url.split("/").length - 1];
+                                    //@ts-ignore
+                                    return <iframe style="border-radius:12px" src={`https://open.spotify.com/embed/${type}/${link.url}?utm_source=generator&theme=0`} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />;
+                                }
+                                if (link.type == "divider") {
+                                    return <div class="border-b-2 border-white dark:border-white mt-1 mb-2" />;
+                                }
+                                if (link.type == "link") {
+                                    if (link.colour?.toggle) {
+                                        let userstyle: any = { backgroundColor: link.colour.background, color: getTextColorForBackground(link.colour.background) };
+                                        if (user_user.theme.inset) {
+                                            userstyle = { backgroundColor: link.colour.background, borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
+                                        }
+                                        return <LinksButton linkspage={true} style={userstyle} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
+                                    }
+                                    return <LinksButton linkspage={true} style={style} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
+                                }
+                            })
+                    }
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <Branding />
+            </div>
+        </div>
+    </main>
+</Layout>

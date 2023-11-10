@@ -1,0 +1,30 @@
+---
+import type { Theme } from "../server_types";
+import "@/styles/globals.css";
+// GLOBAL FONTS
+import "@fontsource-variable/inter-tight";
+
+interface Props {
+    title: string;
+    theme: Theme;
+}
+
+const { title, theme } = Astro.props;
+const parms = Astro.params;
+---
+
+<!doctype html>
+<html lang="en" class="dark py-3" style={{ background: theme.background, backgroundAttachment: "fixed" }}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+        <title>{title}</title>
+    </head>
+    <body transition:animate="none" class="max-w-xl mx-auto">
+        <slot />
+    </body>
+</html>
