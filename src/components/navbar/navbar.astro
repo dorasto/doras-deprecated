@@ -3,20 +3,27 @@ import Container from "@/components/container.astro";
 import { DropdownMenuNav } from "@/components/navbar/Dropdown";
 import { NavMenuDesktop } from "@/components/navbar/NavMenuDesktop";
 import { JoinWaitlist } from "@/components/JoinWaitlist";
+import { Button } from "@/components/ui/button";
 ---
 
 <Container>
-    <div class="navbar bg-primary-500 rounded-t-xl text-surface-50">
+    <div class="navbar bg-primary-500 rounded-t-xl text-surface-50 z-50">
         <div class="navbar-start gap-3">
             <div class="block md:hidden">
-                <DropdownMenuNav client:only />
+                <!-- <DropdownMenuNav client:only /> -->
             </div>
             <a class="text-xl flex items-center font-bold gap-2"><img src="/assets/icon.svg" class="w-10 h-10" /><span>Doras.to</span></a>
         </div>
         <div class="navbar-center hidden md:flex">
-            <NavMenuDesktop client:only />
+            <!-- <NavMenuDesktop client:only /> -->
         </div>
-        <div class="navbar-end">
+        <a class="block md:hidden">
+            <Button variant="outline" className="text-sm w-full">Attention Mystlink Users</Button>
+        </a>
+        <div class="navbar-end gap-3">
+            <a class="hidden md:block" href="https://docs.doras.to/mystlink/waitlist">
+                <Button variant="outline">Attention Mystlink Users</Button>
+            </a>
             <JoinWaitlist text="Join" variant="outline" client:load />
         </div>
     </div>
