@@ -13,13 +13,14 @@ export function JoinWaitlist({ text, variant, className }: JoinWaitlistProps) {
     const [Email, setEmail] = React.useState("");
     async function FormSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        fetch(`/api/email/${Email}`, {
+        fetch(`https://api.doras.to/email/${Email}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         })
-            .then((res) => {
+            .then((res) => res.json())
+            .then((json) => {
                 location.href = "/waitlist"
             });
     }
