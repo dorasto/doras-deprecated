@@ -65,9 +65,9 @@ if (user_user.theme.inset) {
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3">
                 <div class="flex flex-col justify-center items-center">
-                    <img src={downloadImageUser(user_user.pic)} class={"w-40 h-40 object-cover mask " + user_user.design.profile_pic_shape} />
+                    <img src={downloadImageUser(user_user.pic)} class={"w-44 h-44 object-cover mask " + user_user.design.profile_pic_shape} />
                     <div class="flex items-center mx-auto text-center">
-                        <h2 class="flex items-center" style={{ color: textColorSolid }}>
+                        <h2 class="flex items-center text-4xl font-black mb-9" style={{ color: textColorSolid }}>
                             {user_user.displayname}
                             {
                                 user_user.account_type == "premium" && (
