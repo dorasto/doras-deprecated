@@ -3,6 +3,10 @@ export interface Theme {
     button: string
     button_rounded: string;
     inset: boolean;
+    font?: {
+        family: string;
+        font: string;
+    };
 }
 export interface Design {
     profile_pic_shape: string

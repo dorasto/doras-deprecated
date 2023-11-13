@@ -4,6 +4,16 @@ import { downloadImageUser, getUserUsername } from "@/supabase";
 import Branding from "@/components/Branding";
 import LinksButton from "@/components/linkspage/LinksButtton";
 import * as lucide from "lucide-react";
+
+import "@fontsource/roboto";
+import "@fontsource/poppins";
+import "@fontsource/sora";
+import "@fontsource/bangers";
+import "@fontsource/ubuntu";
+import "@fontsource/bebas-neue";
+import "@fontsource/press-start-2p";
+import "@fontsource/amaranth";
+
 const { user } = Astro.params;
 if (!user) {
     return Astro.redirect("/");
@@ -54,6 +64,14 @@ let style: any = { backgroundColor: user_user.theme.button, color: getTextColorF
 if (user_user.theme.inset) {
     style = { backgroundColor: "#00000000", borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.background) };
 }
+let font_style = {};
+if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
+    font_style = {};
+} else {
+    font_style = {
+        fontFamily: user_user.theme.font?.font + "," + user_user.theme.font?.family
+    };
+}
 //mask-circle
 //mask-squircle
 //mask-hexagon
@@ -63,7 +81,7 @@ if (user_user.theme.inset) {
 <Layout title={user} theme={user_user.theme}>
     <main>
         <div>
-            <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3">
+            <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
                 <div class="flex flex-col justify-center items-center">
                     <img src={downloadImageUser(user_user.pic)} class={"w-44 h-44 object-cover mask " + user_user.design.profile_pic_shape} />
                     <div class="flex items-center mx-auto text-center">
