@@ -14,45 +14,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.0.2
     version: 5.0.2(astro@3.4.4)(tailwindcss@3.3.5)
-  '@fontsource-variable/baloo-2':
-    specifier: ^5.0.15
-    version: 5.0.15
   '@fontsource-variable/inter-tight':
     specifier: ^5.0.18
     version: 5.0.18
-  '@fontsource-variable/noto-sans-thai':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource-variable/outfit':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource/amaranth':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource/bangers':
-    specifier: ^5.0.17
-    version: 5.0.17
-  '@fontsource/bebas-neue':
-    specifier: ^5.0.17
-    version: 5.0.17
-  '@fontsource/lextrall':
-    specifier: ^5.0.2
-    version: 5.0.2
-  '@fontsource/poppins':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource/press-start-2p':
-    specifier: ^5.0.17
-    version: 5.0.17
-  '@fontsource/roboto':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource/sora':
-    specifier: ^5.0.15
-    version: 5.0.15
-  '@fontsource/ubuntu':
-    specifier: ^5.0.8
-    version: 5.0.8
   '@radix-ui/react-dialog':
     specifier: ^1.0.5
     version: 1.0.5(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -1246,10 +1210,6 @@ packages:
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
     dev: false
 
-  /@fontsource-variable/baloo-2@5.0.15:
-    resolution: {integrity: sha512-W/cdpY/ufgeZ1XyB3kayPSTQ7PDP6F/KDYojAaZPnPhzz9o7lpNNdyuVk4VkBr1Xzl20Mi8ggWRJaqksliDfWg==}
-    dev: false
-
   /@fontsource-variable/inter-tight@5.0.18:
     resolution: {integrity: sha512-SHJOsjRN/O8+DK8d+cyll0z1vWmjTreyDKEOlL+CZBGE32SRWTCzp4tFFZnHFrhd8gEJ8c9E3Z/vHdn/9bsq9w==}
     dev: false
@@ -1257,50 +1217,6 @@ packages:
   /@fontsource-variable/inter@5.0.15:
     resolution: {integrity: sha512-CdQPQQgOVxg6ifmbrqYZeUqtQf7p2wPn6EvJ4M+vdNnsmYZgYwPPPQDNlIOU7LCUlSGaN26v6H0uA030WKn61g==}
     dev: true
-
-  /@fontsource-variable/noto-sans-thai@5.0.8:
-    resolution: {integrity: sha512-daINs6lDI73ywrwjWO8Ni/0wW93NsIOMtaKxP3F4YXYqra248oy0MHzn72vKnHGVmw/TCTg5V+CiBsHDj1TcXw==}
-    dev: false
-
-  /@fontsource-variable/outfit@5.0.8:
-    resolution: {integrity: sha512-j4JHCbuk2+Nl7PwTVT+RJKTDMDw7TWWt/85CIucD7KvOS7Iv0IiymE5ur21/aFbTwamOHrXX91WrQZHN7QDrmw==}
-    dev: false
-
-  /@fontsource/amaranth@5.0.8:
-    resolution: {integrity: sha512-XDPC127igqaZS33YtIKFBrbmfkC0g2hRFeVt9sVevDKwgAhs9iSQBEZPog3QUOTqlZxMq47Atfe559WpbpgU4w==}
-    dev: false
-
-  /@fontsource/bangers@5.0.17:
-    resolution: {integrity: sha512-QDhjt2Srr7jvO/RgyynkdZ3ZxRmo9lC9XQ3Y2HJ9zh8yOnPG5N0wpINpUaixtyaFZVQrrNa/UR2u9OLU2sTNww==}
-    dev: false
-
-  /@fontsource/bebas-neue@5.0.17:
-    resolution: {integrity: sha512-A2qZbwnVbVkdR9EL1Wcnz0lSHf5oks0jp3KSWgVB1pODyVepEgExNKbV23HO7vG5w/Wp4QUku5qS8ttmpa1EvA==}
-    dev: false
-
-  /@fontsource/lextrall@5.0.2:
-    resolution: {integrity: sha512-fnWmiNJ0ObZekdHc6oBao0GK2ewNjRu5bS7kO8zJLjHzH50Mkjlh9WinAf73pacRUanII8pC8TeAzyWlJS70CA==}
-    dev: false
-
-  /@fontsource/poppins@5.0.8:
-    resolution: {integrity: sha512-P8owfYWluoUY5Nyzk4gT/L6LmLmseP6ezFWhj6VBUa5pRIdnCvNJpoQ6i/vhekjtJOfqX6nKlB+LCttoUl2GQQ==}
-    dev: false
-
-  /@fontsource/press-start-2p@5.0.17:
-    resolution: {integrity: sha512-SDL6gTliNlNSph3igwExx7HQxJTzG6wOdFr4fxfx6K46SbYm6Rm4WtXIGitsoKMqUwE6PyibrmXF6el1uwn3Rg==}
-    dev: false
-
-  /@fontsource/roboto@5.0.8:
-    resolution: {integrity: sha512-XxPltXs5R31D6UZeLIV1td3wTXU3jzd3f2DLsXI8tytMGBkIsGcc9sIyiupRtA8y73HAhuSCeweOoBqf6DbWCA==}
-    dev: false
-
-  /@fontsource/sora@5.0.15:
-    resolution: {integrity: sha512-aioBFgt7AcPRP3Af0HYOo7L+Nz1Ch81bTbosLeMm20m3SgnYuJUnDR73jnrXuCullYunMyjryHMqYiPTZpSpZA==}
-    dev: false
-
-  /@fontsource/ubuntu@5.0.8:
-    resolution: {integrity: sha512-lZY64hVXrnkt/+5jRfm0uMiRv+lmrIdnATAnDj1SPqebmI2UDf3KC9p4rOkIYsBOjOsD6seJ82GIQE067DSvWw==}
-    dev: false
 
   /@iarna/toml@2.2.5:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}

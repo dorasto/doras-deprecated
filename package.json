@@ -43,19 +43,7 @@
     "resend": "^2.0.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.3.5",
-    "tailwindcss-animate": "^1.0.7",
-    "@fontsource-variable/baloo-2": "^5.0.15",
-    "@fontsource-variable/noto-sans-thai": "^5.0.8",
-    "@fontsource-variable/outfit": "^5.0.8",
-    "@fontsource/amaranth": "^5.0.8",
-    "@fontsource/bangers": "^5.0.17",
-    "@fontsource/bebas-neue": "^5.0.17",
-    "@fontsource/lextrall": "^5.0.2",
-    "@fontsource/poppins": "^5.0.8",
-    "@fontsource/press-start-2p": "^5.0.17",
-    "@fontsource/roboto": "^5.0.8",
-    "@fontsource/sora": "^5.0.15",
-    "@fontsource/ubuntu": "^5.0.8"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@fontsource-variable/inter": "^5.0.15",
