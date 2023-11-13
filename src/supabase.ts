@@ -46,6 +46,9 @@ export async function GetVerifiedLlinks() {
 
 }
 export function downloadImageUser(img: string) {
+    if (!img) {
+        return "https://cdn.doras.to/doras/defaultimage.jpeg"
+    }
     return "https://cdn.doras.to/doras/user/" + img
 }
 export async function bunnycdnRemoveImageUser(name: any) {
