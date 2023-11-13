@@ -52,7 +52,7 @@ function getTextColorForBackground(background: string): string {
 const textColorSolid = getTextColorForBackground(user_user.theme.background);
 let style: any = { backgroundColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
 if (user_user.theme.inset) {
-    style = { backgroundColor: "#00000000", borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
+    style = { backgroundColor: "#00000000", borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.background) };
 }
 //mask-circle
 //mask-squircle
@@ -92,12 +92,38 @@ if (user_user.theme.inset) {
                     {
                         user_user.links
                             .filter((e) => e.show)
-                            .map((link) => {
+                            .map(async (link) => {
                                 if (link.type == "youtube") {
-                                    return <iframe class="aspect-video rounded-lg h-full w-full" src={`https://www.youtube.com/embed/${link.url}?enablejsapi=1&autoplay=true&mute=true`} title="user livestream" allow="" />;
+                                    let youtube = await fetch(`https://api.doras.to/links/youtube/${link.url}`)
+                                        .then(function (response) {
+                                            return response.json();
+                                        })
+                                        .then(function (data) {
+                                            if (!data.live) {
+                                                return;
+                                            }
+                                            return <iframe class="aspect-video rounded-lg h-full w-full" src={`https://www.youtube.com/embed/${data.meta.url}?enablejsapi=1&autoplay=true&mute=true`} title={data.meta.ogTitle} allow="" />;
+                                        })
+                                        .catch(function (error) {
+                                            return;
+                                        });
+                                    return youtube;
                                 }
                                 if (link.type == "twitch") {
-                                    return <iframe class="aspect-video rounded-lg w-full h-full" src={`https://player.twitch.tv/?channel=${link.url}&mute=true&parent=localhost&parent=doras.to`} />;
+                                    let twitch = await fetch(`https://api.doras.to/links/twitch/${link.url}`)
+                                        .then(function (response) {
+                                            return response.json();
+                                        })
+                                        .then(function (data) {
+                                            if (!data.live) {
+                                                return;
+                                            }
+                                            return <iframe class="aspect-video rounded-lg w-full h-full" src={`https://player.twitch.tv/?channel=${link.url}&mute=true&parent=localhost&parent=doras.to`} />;
+                                        })
+                                        .catch(function (error) {
+                                            return;
+                                        });
+                                    return twitch;
                                 }
                                 if (link.type == "kofi") {
                                     return (
@@ -121,7 +147,7 @@ if (user_user.theme.inset) {
                                     return <iframe style="border-radius:12px" src={`https://open.spotify.com/embed/${type}/${link.url}?utm_source=generator&theme=0`} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />;
                                 }
                                 if (link.type == "divider") {
-                                    return <div class="border-b-2 border-white dark:border-white mt-1 mb-2" />;
+                                    return <div class="border-b-2 mt-1 mb-2" style={{ borderColor: link.colour.toggle ? link.colour.background : "white" }} />;
                                 }
                                 if (link.type == "link") {
                                     if (link.colour?.toggle) {
