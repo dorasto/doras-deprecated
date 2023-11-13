@@ -46,8 +46,7 @@ export async function GetVerifiedLlinks() {
 
 }
 export function downloadImageUser(img: string) {
-    return "https://cdn.blurp.app/doras/user/" + img
-
+    return "https://cdn.doras.to/doras/user/" + img
 }
 export async function bunnycdnRemoveImageUser(name: any) {
     const url = `https://storage.bunnycdn.com/gezel/doras/user/${name}`;
