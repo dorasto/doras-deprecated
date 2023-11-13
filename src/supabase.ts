@@ -39,12 +39,7 @@ export async function getUserUsername(username: string) {
     const data: Server = await supabase.from("profiles").select().eq("username", username);
     return data?.data[0];
 }
-export async function GetVerifiedLlinks() {
-    //@ts-ignore
-    const data: Server = await supabase.from("profiles").select().eq("id", import.meta.env.PUBLIC_DORAS_TO);
-    return data?.data[0].verified_links
 
-}
 export function downloadImageUser(img: string) {
     return "https://cdn.doras.to/doras/user/" + img
 }

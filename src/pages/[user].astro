@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/UserLayout.astro";
-import { downloadImageUser, getUserUsername } from "@/supabase";
+import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import Branding from "@/components/Branding";
 import LinksButton from "@/components/linkspage/LinksButtton";
 import * as lucide from "lucide-react";
@@ -13,6 +13,9 @@ const user_user = await getUserUsername(user);
 if (!user_user) {
     return Astro.redirect("/doras");
 }
+let VerifiedlinksData: any = await supabase.from("verified_links").select();
+VerifiedlinksData = VerifiedlinksData?.data;
+
 const hexToRgb = (hex: string) => {
     const bigint = parseInt(hex.slice(1), 16);
     const r = (bigint >> 16) & 255;
@@ -164,9 +167,9 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                         if (user_user.theme.inset) {
                                             userstyle = { backgroundColor: link.colour.background, borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
                                         }
-                                        return <LinksButton linkspage={true} style={userstyle} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
+                                        return <LinksButton client:only verifiedData={VerifiedlinksData} link={link} style={userstyle} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
                                     }
-                                    return <LinksButton linkspage={true} style={style} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
+                                    return <LinksButton client:only verifiedData={VerifiedlinksData} link={link} style={style} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
                                 }
                             })
                     }
