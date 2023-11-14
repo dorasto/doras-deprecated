@@ -19,7 +19,6 @@ jobs:
             
             ${{ github.event.release.body }}
             
-            Get it on Github Releases: <${{ github.event.release.html_url }}> 
 
       - name: Print message id
         run: echo "Message id = ${{ steps.publish-to-discord.outputs.message-id }}"
