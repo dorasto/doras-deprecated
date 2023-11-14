@@ -1,17 +1,23 @@
-name: Release messages to discord announcement channel
-
-on: 
+name: Announce to Discord
+on:
   release:
     types:
       - created
 
 jobs:
-  run_main:
-    runs-on: ubuntu-18.04
-    name: Sends custom message
+  Publish-To-Discord:
+    runs-on: ubuntu-latest
     steps:
-      - name: Discord - Styled Releases/Patch Notes
-        uses: nhevia/discord-styled-releases@v1.2.3
+      - name: Publish
+        id: publish-to-discord
+        uses: Crec0/announce-n-crosspost@v1.0.4
         with:
-          webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID_HOMESITE }}
-          webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN_HOMESITE }}
+          bot-token: ${{ secrets.CROSSPOST_BOT_TOKEN }}
+          channel: ${{ secrets.CROSSPOST_CHANNEL_ID }}
+          content: |
+            **${{ github.event.release.name }}** has been released!
+            
+            ${{ github.event.release.body }}
+
+      - name: Print message id
+        run: echo "Message id = ${{ steps.publish-to-discord.outputs.message-id }}"
