@@ -6,3 +6,13 @@
 4. `pnpm cloud-build` to build the site and deploy it to Cloudflare.
     - Choose `Gezel io` account
     - Choose `Doras landing` project
+
+## Example Release Notes
+
+Tag: `Version number`: `0.0.1`
+Title: `Version number`: `0.0.1`
+Contents:
+```
+- Updated x
+- Fixed [y](linktogithubissue.com)
+```
