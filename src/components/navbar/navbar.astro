@@ -4,6 +4,7 @@ import { DropdownMenuNav } from "@/components/navbar/Dropdown";
 import { NavMenuDesktop } from "@/components/navbar/NavMenuDesktop";
 import { JoinWaitlist } from "@/components/JoinWaitlist";
 import { Button } from "@/components/ui/button";
+import { BiLogoDiscord } from "react-icons/bi/index.js";
 ---
 
 <Container>
@@ -17,12 +18,15 @@ import { Button } from "@/components/ui/button";
         <div class="navbar-center hidden md:flex">
             <!-- <NavMenuDesktop client:only /> -->
         </div>
-        <a class="block md:hidden">
-            <Button variant="outline" className="text-sm w-full">Attention Mystlink Users</Button>
+        <a class="block md:hidden" href="https://docs.doras.to/mystlink/waitlist">
+            <Button variant="outline" className="text-sm w-full">Mystlink Update</Button>
         </a>
         <div class="navbar-end gap-3">
             <a class="hidden md:block" href="https://docs.doras.to/mystlink/waitlist">
                 <Button variant="outline">Attention Mystlink Users</Button>
+            </a>
+            <a class="" href="https://discord.gg/H6u9DV35kD">
+                <Button className="border-0" variant="outline"><BiLogoDiscord size={35} /></Button>
             </a>
             <JoinWaitlist text="Join" variant="outline" client:load />
         </div>
