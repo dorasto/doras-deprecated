@@ -76,7 +76,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                 <div class="flex flex-col justify-center items-center">
                     <img src={downloadImageUser(user_user.pic)} class={"w-44 h-44 object-cover mask " + user_user.design.profile_pic_shape} />
                     <div class="flex items-center mx-auto text-center">
-                        <h2 class="flex items-center text-4xl font-black mb-9" style={{ color: textColorSolid }}>
+                        <h2 class="flex items-center text-4xl font-black" style={{ color: textColorSolid }}>
                             {user_user.displayname}
                             {
                                 user_user.account_type == "premium" && (
@@ -87,14 +87,14 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                             }
                             {
                                 user_user.account_type == "staff" && (
-                                    <div class="tooltip tooltip-primary tooltip-left z-50" data-tip="Staff">
-                                        <lucide.ShieldCheck className="ml-1" />
+                                    <div class="tooltip tooltip-primary z-50" data-tip="Staff">
+                                        <lucide.ShieldCheck size={35} className="ml-1" />
                                     </div>
                                 )
                             }
                         </h2>
                     </div>
-                    <p class="pb-2 max-w-xl text-center" style={{ color: textColorSolid }}>{user_user.bio}</p>
+                    <p class="pb-9 max-w-xl font-bold text-lg text-center" style={{ color: textColorSolid }}>{user_user.bio}</p>
                 </div>
                 <div id="items" class="flex flex-col w-full gap-4">
                     {/* LINK */}
