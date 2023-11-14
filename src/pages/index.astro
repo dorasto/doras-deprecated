@@ -6,6 +6,7 @@ import Cta from "@/components/cta.astro";
 import FeatureGrid from "@/components/feature-grid.astro";
 import Hero from "@/components/hero.astro";
 import Layout from "@/layouts/Layout.astro";
+import { Timeline, timelineItems } from "@/components/timeline";
 ---
 
 <Layout footerMargin={false}>
@@ -15,6 +16,8 @@ import Layout from "@/layouts/Layout.astro";
     <Container>
         <ScrollingTestimonials client:load />
         <FeatureGrid />
+        <h2 class="text-center font-bold text-6xl mt-9 mb-3 text-surface-950">Roadmap</h2>
+        <Timeline items={timelineItems} />
         <!-- <DetailBlockGrid /> -->
         <!-- <Logos /> -->
         <!-- <FeatureAlt id="features" />

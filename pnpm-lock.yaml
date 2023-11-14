@@ -69,8 +69,8 @@ dependencies:
     specifier: ^2.0.0
     version: 2.0.0
   daisyui:
-    specifier: ^3.9.4
-    version: 3.9.4
+    specifier: ^4.0.4
+    version: 4.0.4(postcss@8.4.31)
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
@@ -2963,10 +2963,6 @@ packages:
       color-convert: 2.0.1
       color-string: 1.9.1
 
-  /colord@2.9.3:
-    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
-    dev: false
-
   /comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
     dev: false
@@ -3051,6 +3047,11 @@ packages:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
     dev: false
 
+  /culori@3.2.0:
+    resolution: {integrity: sha512-HIEbTSP7vs1mPq/2P9In6QyFE0Tkpevh0k9a+FkjhD+cwsYm9WRSbn4uMdW9O0yXlNYC3ppxL3gWWPOcvEl57w==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
   /d@1.0.1:
     resolution: {integrity: sha512-m62ShEObQ39CfralilEQRjH6oAMtNCV1xJyEx5LpRYUVN+EviphDgUc/F3hnYbADmkiNs67Y+3ylmlG7Lnu+FA==}
     dependencies:
@@ -3058,17 +3059,16 @@ packages:
       type: 1.2.0
     dev: false
 
-  /daisyui@3.9.4:
-    resolution: {integrity: sha512-fvi2RGH4YV617/6DntOVGcOugOPym9jTGWW2XySb5ZpvdWO4L7bEG77VHirrnbRUEWvIEVXkBpxUz2KFj0rVnA==}
+  /daisyui@4.0.4(postcss@8.4.31):
+    resolution: {integrity: sha512-y7gVzrIs8GjTAMygX9TG7ezqi7N7O8s6MZwDSJX29+nj46+tELTGgFLCUu+7Hzu+H8+6aVT+OLWVxTkyYsukSA==}
     engines: {node: '>=16.9.0'}
     dependencies:
-      colord: 2.9.3
       css-selector-tokenizer: 0.8.0
-      postcss: 8.4.31
+      culori: 3.2.0
+      picocolors: 1.0.0
       postcss-js: 4.0.1(postcss@8.4.31)
-      tailwindcss: 3.3.5
     transitivePeerDependencies:
-      - ts-node
+      - postcss
     dev: false
 
   /data-uri-to-buffer@2.0.2:
