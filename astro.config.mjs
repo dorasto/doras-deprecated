@@ -4,7 +4,6 @@ import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
 
 import mdx from "@astrojs/mdx";
-import remarkToc from 'remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
