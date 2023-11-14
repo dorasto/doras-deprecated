@@ -130,7 +130,7 @@ const timelineItems: TimelineItem[] = [
         title: "Your Story",
         details: "WYSIWYG editor for creating your story page",
         versionName: "0.0.1",
-        progress: "completed"
+        progress: "upcoming"
     },
     {
         title: "Brand Accounts",
