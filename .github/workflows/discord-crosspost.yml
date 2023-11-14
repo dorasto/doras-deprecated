@@ -1,0 +1,25 @@
+name: Announce to Discord
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  Publish-To-Discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish
+        id: publish-to-discord
+        uses: Crec0/announce-n-crosspost@v1
+        with:
+          bot-token: ${{ secrets.CROSSPOST_BOT_TOKEN }}
+          channel: ${{ secrets.CROSSPOST_CHANNEL_ID }}
+          content: |
+            **${{ github.event.release.name }}** has been released!
+            
+            ${{ github.event.release.body }}
+            
+            Get it on Github Releases: <${{ github.event.release.html_url }}> 
+
+      - name: Print message id
+        run: echo "Message id = ${{ steps.publish-to-discord.outputs.message-id }}"
