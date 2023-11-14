@@ -7,7 +7,7 @@ interface TimelineItem {
     details: string | React.ReactNode;
     buttontext?: string;
     releaseNotes?: URL;
-    versionName: "idea" | "0.0.1";
+    versionName: "idea" | "0.0.1" | "0.1.0";
     progress?: "completed" | "upcoming";
 }
 
@@ -18,9 +18,32 @@ interface Props {
 const getVersion = (versionName: TimelineItem["versionName"]) => {
     const versionTextMap: Record<TimelineItem["versionName"], string> = {
         idea: "Idea",
-        "0.0.1": "Closed Alpha"
+        "0.0.1": "Closed Alpha",
+        "0.1.0": "Public Beta"
     };
     return versionTextMap[versionName];
+};
+
+const getStatusColor = (status: TimelineItem["progress"]) => {
+    switch (status) {
+        case "completed":
+            return "border-emerald-500";
+        case "upcoming":
+            return "border-amber-500";
+        default:
+            return "border-primary-500";
+    }
+};
+
+const getStatusBgColor = (status: TimelineItem["progress"]) => {
+    switch (status) {
+        case "completed":
+            return "border-emerald-500";
+        case "upcoming":
+            return "border-amber-500";
+        default:
+            return "border-primary-500";
+    }
 };
 
 const Timeline: React.FC<Props> = ({ items }) => {
@@ -36,33 +59,25 @@ const Timeline: React.FC<Props> = ({ items }) => {
         {} as Record<TimelineItem["versionName"], TimelineItem[]>
     );
 
-    const getStatusColor = (status: TimelineItem["progress"]) => {
-        switch (status) {
-            case "completed":
-                return "border-emerald-500";
-            case "upcoming":
-                return "border-amber-500";
-            default:
-                return "border-primary-500";
-        }
-    };
-    const getStatusBgColor = (status: TimelineItem["progress"]) => {
-        switch (status) {
-            case "completed":
-                return "border-emerald-500";
-            case "upcoming":
-                return "border-amber-500";
-            default:
-                return "border-primary-500";
-        }
-    };
+    // Sort the items based on their progress status
+    const sortedItems = Object.values(groupedItems).map((items) =>
+        items.sort((a, b) => {
+            if (a.progress === "completed" && b.progress !== "completed") {
+                return -1;
+            } else if (a.progress !== "completed" && b.progress === "completed") {
+                return 1;
+            } else {
+                return 0;
+            }
+        })
+    );
 
     return (
         <div className="relative">
-            {Object.entries(groupedItems).map(([version, items]) => (
-                <div key={version} className={`border-s-0 h-auto space-x-3 ${getStatusColor(items[0].progress)}`}>
+            {sortedItems.map((items, index) => (
+                <div key={index} className={`border-s-0 h-auto space-x-3 ${getStatusColor(items[0].progress)}`}>
                     <div className="p-3">
-                        <h2 className="mb-3 text-xl font-black leading-none text-surface-900 capitalize">{getVersion(version)}</h2>
+                        <h2 className="mb-3 text-xl font-black leading-none text-surface-900 capitalize">{getVersion(items[0].versionName)}</h2>
                         {items.map((item, index) => (
                             <div
                                 key={index}
@@ -120,7 +135,7 @@ const timelineItems: TimelineItem[] = [
     {
         title: "Brand Accounts",
         details: "Brand Accounts section is fully completed and ready for launch",
-        versionName: "0.0.1",
+        versionName: "0.1.0",
         progress: "upcoming"
     }
 ];
