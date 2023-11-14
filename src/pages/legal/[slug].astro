@@ -1,20 +1,21 @@
 ---
 export async function getStaticPaths() {
-    const posts = await Astro.glob("./src/content/legal/*.mdx");
+    const posts: any = await Astro.glob("../../content/legal/*.mdx");
 
-    return posts.map((post) => ({
-        params: {
-            slug: post.frontmatter.slug
-        },
-        props: {
-            post
-        }
-    }));
+    return posts.map((post: any) => {
+        return {
+            params: { slug: post.url.split("/")[post.url.split("/").length - 1].replaceAll(".mdx", "") },
+            props: { title: post.frontmatter.title, post }
+        };
+    });
 }
-
+export const prerender = true;
+const { title } = Astro.props;
+//@ts-ignore
 const { Content } = Astro.props.post;
 ---
 
 <article>
+    <h2>{title}</h2>
     <Content />
 </article>
