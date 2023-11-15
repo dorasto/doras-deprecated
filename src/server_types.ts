@@ -28,7 +28,6 @@ export interface Links {
     show: boolean;
     message: string;
     group?: Links[];
-    clicks: any;
 }
 export interface ServerDataItem {
     id: string;
@@ -45,8 +44,7 @@ export interface ServerDataItem {
         adult: boolean;
     }[];
     theme: Theme;
-    design: Design;
-    views: number;
+    design: Design
 }
 
 export interface Server {

@@ -1,0 +1,44 @@
+---
+import { supabase } from "@/supabase";
+const { email } = Astro.params;
+if (!email) {
+    return new Response(null, {
+        status: 404,
+        statusText: "Not found"
+    });
+}
+import { Resend } from "resend";
+import WaitlistEmailSend from "@/components/waitlistEmail";
+const resend = new Resend(import.meta.env.PUBLIC_RESEND);
+(async function () {
+    const { error } = await supabase.from("waitlist").upsert({
+        email: email
+    });
+    console.error("supabase error: ", error);
+    if (error && error.code == "23505") {
+        return new Response(JSON.stringify({ erorr: null }), {
+            status: 200,
+            statusText: "Not found"
+        });
+    }
+    try {
+        const data = await resend.emails.send({
+            from: "Doras.to <waitlist@mail.doras.to>",
+            to: [email],
+            subject: "You're On The Waitlist - Doras",
+            react: WaitlistEmailSend()
+        });
+        console.error("resend data: ", data);
+        return new Response(JSON.stringify({ erorr: null }), {
+            status: 200,
+            statusText: "Not found"
+        });
+    } catch (error) {
+        console.error("resend error: ", error);
+        return new Response(JSON.stringify({ erorr: null }), {
+            status: 200,
+            statusText: "Not found"
+        });
+    }
+})();
+---
