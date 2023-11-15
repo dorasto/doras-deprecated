@@ -1,4 +1,5 @@
 ---
+import Layout from "@/layouts/MDLayout.astro";
 export async function getStaticPaths() {
     const posts: any = await Astro.glob("../../content/legal/*.mdx");
 
@@ -15,9 +16,11 @@ const { title } = Astro.props;
 const { Content } = Astro.props.post;
 ---
 
-<article>
-    <h2>{title}</h2>
-    <div class="mx-auto prose">
-        <Content />
-    </div>
-</article>
+<Layout title="test">
+    <article>
+        <h2></h2>
+        <div class="mx-auto prose">
+            <Content />
+        </div>
+    </article>
+</Layout>

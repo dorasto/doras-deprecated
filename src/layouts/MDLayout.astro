@@ -1,0 +1,83 @@
+---
+const { frontmatter } = Astro.props;
+import { SEO } from "astro-seo";
+import Navbar from "@/components/navbar/navbar.astro";
+import { GoogleAnalytics } from "astro-google-analytics";
+import "@fontsource-variable/inter/index.css";
+import { ViewTransitions } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <!-- Google and MSFT stuff -->
+        <GoogleAnalytics id="G-EDXTK3TC8Y" />
+        <script type="text/javascript">
+            (function (c, l, a, r, i, t, y) {
+                c[a] =
+                    c[a] ||
+                    function () {
+                        (c[a].q = c[a].q || []).push(arguments);
+                    };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "jo9od2l0vk");
+        </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <meta name="generator" content={Astro.generator} />
+
+        <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+        <SEO
+            title={frontmatter.title}
+            description="Take your social media presence and brand image to new heights. With our link in bio, link shortener, media kit features and more, the sky is the limit. Forget about paying for beacons.ai or linktr.ee."
+            openGraph={{
+                basic: {
+                    title: "Build Your Brand Precense | Doras.to",
+                    type: "A type.",
+                    image: "/assets/icon.png"
+                }
+            }}
+            twitter={{
+                creator: "@doras_to"
+            }}
+            extend={{
+                // extending the default link tags
+                link: [{ rel: "icon", href: "/icon.svg" }],
+                // extending the default meta tags
+                meta: [
+                    {
+                        name: "twitter:image",
+                        content: "/assets/icon.png"
+                    },
+                    { name: "twitter:title", content: "Doras - For The Dreamers And The Doers" },
+                    { name: "twitter:description", content: "Take your social media presence and brand image to new heights. With our link in bio, link shortener, media kit features and more, the sky is the limit. Forget about paying for beacons.ai or linktr.ee." }
+                ]
+            }}
+        />
+        <style is:global>
+            /* Improve Page speed */
+            /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+            img {
+                content-visibility: auto;
+            }
+        </style>
+        <ViewTransitions />
+    </head>
+    <body class="bg-gradient-to-bl from-sky-100 to-indigo-100">
+        <div class="sticky top-2 z-50">
+            <Navbar />
+        </div>
+        <!-- Add other UI components here, like common headers and footers. -->
+        <div class="z-0">
+            <h1>{frontmatter.title} by {frontmatter.author}</h1>
+            <!-- 2. Rendered HTML will be passed into the default slot. -->
+            <slot />
+        </div>
+        <p>Written on: {frontmatter.date}</p>
+    </body>
+</html>
