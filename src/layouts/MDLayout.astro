@@ -1,5 +1,5 @@
 ---
-const { frontmatter } = Astro.props;
+const { title, date } = Astro.props;
 import { SEO } from "astro-seo";
 import Navbar from "@/components/navbar/navbar.astro";
 import { GoogleAnalytics } from "astro-google-analytics";
@@ -33,11 +33,11 @@ import { ViewTransitions } from "astro:transitions";
 
         <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
         <SEO
-            title="test"
+            title={title}
             description="Take your social media presence and brand image to new heights. With our link in bio, link shortener, media kit features and more, the sky is the limit. Forget about paying for beacons.ai or linktr.ee."
             openGraph={{
                 basic: {
-                    title: "Build Your Brand Precense | Doras.to",
+                    title: "Doras -" + title,
                     type: "A type.",
                     image: "/assets/icon.png"
                 }
@@ -54,7 +54,7 @@ import { ViewTransitions } from "astro:transitions";
                         name: "twitter:image",
                         content: "/assets/icon.png"
                     },
-                    { name: "twitter:title", content: "Doras - For The Dreamers And The Doers" },
+                    { name: "twitter:title", content: "Doras -" + title },
                     { name: "twitter:description", content: "Take your social media presence and brand image to new heights. With our link in bio, link shortener, media kit features and more, the sky is the limit. Forget about paying for beacons.ai or linktr.ee." }
                 ]
             }}
@@ -74,10 +74,10 @@ import { ViewTransitions } from "astro:transitions";
         </div>
         <!-- Add other UI components here, like common headers and footers. -->
         <div class="z-0">
-            <h1>asdsa</h1>
+            <h1>{title}</h1>
             <!-- 2. Rendered HTML will be passed into the default slot. -->
             <slot />
         </div>
-        <p>Written on:</p>
+        <p>Written on: {date}</p>
     </body>
 </html>
