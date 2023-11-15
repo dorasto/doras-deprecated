@@ -15,8 +15,6 @@ interface Props {
     link: Links;
 }
 function ClickButton(id: any, link: any) {
-    console.log("id: ", id);
-    console.log("link: ", link);
     fetch("/api/update_clicks/" + id + "/" + link.id);
 }
 
@@ -29,7 +27,7 @@ const LinksButton: React.FC<Props> = ({ id, text, href, bgColor, textColor, Icon
     if (verified && link.adult) {
         return <LinksButtonDialog id={id} title={"18+ Warning Ahead"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />;
     }
-    if (link.adult) {
+    if (link && link.adult) {
         return <LinksButtonDialog id={id} title={"18+ Warning Ahead"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />;
     }
     if (verified && !verified.adult) {

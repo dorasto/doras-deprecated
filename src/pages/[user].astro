@@ -2,7 +2,7 @@
 import Layout from "../layouts/UserLayout.astro";
 import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import Branding from "@/components/Branding";
-import LinksButton from "@/components/linkspage/LinksButtton";
+import LinksButton from "@/components/linkspage/LinksButton";
 import * as lucide from "lucide-react";
 
 const { user } = Astro.params;
@@ -171,7 +171,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                         if (user_user.theme.inset) {
                                             userstyle = { backgroundColor: link.colour.background, borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
                                         }
-                                        return <LinksButton client:only id={user_user.id} verifiedData={VerifiedlinksData} link={link} style={userstyle} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
+                                        return <LinksButton client:load id={user_user.id} verifiedData={VerifiedlinksData} link={link} style={userstyle} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
                                     }
                                     return <LinksButton client:load id={user_user.id} verifiedData={VerifiedlinksData} link={link} style={style} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
                                 }
