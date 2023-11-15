@@ -13,6 +13,10 @@ const user_user = await getUserUsername(user);
 if (!user_user) {
     return Astro.redirect("/doras");
 }
+const { error } = await supabase.from("profiles").upsert({
+    id: user_user.id as string,
+    views: user_user.views + 1 || 1
+});
 let VerifiedlinksData: any = await supabase.from("verified_links").select();
 VerifiedlinksData = VerifiedlinksData?.data;
 

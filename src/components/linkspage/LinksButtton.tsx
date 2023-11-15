@@ -17,7 +17,7 @@ interface Props {
 function ClickButton(id: any, link: any) {
     console.log('id: ', id);
     console.log('link: ', link);
-    // fetch("/api/update_clicks/" + id + "/" + link.id)
+    fetch("/api/update_clicks/" + id + "/" + link.id);
 }
 
 
