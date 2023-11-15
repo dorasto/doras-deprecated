@@ -6,7 +6,7 @@ export async function getStaticPaths() {
     return posts.map((post: any) => {
         return {
             params: { slug: post.url.split("/")[post.url.split("/").length - 1].replaceAll(".mdx", "") },
-            props: { title: post.frontmatter.title, date: post.frontmatter.date, post }
+            props: { title: post.frontmatter.title, date: post.frontmatter.date, updated: post.frontmatter.updated, post }
         };
     });
 }
@@ -16,7 +16,7 @@ const { title, date, updated } = Astro.props;
 const { Content } = Astro.props.post;
 ---
 
-<Layout title={title} date={date} lastupdated={updated}>
+<Layout title={title} date={date} updated={updated}>
     <article>
         <div class="mx-auto prose text-surface-900 prose-headings:text-surface-900 prose-a:text-primary-500">
             <Content />
