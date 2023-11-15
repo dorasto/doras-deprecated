@@ -11,8 +11,12 @@ import { RiTwitterXFill, RiDiscordFill } from "react-icons/ri/index.js";
         <p class="text-lg font-bold text-surface-800 py-3">If you previously had a <a class="link" href="https://mystl.ink">Mystl.ink</a> account setup with the same email, it will be migrated over during this transition.</p>
         <p class="text-lg font-bold text-surface-800 py-3">Got questions? Love it. Feel free to join our Discord or mention us on X and we'll get back to you!</p>
         <div class="flex flex-row gap-3 w-full">
-            <Button className="w-full"><RiDiscordFill size={30} /></Button>
-            <Button className="w-full"><RiTwitterXFill size={30} /></Button>
+            <a href="https://doras.to/discord">
+                <Button className="w-full"><RiDiscordFill size={30} /></Button>
+            </a>
+            <a href="https://x.com/doras_to">
+                <Button className="w-full"><RiTwitterXFill size={30} /></Button>
+            </a>
         </div>
     </main>
 </Layout>
