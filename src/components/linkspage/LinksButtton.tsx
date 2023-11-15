@@ -15,27 +15,22 @@ interface Props {
     link: Links;
 }
 function ClickButton(id: any, link: any) {
-    console.log('id: ', id);
-    console.log('link: ', link);
+    console.log("id: ", id);
+    console.log("link: ", link);
     fetch("/api/update_clicks/" + id + "/" + link.id);
 }
-
 
 const LinksButton: React.FC<Props> = ({ id, text, href, bgColor, textColor, Icon, link, verifiedData, className, style }) => {
     const colorClasses = {
         bgColor: `bg-${bgColor}`,
         textColor: `text-${textColor} dark:text-${textColor}`
     };
-    let verified = verifiedData.find((e: any) => link.url?.includes(e.find))
+    let verified = verifiedData.find((e: any) => link.url?.includes(e.find));
     if (verified && link.adult) {
-        return (
-            <LinksButtonDialog id={id} title={"18+"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />
-        );
+        return <LinksButtonDialog id={id} title={"18+ Warning Ahead"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />;
     }
     if (link.adult) {
-        return (
-            <LinksButtonDialog id={id} title={"18+ Not verified"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />
-        );
+        return <LinksButtonDialog id={id} title={"18+ Warning Ahead"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />;
     }
     if (verified && !verified.adult) {
         return (
@@ -48,13 +43,9 @@ const LinksButton: React.FC<Props> = ({ id, text, href, bgColor, textColor, Icon
         );
     }
     if (verified && verified.adult) {
-        return (
-            <LinksButtonDialog id={id} title={"18+"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />
-        );
+        return <LinksButtonDialog id={id} title={"18+"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />;
     } else {
-        return (
-            <LinksButtonDialog id={id} title={"Not verified"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />
-        );
+        return <LinksButtonDialog id={id} title={"This link has not been verified by Doras"} className={className} Icon={Icon} style={style} colorClasses={colorClasses} link={link} text={text} />;
     }
 };
 interface PropsDialog {
@@ -92,9 +83,7 @@ const LinksButtonDialog: React.FC<PropsDialog> = ({ id, title, className, Icon, 
                 </div>
             </DialogContent>
         </Dialog>
-    )
-}
-
-
+    );
+};
 
 export default LinksButton;
