@@ -44,7 +44,8 @@ export interface ServerDataItem {
         adult: boolean;
     }[];
     theme: Theme;
-    design: Design
+    design: Design;
+    views: number;
 }
 
 export interface Server {

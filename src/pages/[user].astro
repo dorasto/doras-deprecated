@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/UserLayout.astro";
-import { downloadImageUser, getUserUsername } from "@/supabase";
+import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import Branding from "@/components/Branding";
-import LinksButton from "@/components/linkspage/LinksButtton";
+import LinksButton from "@/components/linkspage/LinksButton";
 import * as lucide from "lucide-react";
 
 const { user } = Astro.params;
@@ -11,8 +11,15 @@ if (!user) {
 }
 const user_user = await getUserUsername(user);
 if (!user_user) {
-    return Astro.redirect("/doras");
+    return Astro.redirect("/user/notfound");
 }
+const { error } = await supabase.from("profiles").upsert({
+    id: user_user.id as string,
+    views: user_user.views + 1 || 1
+});
+let VerifiedlinksData: any = await supabase.from("verified_links").select();
+VerifiedlinksData = VerifiedlinksData?.data;
+
 const hexToRgb = (hex: string) => {
     const bigint = parseInt(hex.slice(1), 16);
     const r = (bigint >> 16) & 255;
@@ -70,13 +77,13 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
 ---
 
 <Layout title={user} theme={user_user.theme}>
-    <main>
+    <main class="max-w-xl mx-auto">
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
                 <div class="flex flex-col justify-center items-center">
                     <img src={downloadImageUser(user_user.pic)} class={"w-44 h-44 object-cover mask " + user_user.design.profile_pic_shape} />
                     <div class="flex items-center mx-auto text-center">
-                        <h2 class="flex items-center text-4xl font-black" style={{ color: textColorSolid }}>
+                        <h2 class="flex items-center text-4xl font-black mb-9" style={{ color: textColorSolid }}>
                             {user_user.displayname}
                             {
                                 user_user.account_type == "premium" && (
@@ -87,14 +94,14 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                             }
                             {
                                 user_user.account_type == "staff" && (
-                                    <div class="tooltip tooltip-primary z-50" data-tip="Staff">
-                                        <lucide.ShieldCheck size={35} className="ml-1" />
+                                    <div class="tooltip tooltip-primary tooltip-left z-50" data-tip="Staff">
+                                        <lucide.ShieldCheck className="ml-1" />
                                     </div>
                                 )
                             }
                         </h2>
                     </div>
-                    <p class="pb-9 max-w-xl font-bold text-lg text-center" style={{ color: textColorSolid }}>{user_user.bio}</p>
+                    <p class="pb-2 max-w-xl text-center" style={{ color: textColorSolid }}>{user_user.bio}</p>
                 </div>
                 <div id="items" class="flex flex-col w-full gap-4">
                     {/* LINK */}
@@ -164,9 +171,9 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                         if (user_user.theme.inset) {
                                             userstyle = { backgroundColor: link.colour.background, borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
                                         }
-                                        return <LinksButton linkspage={true} style={userstyle} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
+                                        return <LinksButton client:load id={user_user.id} verifiedData={VerifiedlinksData} link={link} style={userstyle} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
                                     }
-                                    return <LinksButton linkspage={true} style={style} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
+                                    return <LinksButton client:load id={user_user.id} verifiedData={VerifiedlinksData} link={link} style={style} className={user_user.theme.button_rounded} text={link.name} textColor="black" href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
                                 }
                             })
                     }
