@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^7.6.4",
+    "@astrojs/mdx": "^1.1.4",
     "@astrojs/react": "^3.0.4",
     "@astrojs/tailwind": "^5.0.2",
     "@fontsource-variable/inter-tight": "^5.0.18",

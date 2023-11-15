@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/MDLayout.astro";
+export async function getStaticPaths() {
+    const posts: any = await Astro.glob("../../content/legal/*.mdx");
+
+    return posts.map((post: any) => {
+        return {
+            params: { slug: post.url.split("/")[post.url.split("/").length - 1].replaceAll(".mdx", "") },
+            props: { title: post.frontmatter.title, date: post.frontmatter.date, updated: post.frontmatter.updated, post }
+        };
+    });
+}
+export const prerender = true;
+const { title, date, updated } = Astro.props;
+//@ts-ignore
+const { Content } = Astro.props.post;
+---
+
+<Layout title={title} date={date} updated={updated}>
+    <article>
+        <div class="mx-auto prose text-surface-900 prose-headings:text-surface-900 prose-a:text-primary-500">
+            <Content />
+        </div>
+    </article>
+</Layout>
