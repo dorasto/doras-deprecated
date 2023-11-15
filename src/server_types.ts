@@ -28,6 +28,7 @@ export interface Links {
     show: boolean;
     message: string;
     group?: Links[];
+    clicks: any;
 }
 export interface ServerDataItem {
     id: string;
