@@ -48,7 +48,7 @@ const parms = Astro.params;
             description={bio}
             openGraph={{
                 basic: {
-                    title: title + " | Doras",
+                    title: title,
                     type: "A type.",
                     image: img
                 }
@@ -58,15 +58,15 @@ const parms = Astro.params;
             }}
             extend={{
                 // extending the default link tags
-                link: [{ rel: "icon", href: "/icon.svg" }],
+                link: [{ rel: "icon", href: img }],
                 // extending the default meta tags
                 meta: [
                     {
                         name: "twitter:image",
-                        content: "/assets/icon.png"
+                        content: img
                     },
-                    { name: "twitter:title", content: title + " | Doras" },
-                    { name: "twitter:description", content: title + "|" + bio }
+                    { name: "twitter:title", content: title },
+                    { name: "twitter:description", content: bio }
                 ]
             }}
         />
