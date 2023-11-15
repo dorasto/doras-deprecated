@@ -11,7 +11,7 @@ if (!user) {
 }
 const user_user = await getUserUsername(user);
 if (!user_user) {
-    return Astro.redirect("/doras");
+    return Astro.redirect("/user/notfound");
 }
 const { error } = await supabase.from("profiles").upsert({
     id: user_user.id as string,
