@@ -81,9 +81,9 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
 ---
 
 <Layout user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
-    <main class="max-w-xl mx-auto">
+    <main class="max-w-xl mx-auto pb-0">
         <div>
-            <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
+            <div class="flex flex-col mx-auto px-3 justify-center items-center" style={font_style}>
                 <div class="flex flex-col justify-center items-center">
                     <img src={downloadImageUser(user_user.pic)} class={"w-44 h-44 object-cover mask " + user_user.design.profile_pic_shape} />
                     <div class="flex items-center mx-auto text-center">
@@ -183,12 +183,6 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                             })
                     }
                 </div>
-            </div>
-            <div class="flex justify-center">
-                <Branding />
-            </div>
-            <div class="w-full sticky bottom-5 z-50 pt-9">
-                <ChipTabs url={Astro.url.pathname} user={user_user} client:load />
             </div>
         </div>
     </main>

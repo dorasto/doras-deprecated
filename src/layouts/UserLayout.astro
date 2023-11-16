@@ -9,6 +9,7 @@ import { ViewTransitions } from "astro:transitions";
 // GLOBAL FONTS
 import "@fontsource-variable/inter-tight";
 import ChipTabs from "@/components/linkspage/tabs";
+import Branding from "@/components/Branding";
 
 interface Props {
     title: string;
@@ -23,7 +24,7 @@ const parms = Astro.params;
 ---
 
 <!doctype html>
-<html lang="en" class="dark py-3" style={{ background: theme.background, backgroundAttachment: "fixed" }}>
+<html lang="en" class="dark" style={{ background: theme.background, backgroundAttachment: "fixed" }}>
     <head>
         <GoogleAnalytics id="G-EDXTK3TC8Y" />
         <script type="text/javascript">
@@ -75,8 +76,13 @@ const parms = Astro.params;
         />
     </head>
     <ViewTransitions />
-    <body transition:animate="none" class="">
-        <ChipTabs url={Astro.url.pathname} user={user} client:load />
+    <body transition:animate="none" class="min-h-full">
         <slot />
+        <div class="max-w-xl mx-auto items-center">
+            <div class="flex justify-center py-16 left-0 right-0 bottom-0">
+                <Branding />
+            </div>
+            <ChipTabs url={Astro.url.pathname} user={user} client:load />
+        </div>
     </body>
 </html>

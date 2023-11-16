@@ -81,10 +81,10 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
 ---
 
 <Layout user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
-    <main class="max-w-xl mx-auto">
+    <main class="max-w-xl mx-auto h-full">
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
-                <div class="flex flex-col justify-center items-center">
+                <div class="flex flex-col justify-center items-center mt-3">
                     <img src={downloadImageUser(user_user.pic)} class={"w-44 h-44 object-cover mask " + user_user.design.profile_pic_shape} />
                     <div class="flex items-center mx-auto text-center">
                         <h2 class="flex items-center text-4xl font-black" style={{ color: textColorSolid }}>
@@ -105,17 +105,11 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                             }
                         </h2>
                     </div>
-                    <!-- <p class="pb-4 max-w-xl text-center" style={{ color: textColorSolid }}>{user_user.bio}</p> -->
                     <BioCheck color={textColorSolid} bio={user_user?.bio || ""} />
                 </div>
                 <p>{user_user.story}</p>
             </div>
-            <div class="flex justify-center">
-                <Branding />
-            </div>
-            <div class="w-full sticky bottom-5 z-50 pt-9">
-                <ChipTabs url={Astro.url.pathname} user={user_user} client:load />
-            </div>
         </div>
     </main>
 </Layout>
+<!-- end slot -->

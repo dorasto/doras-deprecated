@@ -31,7 +31,7 @@ const ChipTabs = ({ user, url }: Props) => {
     };
     return (
         <>
-            <div className="flex items-center flex-wrap gap-2 bg-red-500 w-full place-content-center py-3 rounded-xl">
+            <div className="max-w-xl mx-auto flex fixed bottom-0 items-center flex-wrap gap-2 bg-red-500 w-full place-content-center py-3 rounded-t-xl">
                 {tabs.map((tab) => (
                     <Chip key={tab.id} text={tab.name} url={"/" + user.username + tab.url} selected={selected === "/" + user.username + tab.url} onTabClick={handleTabClick} />
                 ))}
