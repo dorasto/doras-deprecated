@@ -1,5 +1,5 @@
 ---
-import type { Theme } from "../server_types";
+import type { ServerDataItem, Theme } from "../server_types";
 import "@/styles/globals.css";
 import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import { GoogleAnalytics } from "astro-google-analytics";
@@ -8,15 +8,17 @@ import { ViewTransitions } from "astro:transitions";
 
 // GLOBAL FONTS
 import "@fontsource-variable/inter-tight";
+import ChipTabs from "@/components/linkspage/tabs";
 
 interface Props {
     title: string;
     theme: Theme;
     bio: string;
     img: string;
+    user: ServerDataItem;
 }
 
-const { title, theme, bio, img } = Astro.props;
+const { title, theme, bio, img, user } = Astro.props;
 const parms = Astro.params;
 ---
 
@@ -74,6 +76,7 @@ const parms = Astro.params;
     </head>
     <ViewTransitions />
     <body transition:animate="none" class="">
+        <ChipTabs url={Astro.url.pathname} user={user} client:load />
         <slot />
     </body>
 </html>
