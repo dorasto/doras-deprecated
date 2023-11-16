@@ -31,15 +31,9 @@ const ChipTabs = ({ user, url }: Props) => {
     };
     return (
         <>
-            <div className="flex items-center flex-wrap gap-2">
+            <div className="flex items-center flex-wrap gap-2 bg-red-500 w-full place-content-center py-3 rounded-xl">
                 {tabs.map((tab) => (
-                    <Chip
-                        key={tab.id}
-                        text={tab.name}
-                        url={"/" + user.username + tab.url}
-                        selected={selected === "/" + user.username + tab.url}
-                        onTabClick={handleTabClick}
-                    />
+                    <Chip key={tab.id} text={tab.name} url={"/" + user.username + tab.url} selected={selected === "/" + user.username + tab.url} onTabClick={handleTabClick} />
                 ))}
             </div>
             {loading && <LoadingCircle />}
@@ -47,37 +41,13 @@ const ChipTabs = ({ user, url }: Props) => {
     );
 };
 
-const Chip = ({
-    text,
-    url,
-    selected,
-    onTabClick
-}: {
-    text: string;
-    url: string;
-    selected: boolean;
-    onTabClick: (tabUrl: string, check: boolean) => void;
-}) => {
+const Chip = ({ text, url, selected, onTabClick }: { text: string; url: string; selected: boolean; onTabClick: (tabUrl: string, check: boolean) => void }) => {
     const handleClick = () => {
         onTabClick(url, selected);
     };
     return (
-        <a
-            href={url}
-            onClick={handleClick}
-            className={`${selected
-                ? "text-white"
-                : "text-slate-300 hover:text-slate-200 hover:bg-slate-700"
-                } text-sm transition-colors px-2.5 py-0.5 rounded-md relative`}
-        >
+        <a href={url} onClick={handleClick} className={`${selected ? "text-white" : "text-slate-300 hover:text-slate-200 hover:bg-slate-700"} text-sm transition-colors px-2.5 py-0.5 rounded-md relative`}>
             <span className="relative z-10">{text}</span>
-            {selected && (
-                <motion.span
-                    layoutId="pill-tab"
-                    transition={{ type: "spring", duration: 0.5 }}
-                    className="absolute inset-0 z-0 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-md"
-                ></motion.span>
-            )}
         </a>
     );
 };
