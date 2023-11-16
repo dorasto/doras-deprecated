@@ -4,6 +4,7 @@ import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import Branding from "@/components/Branding";
 import LinksButton from "@/components/linkspage/LinksButton";
 import * as lucide from "lucide-react";
+import BioCheck from "@/components/linkspage/bio";
 
 const { user } = Astro.params;
 if (!user) {
@@ -11,7 +12,7 @@ if (!user) {
 }
 const user_user = await getUserUsername(user);
 if (!user_user) {
-    return Astro.redirect("/user/notfound");
+    return Astro.redirect("/doras");
 }
 const { error } = await supabase.from("profiles").upsert({
     id: user_user.id as string,
@@ -76,7 +77,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
 //mask-hexagon-2
 ---
 
-<Layout title={`${user_user.displayname} | Doras.to`} bio={`${user_user.bio}`} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
+<Layout title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
     <main class="max-w-xl mx-auto">
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
@@ -101,7 +102,8 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                             }
                         </h2>
                     </div>
-                    <p class="pb-4 max-w-xl text-center" style={{ color: textColorSolid }}>{user_user.bio}</p>
+                    <!-- <p class="pb-4 max-w-xl text-center" style={{ color: textColorSolid }}>{user_user.bio}</p> -->
+                    <BioCheck color={textColorSolid} bio={user_user?.bio || ""} />
                 </div>
                 <div id="items" class="flex flex-col w-full gap-4">
                     {/* LINK */}
