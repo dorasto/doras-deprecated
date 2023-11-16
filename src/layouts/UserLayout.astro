@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import { GoogleAnalytics } from "astro-google-analytics";
 import { SEO } from "astro-seo";
+import { ViewTransitions } from "astro:transitions";
 
 // GLOBAL FONTS
 import "@fontsource-variable/inter-tight";
@@ -71,6 +72,7 @@ const parms = Astro.params;
             }}
         />
     </head>
+    <ViewTransitions />
     <body transition:animate="none">
         <slot />
     </body>

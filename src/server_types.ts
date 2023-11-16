@@ -46,6 +46,7 @@ export interface ServerDataItem {
     theme: Theme;
     design: Design;
     views: number;
+    story: string;
 }
 
 export interface Server {
