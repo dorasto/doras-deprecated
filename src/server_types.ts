@@ -29,6 +29,12 @@ export interface Links {
     message: string;
     group?: Links[];
 }
+export interface Pages {
+    id: string;
+    name: string;
+    url: string;
+    blocks: Links[];
+}
 export interface ServerDataItem {
     id: string;
     created_at: string;
@@ -47,6 +53,7 @@ export interface ServerDataItem {
     design: Design;
     views: number;
     story: string;
+    pages: Pages[]
 }
 
 export interface Server {
