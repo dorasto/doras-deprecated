@@ -123,7 +123,17 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                     if (!link.options.contribs) {
                                         hide += "contribs,";
                                     }
-                                    return <iframe allowtransparency="true" style={`border-radius:12px; background:${link.colour.background};`} src={`https://github-stats.doras.to/?username=${link.url}&show_icons=true&bg_color=${link.colour.background.replace("#", "")}&hide_border=true&hide_rank=${!link.options?.rank}&hide=${hide}`} width="100%" allowfullscreen="" />;
+                                    let TextColour = "fffff";
+                                    if (getTextColorForBackground(link.colour.background) == "white") {
+                                        TextColour = "ffffff";
+                                    } else {
+                                        TextColour = "000000";
+                                    }
+                                    return (
+                                        <a href={"https://github.com/" + link.url} target="_blank" class="w-full">
+                                            <img style={`border-radius:12px;`} width="100%" src={`https://github-stats.doras.to/?username=${link.url}&theme=dark&show_icons=true&bg_color=${link.colour.background.replace("#", "")}&text_color=${TextColour}&icon_color=${TextColour}&title_color=${TextColour}&hide_border=true&hide_rank=${!link.options?.rank}&hide=${hide}`} />;
+                                        </a>
+                                    );
                                 }
                                 if (link.type == "divider") {
                                     return <div class="border-b-2 mt-1 mb-2" style={{ borderColor: link.colour.toggle ? link.colour.background : "white" }} />;
