@@ -109,6 +109,22 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                     //@ts-ignore
                                     return <iframe style="border-radius:12px" src={`https://open.spotify.com/embed/${type}/${link.url}?utm_source=generator&theme=0`} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />;
                                 }
+                                if (link.type == "github_user") {
+                                    let hide: string = "";
+                                    if (!link.options.stars) {
+                                        hide += "stars,";
+                                    }
+                                    if (!link.options.prs) {
+                                        hide += "prs,";
+                                    }
+                                    if (!link.options.issues) {
+                                        hide += "issues,";
+                                    }
+                                    if (!link.options.contribs) {
+                                        hide += "contribs,";
+                                    }
+                                    return <iframe allowtransparency="true" style={`border-radius:12px; background:${link.colour.background};`} src={`https://github-stats.doras.to/?username=${link.url}&show_icons=true&bg_color=${link.colour.background.replace("#", "")}&hide_border=true&hide_rank=${!link.options?.rank}&hide=${hide}`} width="100%" allowfullscreen="" />;
+                                }
                                 if (link.type == "divider") {
                                     return <div class="border-b-2 mt-1 mb-2" style={{ borderColor: link.colour.toggle ? link.colour.background : "white" }} />;
                                 }

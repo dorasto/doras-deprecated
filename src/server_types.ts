@@ -16,18 +16,19 @@ export interface Links {
     created_at: string;
     updated_at: string;
     name: string;
-    url?: string;
-    icon?: string;
+    url: string;
+    icon: string;
     colour: {
         text: string;
         background: string;
         toggle: boolean;
-    }
-    type: "link" | "divider" | "textblock" | "twitch" | "youtube" | "kofi" | "spotify" | "group";
+    };
+    type: "link" | "divider" | "textblock" | "twitch" | "youtube" | "youtube_video" | "github_user" | "spotify" | "group";
     adult: boolean;
     show: boolean;
     message: string;
-    group?: Links[];
+    group: Links[];
+    options?: any;
 }
 export interface Pages {
     id: string;
