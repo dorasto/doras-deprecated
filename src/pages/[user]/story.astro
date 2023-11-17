@@ -25,7 +25,9 @@ if (!Astro.url.searchParams.get("preview")) {
 }
 let VerifiedlinksData: any = await supabase.from("verified_links").select();
 VerifiedlinksData = VerifiedlinksData?.data;
-
+if (!user_user.story.toggle) {
+    return Astro.redirect(user_user.username);
+}
 const textColorSolid = getTextColorForBackground(user_user.theme.background);
 let style: any = { backgroundColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
 if (user_user.theme.inset) {

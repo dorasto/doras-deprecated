@@ -12,12 +12,14 @@ const tabs = [
     {
         id: 0,
         name: "Home",
-        url: ""
+        url: "",
+        disabled: false
     },
     {
         id: 1,
         name: "Story",
-        url: "/story"
+        url: "/story",
+        disabled: false
     }
 ];
 
@@ -33,9 +35,14 @@ const ChipTabs = ({ user, url }: Props) => {
     return (
         <>
             <div style={{ backgroundColor: user.theme.button, color: getTextColorForBackground(user.theme.button) }} className="max-w-xl mx-auto flex fixed bottom-0 items-center flex-wrap gap-2 w-full place-content-center py-3 rounded-t-xl">
-                {tabs.map((tab) => (
-                    <Chip color={getTextColorForBackground(user.theme.button)} key={tab.id} text={tab.name} url={"/" + user.username + tab.url} selected={selected === "/" + user.username + tab.url} onTabClick={handleTabClick} />
-                ))}
+                {tabs.map((tab) => {
+                    if (tab.url == "/story" && !user.story.toggle) {
+                        return;
+                    }
+                    return (
+                        <Chip color={getTextColorForBackground(user.theme.button)} key={tab.id} text={tab.name} url={"/" + user.username + tab.url} selected={selected === "/" + user.username + tab.url} onTabClick={handleTabClick} />
+                    )
+                })}
             </div>
             {loading && <LoadingCircle />}
         </>

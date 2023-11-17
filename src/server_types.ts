@@ -53,7 +53,10 @@ export interface ServerDataItem {
     theme: Theme;
     design: Design;
     views: number;
-    story: string;
+    story: {
+        text: string;
+        toggle: boolean;
+    };
     pages: Pages[]
 }
 

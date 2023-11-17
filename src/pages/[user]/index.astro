@@ -11,6 +11,7 @@ import BioBlock from "@/components/linkspage/BioBlock";
 const { page } = Astro.props;
 
 const { user } = Astro.params;
+console.log("user: ", user);
 if (!user) {
     return Astro.redirect("/");
 }
@@ -30,7 +31,7 @@ let blocks = user_user.links;
 if (page && user_user.pages.find((pages) => pages.url == page)) {
     blocks = user_user.pages.find((pages) => pages.url == page)?.blocks || [];
 } else {
-    Astro.redirect(user_user.displayname);
+    Astro.redirect(user_user.username);
 }
 const textColorSolid = getTextColorForBackground(user_user.theme.background);
 let style: any = { backgroundColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
