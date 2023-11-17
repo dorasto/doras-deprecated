@@ -109,7 +109,7 @@ const Card = ({
             onClick={() => setSelected(position)}
             className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 cursor-pointer flex flex-col justify-between rounded-3xl"
         >
-            <img src={imageSrc} className="w-24 h-24 rounded-full" />
+            <img loading="lazy" src={imageSrc} className="w-24 h-24 rounded-full" />
             <p className="text-lg lg:text-xl font-light italic mb-8">"{description}"</p>
             <div>
                 <span className="block font-semibold text-lg">{name}</span>
@@ -148,7 +148,7 @@ const testimonials = [
         link: "brady"
     },
     {
-        imageSrc: "./yellowbeaniegirl.png",
+        imageSrc: "./yellowbeaniegirl.webp",
         description: "Doras has been an amazing tool with my art. It gives some additional insight into my audience - where they are coming from and what they're clicking in my links. This has been a tremendous help in sharing and selling my art online.",
         name: "Yellow Beanie Girl",
         title: "Artist",

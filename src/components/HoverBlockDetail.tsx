@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { BounceCard, CardTitle, CardDescription } from "./BounceFeatures";
+import Image from "@/components/Image";
 
 interface Props {
     // Define the props for the component here
@@ -20,12 +21,12 @@ const HoverBlockDetail: React.FC<Props> = (props) => {
                     <div className="-z-10">
                         <div className="absolute bottom-0 left-1/2 top-0 -translate-y-0 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:-translate-y-10 group-hover:-rotate-6">
                             <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                <img src="/blankbackdropyellowgreen.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
+                                <Image src="/blankbackdropyellowgreen.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
                             </span>
                         </div>
                         <div className="absolute bottom-0 left-1/2 top-0 group-hover:-top-10 translate-y-2 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:-translate-y-10 group-hover:-rotate-6">
                             <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                <img src="/backdropitems1.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-1000" />
+                                <Image src="/backdropitems1.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-1000" />
                             </span>
                         </div>
                     </div>
@@ -40,12 +41,12 @@ const HoverBlockDetail: React.FC<Props> = (props) => {
                     <div className="-z-10">
                         <div className="absolute bottom-0 rotate-6 left-1/2 top-20 group-hover:-top-10 translate-y-2 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:translate-y-40 group-hover:-rotate-3">
                             <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                <img src="/markdownblock.webp" className="w-3/4 transition-all duration-1000" />
+                                <Image src="/markdownblock.webp" className="w-3/4 transition-all duration-1000" />
                             </span>
                         </div>
                         <div className="absolute rotate-6 bottom-0 left-1/2 top-0 -translate-y-0 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:-translate-y-5 group-hover:-rotate-6">
                             <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                <img src="/backdropwithmarkdown.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
+                                <Image src="/backdropwithmarkdown.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
                             </span>
                         </div>
                     </div>
@@ -60,12 +61,12 @@ const HoverBlockDetail: React.FC<Props> = (props) => {
                     <div className="-z-10">
                         <div className="absolute bottom-0 rotate-6 left-1/2 top-20 group-hover:-top-10 translate-y-2 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:translate-y-40 group-hover:-rotate-3">
                             <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                <img src="/markdownblock.webp" className="w-3/4 transition-all duration-1000" />
+                                <Image src="/markdownblock.webp" className="w-3/4 transition-all duration-1000" />
                             </span>
                         </div>
                         <div className="absolute rotate-6 bottom-0 left-1/2 top-0 -translate-y-0 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:-translate-y-5 group-hover:-rotate-6">
                             <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                <img src="/backdropwithmarkdown.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
+                                <Image src="/backdropwithmarkdown.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
                             </span>
                         </div>
                     </div>
