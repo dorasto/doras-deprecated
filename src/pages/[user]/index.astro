@@ -1,12 +1,17 @@
 ---
-import Layout from "../layouts/UserLayout.astro";
+import Layout from "../../layouts/UserLayout.astro";
 import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import Branding from "@/components/Branding";
 import LinksButton from "@/components/linkspage/LinksButton";
 import * as lucide from "lucide-react";
 import BioCheck from "@/components/linkspage/bio";
+import ChipTabs from "@/components/linkspage/tabs";
+import { getTextColorForBackground } from "@/lib/utils";
+import BioBlock from "@/components/linkspage/BioBlock";
+const { page } = Astro.props;
 
 const { user } = Astro.params;
+console.log("user: ", user);
 if (!user) {
     return Astro.redirect("/");
 }
@@ -22,43 +27,11 @@ if (!Astro.url.searchParams.get("preview")) {
 }
 let VerifiedlinksData: any = await supabase.from("verified_links").select();
 VerifiedlinksData = VerifiedlinksData?.data;
-
-const hexToRgb = (hex: string) => {
-    const bigint = parseInt(hex.slice(1), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return [r, g, b];
-};
-function getTextColorForBackground(background: string): string {
-    const isGradient = background.includes("radial-gradient") || background.includes("linear-gradient");
-    if (isGradient) {
-        // Handle gradient background
-        const colorStops = background.match(/#[0-9A-Fa-f]{6}/g) || [];
-        if (colorStops.length === 0) {
-            // No color stops found, default to a text color (e.g., black or white)
-            return "black"; // Use black text by default
-        }
-        const totalLuminance = colorStops.reduce((acc, color) => {
-            const [r, g, b] = hexToRgb(color);
-            return acc + (0.299 * r + 0.587 * g + 0.114 * b);
-        }, 0);
-        const averageLuminance = totalLuminance / colorStops.length;
-        if (averageLuminance > 128) {
-            return "black"; // Use black text for light gradients
-        } else {
-            return "white"; // Use white text for dark gradients
-        }
-    } else {
-        // Handle solid background color
-        const [r, g, b] = hexToRgb(background);
-        const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-        if (luminance > 128) {
-            return "black"; // Use black text for light backgrounds
-        } else {
-            return "white"; // Use white text for dark backgrounds
-        }
-    }
+let blocks = user_user.links;
+if (page && user_user.pages.find((pages) => pages.url == page)) {
+    blocks = user_user.pages.find((pages) => pages.url == page)?.blocks || [];
+} else {
+    Astro.redirect(user_user.username);
 }
 const textColorSolid = getTextColorForBackground(user_user.theme.background);
 let style: any = { backgroundColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
@@ -79,38 +52,15 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
 //mask-hexagon-2
 ---
 
-<Layout title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
-    <main class="max-w-xl mx-auto">
+<Layout user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
+    <main class="max-w-xl mx-auto pb-0">
         <div>
-            <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
-                <div class="flex flex-col justify-center items-center">
-                    <img src={downloadImageUser(user_user.pic)} class={"w-44 h-44 object-cover mask " + user_user.design.profile_pic_shape} />
-                    <div class="flex items-center mx-auto text-center">
-                        <h2 class="flex items-center text-4xl font-black" style={{ color: textColorSolid }}>
-                            {user_user.displayname}
-                            {
-                                user_user.account_type == "premium" && (
-                                    <div class="tooltip" data-tip="Premium">
-                                        <lucide.BadgeCheck className="ml-1" />
-                                    </div>
-                                )
-                            }
-                            {
-                                user_user.account_type == "staff" && (
-                                    <div class="tooltip tooltip-primary tooltip-left z-50" data-tip="Staff">
-                                        <lucide.ShieldCheck className="ml-1" />
-                                    </div>
-                                )
-                            }
-                        </h2>
-                    </div>
-                    <!-- <p class="pb-4 max-w-xl text-center" style={{ color: textColorSolid }}>{user_user.bio}</p> -->
-                    <BioCheck color={textColorSolid} bio={user_user?.bio || ""} />
-                </div>
+            <div class="flex flex-col mx-auto px-3 justify-center items-center" style={font_style}>
+                <BioBlock user={user_user} textColorSolid={textColorSolid} />
                 <div id="items" class="flex flex-col w-full gap-4">
                     {/* LINK */}
                     {
-                        user_user.links
+                        blocks
                             .filter((e) => e.show)
                             .map(async (link) => {
                                 if (link.type == "youtube") {
@@ -145,12 +95,6 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                         });
                                     return twitch;
                                 }
-                                if (link.type == "kofi") {
-                                    return (
-                                        //@ts-ignore
-                                        <iframe id="kofiframe" class="w-full h-full rounded-lg" scrolling="no" frameBorder="0" src={`https://ko-fi.com/${link.url}/?compact=true&hidefeed=true&widget=true&embed=true&preview=true`} />
-                                    );
-                                }
                                 if (link.type == "textblock") {
                                     return (
                                         <p class="p-2 rounded-lg" style={{ background: link.colour.toggle ? link.colour.background : "#6c2bd9", color: getTextColorForBackground(link.colour.toggle ? link.colour.background : "#6c2bd9") }}>
@@ -165,6 +109,32 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                     link.url = link.url.split("/")[link.url.split("/").length - 1];
                                     //@ts-ignore
                                     return <iframe style="border-radius:12px" src={`https://open.spotify.com/embed/${type}/${link.url}?utm_source=generator&theme=0`} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />;
+                                }
+                                if (link.type == "github_user") {
+                                    let hide: string = "";
+                                    if (!link.options.stars) {
+                                        hide += "stars,";
+                                    }
+                                    if (!link.options.prs) {
+                                        hide += "prs,";
+                                    }
+                                    if (!link.options.issues) {
+                                        hide += "issues,";
+                                    }
+                                    if (!link.options.contribs) {
+                                        hide += "contribs,";
+                                    }
+                                    let TextColour = "fffff";
+                                    if (getTextColorForBackground(link.colour.background) == "white") {
+                                        TextColour = "ffffff";
+                                    } else {
+                                        TextColour = "000000";
+                                    }
+                                    return (
+                                        <a href={"https://github.com/" + link.url} target="_blank" class="w-full">
+                                            <img style={`border-radius:12px;`} width="100%" src={`https://github-stats.doras.to/?username=${link.url}&theme=dark&show_icons=true&bg_color=${link.colour.background.replace("#", "")}&text_color=${TextColour}&icon_color=${TextColour}&title_color=${TextColour}&hide_border=true&hide_rank=${!link.options?.rank}&hide=${hide}`} />;
+                                        </a>
+                                    );
                                 }
                                 if (link.type == "divider") {
                                     return <div class="border-b-2 mt-1 mb-2" style={{ borderColor: link.colour.toggle ? link.colour.background : "white" }} />;
@@ -182,9 +152,6 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                             })
                     }
                 </div>
-            </div>
-            <div class="flex justify-center">
-                <Branding />
             </div>
         </div>
     </main>

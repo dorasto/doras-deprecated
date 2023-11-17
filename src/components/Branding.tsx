@@ -8,14 +8,13 @@ const Branding = () => {
 
     return (
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <div className="group relative duration-300 active:scale-95 mt-3">
+            <div className="group relative duration-300 active:scale-95 my-4">
                 <a href="/">
-                    <span className="flex items-center px-4 font-semibold dark:text-text-50 text-text-950 duration-300 group-hover:text-text-950 group-active:bg-surface-900/80 dark:group-hover:text-text-100 dark:group-active:bg-surface-100/80 gap-2">
+                    <span className="flex items-center px-4 font-semibold text-[#1F1F1F] duration-300 bg-surface-100 py-1 rounded-badge gap-2">
                         <div className="group-hover:-rotate-0 rotate-45 transition-all">
-                            <img src="/icon.svg" className="w-6 h-6 dark:hidden block" />
-                            <img src="/icon.svg" className="w-6 h-6 hidden dark:block" />
+                            <img src="/icon.svg" className="w-6 h-6" />
                         </div>
-                        <span className="font-bold text-2xl hidden md:inline-block doras-logo">doras.to</span>
+                        <span className="font-bold text-2xl doras-logo">doras.to</span>
                     </span>
                 </a>
             </div>

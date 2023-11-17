@@ -1,26 +1,30 @@
 ---
-import type { Theme } from "../server_types";
+import type { ServerDataItem, Theme } from "../server_types";
 import "@/styles/globals.css";
 import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
 import { GoogleAnalytics } from "astro-google-analytics";
 import { SEO } from "astro-seo";
+import { ViewTransitions } from "astro:transitions";
 
 // GLOBAL FONTS
 import "@fontsource-variable/inter-tight";
+import ChipTabs from "@/components/linkspage/tabs";
+import Branding from "@/components/Branding";
 
 interface Props {
     title: string;
     theme: Theme;
     bio: string;
     img: string;
+    user: ServerDataItem;
 }
 
-const { title, theme, bio, img } = Astro.props;
+const { title, theme, bio, img, user } = Astro.props;
 const parms = Astro.params;
 ---
 
 <!doctype html>
-<html lang="en" class="dark py-3" style={{ background: theme.background, backgroundAttachment: "fixed" }}>
+<html lang="en" class="dark" style={{ background: theme.background, backgroundAttachment: "fixed" }}>
     <head>
         <GoogleAnalytics id="G-EDXTK3TC8Y" />
         <script type="text/javascript">
@@ -71,7 +75,14 @@ const parms = Astro.params;
             }}
         />
     </head>
-    <body transition:animate="none">
+    <ViewTransitions />
+    <body transition:animate="none" class="min-h-full">
         <slot />
+        <div class="max-w-xl mx-auto items-center">
+            <div class="flex justify-center py-16 left-0 right-0 bottom-0">
+                <Branding />
+            </div>
+            <ChipTabs url={Astro.url.pathname} user={user} client:load />
+        </div>
     </body>
 </html>
