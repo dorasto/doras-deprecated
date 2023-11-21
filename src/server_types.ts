@@ -45,7 +45,8 @@ export interface ServerDataItem {
     pic: string;
     bio: string;
     links: Links[],
-    account_type: "user" | "premium" | "staff"
+    account_type: "user" | "premium",
+    access: "user" | "staff" | "admin",
     verified_links?: {
         find: string;
         adult: boolean;
