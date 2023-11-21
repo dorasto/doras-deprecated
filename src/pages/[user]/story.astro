@@ -1,13 +1,9 @@
 ---
 import Layout from "../../layouts/UserLayout.astro";
 import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
-import Branding from "@/components/Branding";
-import LinksButton from "@/components/linkspage/LinksButton";
-import * as lucide from "lucide-react";
-import BioCheck from "@/components/linkspage/bio";
-import ChipTabs from "@/components/linkspage/tabs";
 import { getTextColorForBackground } from "@/lib/utils";
 import BioBlock from "@/components/linkspage/BioBlock";
+import StoryBlock from "@/components/linkspage/story";
 
 const { user } = Astro.params;
 if (!user) {
@@ -52,7 +48,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
                 <BioBlock user={user_user} textColorSolid={textColorSolid} />
-                <p>{user_user.story}</p>
+                <StoryBlock user={user_user} />
             </div>
         </div>
     </main>

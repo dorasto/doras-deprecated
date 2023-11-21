@@ -41,6 +41,7 @@
     "react-dom": "^18.2.0",
     "react-email": "^1.9.5",
     "react-icons": "^4.11.0",
+    "react-markdown": "^9.0.1",
     "react-tooltip": "^5.23.0",
     "resend": "^2.0.0",
     "tailwind-merge": "^2.0.0",
