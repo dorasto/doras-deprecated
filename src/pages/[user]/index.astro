@@ -57,7 +57,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
     <main class="max-w-xl mx-auto pb-0">
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center" style={font_style}>
-                <BioBlock user={user_user} textColorSolid={textColorSolid} />
+                <BioBlock user={user_user} textColorSolid={textColorSolid} client:load />
                 <div id="items" class="flex flex-col w-full gap-4">
                     {/* LINK */}
                     {
