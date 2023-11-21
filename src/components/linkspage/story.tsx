@@ -9,9 +9,15 @@ interface Props {
 }
 const StoryBlock: React.FC<Props> = ({ user }) => {
     const textColorSolid = getTextColorForBackground(user.theme.background);
+    const pros = textColorSolid == "black" ? "prose prose-base" : "prose prose-light"
+    const customProseStyles = `.prose a{
+        background-color:${user.theme.button};
+        color:${getTextColorForBackground(user.theme.button)};
+    }`;
     return (
         <div style={{ color: textColorSolid }}>
-            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]} className={"prose prose-base"}>
+            <style>{customProseStyles}</style>
+            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]} className={`prose ${pros}`}>
                 {user.story.text}
             </Markdown>
         </div>
