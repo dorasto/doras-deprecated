@@ -77,7 +77,9 @@ const parms = Astro.params;
     </head>
     <ViewTransitions />
     <body transition:animate="none" class="min-h-full">
-        <slot />
+        <div class="py-3">
+            <slot />
+        </div>
         <div class="max-w-xl mx-auto items-center">
             <div class="flex justify-center py-16 left-0 right-0 bottom-0">
                 <Branding />
