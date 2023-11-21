@@ -1,3 +1,5 @@
+import { color } from 'framer-motion'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ["class"],
@@ -11,6 +13,60 @@ module.exports = {
 			}
 		},
 		extend: {
+			typography: ({ theme }) => ({
+				base: {
+					css: {
+						color: theme('colors.surface.900'),
+						h1: {
+							color: theme('colors.surface.900'),
+						},
+						h2: {
+							color: theme('colors.surface.900'),
+						},
+						h3: {
+							color: theme('colors.surface.900'),
+						},
+						h4: {
+							color: theme('colors.surface.900'),
+						},
+						h5: {
+							color: theme('colors.surface.900'),
+						},
+						h6: {
+							color: theme('colors.surface.900'),
+						},
+						a: {
+							color: theme('colors.blue.500'),
+							backgroundColor: theme('colors.red.500'),
+							padding: '0.1rem 0.3rem',
+							borderRadius: '0.2rem',
+							fontWeight: 'bold',
+							textDecoration: 'none',
+						},
+						blockquote: {
+							color: theme('colors.surface.900'),
+							borderLeftColor: theme('colors.surface.600'),
+						},
+						'ul > li::marker': {
+							color: theme('colors.surface.900'),
+						},
+						'ol > li::marker': {
+							color: theme('colors.surface.900'),
+						},
+						code: {
+							color: theme('colors.white'),
+						},
+						pre: {
+							color: theme('colors.gray.200'),
+							backgroundColor: theme('colors.surface.700'),
+						},
+						strong: {
+							color: theme('colors.surface.900'),
+						}
+						// Add other styles as needed
+					},
+				},
+			}),
 			colors: {
 				text: {
 					50: "#f2f2f2",

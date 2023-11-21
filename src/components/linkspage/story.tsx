@@ -8,7 +8,7 @@ const StoryBlock: React.FC<Props> = ({ user }) => {
     const textColorSolid = getTextColorForBackground(user.theme.background);
     return (
         <div style={{ color: textColorSolid }}>
-            <Markdown className={"prose"}>{user.story.text}</Markdown>
+            <Markdown className={"prose prose-base"}>{user.story.text}</Markdown>
         </div>
     );
 };
