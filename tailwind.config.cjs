@@ -62,8 +62,76 @@ module.exports = {
 						},
 						strong: {
 							color: theme('colors.surface.900'),
-						}
-						// Add other styles as needed
+						},
+						th: {
+							color: theme('colors.surface.900'),
+						},
+						thead: {
+							borderBottomColor: theme('colors.surface.900'),
+						},
+						hr: {
+							borderColor: theme('colors.surface.900'),
+						},
+					},
+				},
+				light: {
+					css: {
+						color: theme('colors.surface.50'),
+						h1: {
+							color: theme('colors.surface.50'),
+						},
+						h2: {
+							color: theme('colors.surface.50'),
+						},
+						h3: {
+							color: theme('colors.surface.50'),
+						},
+						h4: {
+							color: theme('colors.surface.50'),
+						},
+						h5: {
+							color: theme('colors.surface.50'),
+						},
+						h6: {
+							color: theme('colors.surface.50'),
+						},
+						a: {
+							color: theme('colors.blue.500'),
+							backgroundColor: theme('colors.red.500'),
+							padding: '0.1rem 0.3rem',
+							borderRadius: '0.2rem',
+							fontWeight: 'bold',
+							textDecoration: 'none',
+						},
+						blockquote: {
+							color: theme('colors.surface.50'),
+							borderLeftColor: theme('colors.surface.300'),
+						},
+						'ul > li::marker': {
+							color: theme('colors.surface.50'),
+						},
+						'ol > li::marker': {
+							color: theme('colors.surface.50'),
+						},
+						code: {
+							color: theme('colors.black'),
+						},
+						pre: {
+							color: theme('colors.gray.200'),
+							backgroundColor: theme('colors.surface.200'),
+						},
+						strong: {
+							color: theme('colors.surface.50'),
+						},
+						th: {
+							color: theme('colors.surface.50'),
+						},
+						thead: {
+							borderBottomColor: theme('colors.surface.50'),
+						},
+						hr: {
+							borderColor: theme('colors.surface.50'),
+						},
 					},
 				},
 			}),

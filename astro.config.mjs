@@ -8,7 +8,7 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
 	integrations: [tailwind({
-		applyBaseStyles: false
+		applyBaseStyles: true
 	}), react(), mdx()],
 	output: "server",
 	server: {
