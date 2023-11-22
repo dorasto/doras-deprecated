@@ -1,0 +1,15 @@
+name: Push to CapRover
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    my-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: My Step
+              uses: jasongitmail/fast-webhook@v1.2.0
+              with:
+                  url: ${{ secrets.CAPROVER_WEBHOOK_URL_DORAS_HOMESITE }}
