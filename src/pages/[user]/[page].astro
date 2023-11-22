@@ -1,6 +1,14 @@
 ---
+import { getUserUsername } from "@/supabase";
 import IndexPage from "./index.astro";
-const { page } = Astro.params;
+const { user, page } = Astro.params;
+if (!user) {
+    return Astro.redirect("/user-not-found");
+}
+const user_user = await getUserUsername(user);
+if (!user_user) {
+    return Astro.redirect("/user-not-found");
+}
 ---
 
 <IndexPage page={page} />

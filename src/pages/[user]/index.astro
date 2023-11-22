@@ -12,11 +12,11 @@ const { page } = Astro.props;
 
 const { user } = Astro.params;
 if (!user) {
-    return Astro.redirect("/");
+    return Astro.redirect("/user-not-found");
 }
 const user_user = await getUserUsername(user);
 if (!user_user) {
-    return Astro.redirect("/doras");
+    return Astro.redirect("/user-not-found");
 }
 if (!Astro.url.searchParams.get("preview")) {
     const { error } = await supabase.from("profiles").upsert({
