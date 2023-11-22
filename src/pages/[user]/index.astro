@@ -8,11 +8,9 @@ import BioCheck from "@/components/linkspage/bio";
 import ChipTabs from "@/components/linkspage/tabs";
 import { getTextColorForBackground } from "@/lib/utils";
 import BioBlock from "@/components/linkspage/BioBlock";
-
 const { page } = Astro.props;
 
 const { user } = Astro.params;
-console.log("user: ", user);
 if (!user) {
     return Astro.redirect("/");
 }
