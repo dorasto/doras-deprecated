@@ -7,7 +7,7 @@ interface TimelineItem {
     details: string | React.ReactNode;
     buttontext?: string;
     releaseNotes?: URL;
-    versionName: "idea" | "0.0.1" | "0.1.0";
+    versionName: string;
     progress?: "completed" | "upcoming";
 }
 
@@ -17,8 +17,7 @@ interface Props {
 
 const getVersion = (versionName: TimelineItem["versionName"]) => {
     const versionTextMap: Record<TimelineItem["versionName"], string> = {
-        idea: "Idea",
-        "0.0.1": "Closed Alpha",
+        "0.1": "Closed Alpha",
         "0.1.0": "Public Beta"
     };
     return versionTextMap[versionName];
@@ -106,37 +105,45 @@ const Timeline: React.FC<Props> = ({ items }) => {
 };
 
 const timelineItems: TimelineItem[] = [
-    {
-        date: "October 2023",
-        title: "First Launch",
-        details: "Built the initial development branch and first commits were made",
-        versionName: "idea",
-        progress: "completed"
-    },
+    // {
+    //     date: "October 2023",
+    //     title: "First Launch",
+    //     details: "Built the initial development branch and first commits were made",
+    //     versionName: "0.1",
+    //     progress: "upcoming"
+    // },
     {
         date: "November 2023",
         title: "Waitlist Launch",
         details: "We launched our waitlist and started collecting emails for signups. Users who join the waitlist will be the first to know when we launch and will get closed alpha access in rolling stages. Not all users will be accepted into the closed alpha, and we will be prioritizing users who have been on the waitlist the longest",
-        versionName: "idea",
+        versionName: "0.1",
         progress: "completed"
     },
     {
-        title: "Link In Bio",
-        details: "Link in bio ready for production to allow users to sign in and create a link in bio page",
-        versionName: "0.0.1",
+        title: "Launch of Closed Alpha",
+        details: (
+            <div>
+                <p>
+                    Closed alpha is here for selected users that signed up for the waitlist. Users have access to the following tools:
+                    <ul className=" list-disc pl-3">
+                        <li>Link in bio</li>
+                        <li>Profile designer</li>
+                        <li>Analytics</li>
+                        <li>Your Story</li>
+                        <li>Brand Accounts*</li>
+                    </ul>
+                    <p className=" text-xs font-light">* - subject to change</p>
+                </p>
+            </div>
+        ),
+        date: "Work in progress - Coming soon",
+        versionName: "0.1",
         progress: "upcoming"
     },
     {
-        title: "Your Story",
-        details: "WYSIWYG editor for creating your story page",
-        versionName: "0.0.1",
-        progress: "upcoming"
-    },
-    {
-        title: "Brand Accounts",
-        details: "Brand Accounts section is fully completed and ready for launch",
-        versionName: "0.1.0",
-        progress: "upcoming"
+        title: "Launch of Public Beta",
+        details: "",
+        versionName: "0.1.0"
     }
 ];
 
