@@ -12,10 +12,16 @@ await app
     })
     .register(fastifyMiddie);
 app.use(ssrHandler);
-
+// Set custom 404 handler
+app.setNotFoundHandler(async (request, reply) => {
+    // Send the custom 404 HTML file
+    reply.code(404).sendFile('404.html');
+    return reply;
+});
 app.listen({ port: 3000, host: '0.0.0.0' }, function (err, address) {
     if (err) {
         app.log.error(err)
         process.exit(1)
     }
+    console.log("server started on 3000")
 })

@@ -86,7 +86,7 @@ const parms = Astro.params;
             <div class="flex justify-center py-16 left-0 right-0 bottom-0">
                 <Branding />
             </div>
-            <ChipTabs url={Astro.url.pathname} user={user} client:load />
+            {(user.story.toggle && <ChipTabs url={Astro.url.pathname} user={user} client:load />) || (user.pages.length != 0 && <ChipTabs url={Astro.url.pathname} user={user} client:load />)}
         </div>
     </body>
 </html>

@@ -8,17 +8,15 @@ import BioCheck from "@/components/linkspage/bio";
 import ChipTabs from "@/components/linkspage/tabs";
 import { getTextColorForBackground } from "@/lib/utils";
 import BioBlock from "@/components/linkspage/BioBlock";
-
 const { page } = Astro.props;
 
 const { user } = Astro.params;
-console.log("user: ", user);
 if (!user) {
-    return Astro.redirect("/");
+    return Astro.redirect("/user-not-found");
 }
 const user_user = await getUserUsername(user);
 if (!user_user) {
-    return Astro.redirect("/doras");
+    return Astro.redirect("/user-not-found");
 }
 if (!Astro.url.searchParams.get("preview")) {
     const { error } = await supabase.from("profiles").upsert({
@@ -133,7 +131,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                     }
                                     return (
                                         <a href={"https://github.com/" + link.url} target="_blank" class="w-full">
-                                            <img loading="lazy" style={`border-radius:12px;`} width="100%" src={`https://github-stats.doras.to/?username=${link.url}&theme=dark&show_icons=true&bg_color=${link.colour.background.replace("#", "")}&text_color=${TextColour}&icon_color=${TextColour}&title_color=${TextColour}&hide_border=true&hide_rank=${!link.options?.rank}&hide=${hide}`} />;
+                                            <img loading="lazy" style={`border-radius:12px;`} width="100%" src={`https://github-stats.doras.to/?username=${link.url}&theme=dark&show_icons=true&bg_color=${link.colour.background.replace("#", "")}&text_color=${TextColour}&icon_color=${TextColour}&title_color=${TextColour}&hide_border=true&hide_rank=${!link.options?.rank}&hide=${hide}`} />
                                         </a>
                                     );
                                 }
