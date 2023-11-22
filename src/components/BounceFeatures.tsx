@@ -2,7 +2,7 @@ import React from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { WindowMockup } from "./WindowMockup";
-
+import Image from "@/components/Image";
 export const BouncyCardsFeatures = () => {
     return (
         <section className="mx-auto text-surface-800">
@@ -16,12 +16,12 @@ export const BouncyCardsFeatures = () => {
                         <div className="hidden md:block">
                             <div className="absolute  bottom-0 left-1/2 top-0 -translate-y-0 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:-translate-y-10 group-hover:-rotate-6">
                                 <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                    <img src="/blankbackdropyellowgreen.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
+                                    <Image src="/blankbackdropyellowgreen.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-700" />
                                 </span>
                             </div>
                             <div className="absolute  bottom-0 left-1/2 top-0 group-hover:-top-10 translate-y-2 rounded-t-2xl bg-transparent p-4 transition-all duration-700 group-hover:-translate-y-10 group-hover:-rotate-6">
                                 <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                                    <img src="/backdropitems1.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-1000" />
+                                    <Image src="/backdropitems1.webp" className="w-3/4 group-hover:w-1/2 transition-all duration-1000" />
                                 </span>
                             </div>
                         </div>
@@ -41,7 +41,7 @@ export const BouncyCardsFeatures = () => {
                     <CardDescription>Brand accounts allow you to manage multiple accounts from one place</CardDescription>
                     <div className="absolute bottom-0 left-4 right-4 top-28 translate-y-8 rounded-t-2xl bg-transparent p-4 transition-transform duration-500 group-hover:translate-y-2 group-hover:rotate-[2deg]">
                         <span className="block text-center font-semibold text-indigo-50">
-                            <img src="/stats-mockup.webp" />
+                            <Image src="/stats-mockup.webp" />
                         </span>
                     </div>
                 </BounceCard>
@@ -50,12 +50,12 @@ export const BouncyCardsFeatures = () => {
                     <CardDescription>Powerful link shortening tool to help your brand image</CardDescription>
                     <div className="absolute  bottom-0 left-4 right-4 top-28 translate-y-8 rounded-t-2xl bg-transparent p-4 transition-transform duration-500 group-hover:translate-y-4 group-hover:rotate-[2deg]">
                         <span className="block text-center w-full font-semibold text-indigo-50">
-                            <img src="/linkshortener.webp" />
+                            <Image src="/linkshortener.webp" />
                         </span>
                     </div>
                     <div className="absolute  bottom-0 left-4 right-4 top-14 translate-y-24 rounded-t-2xl bg-transparent p-4 transition-transform duration-700 group-hover:translate-y-2 group-hover:rotate-[2deg]">
                         <span className="block text-center w-full font-semibold text-indigo-50">
-                            <img src="/linkshortenerbutton.webp" />
+                            <Image src="/linkshortenerbutton.webp" />
                         </span>
                     </div>
                 </BounceCard>
@@ -64,12 +64,12 @@ export const BouncyCardsFeatures = () => {
                     <CardDescription className="z-20">Helping streamers showcase their livestreams, no matter the platform</CardDescription>
                     <div className="absolute left-4 right-4 top-0 translate-y-2 rounded-t-2xl bg-transparent p-4 transition-transform duration-[250ms] group-hover:-translate-y-2 group-hover:rotate-[2deg] ">
                         <span className="block text-center w-full font-semibold text-indigo-50">
-                            <img src="/livestreambackdrop.webp" />
+                            <Image src="/livestreambackdrop.webp" />
                         </span>
                     </div>
                     <div className="absolute  bottom-0 left-4 right-4 top-14 translate-y-24 rounded-t-2xl bg-transparent p-4 transition-transform duration-700 group-hover:translate-y-16 group-hover:rotate-[2deg]">
                         <span className="block text-center w-full font-semibold text-indigo-50">
-                            <img src="/livenowasset.webp" />
+                            <Image src="/livenowasset.webp" />
                         </span>
                     </div>
                 </BounceCard>
@@ -80,17 +80,17 @@ export const BouncyCardsFeatures = () => {
                     </div>
                     <div className="absolute  bottom-0 left-4 right-4 top-16 translate-y-2 rounded-t-2xl bg-transparent p-4 transition-transform duration-[250ms] group-hover:-translate-y-2 group-hover:rotate-[-2deg]">
                         <span className="block text-center w-full font-semibold text-indigo-50">
-                            <img src="/mediakitbackdrop.webp" />
+                            <Image src="/mediakitbackdrop.webp" />
                         </span>
                     </div>
                     <div className="absolute bottom-0 right-36 top-36 scale-90 translate-y-20 rounded-t-2xl bg-transparent p-4 transition-transform duration-700 group-hover:translate-y-2 group-hover:rotate-6">
                         <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                            <img src="/twittercard.webp" />
+                            <Image src="/twittercard.webp" />
                         </span>
                     </div>
                     <div className="absolute  bottom-0 left-36 top-36 scale-75 translate-y-20 rounded-t-2xl bg-transparent p-4 transition-transform duration-700 group-hover:translate-y-2 group-hover:-rotate-6">
                         <span className=" mx-auto text-center w-full font-semibold text-indigo-50">
-                            <img src="/youtubecard.webp" />{" "}
+                            <Image src="/youtubecard.webp" />{" "}
                         </span>
                     </div>
                 </BounceCard>

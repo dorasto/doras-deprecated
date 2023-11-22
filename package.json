@@ -1,7 +1,7 @@
 {
   "name": "doras.to",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -41,6 +41,7 @@
     "react-dom": "^18.2.0",
     "react-email": "^1.9.5",
     "react-icons": "^4.11.0",
+    "react-tooltip": "^5.23.0",
     "resend": "^2.0.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.3.5",
