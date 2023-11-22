@@ -39,12 +39,9 @@ const ChipTabs = ({ user, url }: Props) => {
                     if (tab.url == "/story" && !user.story.toggle) {
                         return;
                     }
-                    return (
-                        <Chip color={getTextColorForBackground(user.theme.button)} key={tab.id} text={tab.name} url={"/" + user.username + tab.url} selected={selected === "/" + user.username + tab.url} onTabClick={handleTabClick} />
-                    )
+                    return <Chip color={getTextColorForBackground(user.theme.button)} key={tab.id} text={tab.name} url={"/" + user.username + tab.url} selected={selected === "/" + user.username + tab.url} onTabClick={handleTabClick} />;
                 })}
             </div>
-            {loading && <LoadingCircle />}
         </>
     );
 };
@@ -54,18 +51,16 @@ const Chip = ({ text, color, url, selected, onTabClick }: { text: string; color:
         onTabClick(url, selected);
     };
     return (
-        <a href={url} onClick={handleClick} style={{ color: color }} className={`${selected ? "text-white" : "text-slate-300 hover:text-slate-200 hover:bg-slate-700"} text-sm transition-colors px-2.5 py-0.5 rounded-md relative`}>
+        <a
+            href={url}
+            onClick={handleClick}
+            style={{ color: color }}
+            className={`
+        ${selected ? "text-white border-b-2 border-b-surface-300" : ""}
+        rounded-none border-b-2 border-b-surface-600 text-sm transition-colors font-bold px-2.5 py-0.5 relative`}
+        >
             <span className="relative z-10">{text}</span>
         </a>
-    );
-};
-
-const LoadingCircle = () => {
-    return (
-        <div className="flex items-center ml-2">
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-            <span className="ml-2">Loading...</span>
-        </div>
     );
 };
 
