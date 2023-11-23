@@ -27,6 +27,6 @@ COPY . .
 # EXPOSE 80
 
 # Set the default command to run the application
-CMD ["node", "./dist/server/entry.mjs"]
+# CMD ["node", "./dist/server/entry.mjs"]
 # CMD ["node", "run-server.mjs"]
-# CMD ["pnpm", "start"]
+CMD ["pnpm", "start"]
