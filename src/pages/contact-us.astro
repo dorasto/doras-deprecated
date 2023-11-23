@@ -1,22 +1,41 @@
 ---
 import { Button } from "@/components/ui/button";
-import Layout from "@/layouts/WaitlistLayout.astro";
+import { Separator } from "@/components/ui/separator";
+import Layout from "@/layouts/Layout.astro";
+import { ExternalLink } from "lucide-react";
 import { RiTwitterXFill, RiDiscordFill } from "react-icons/ri/index.js";
 ---
 
 <Layout footerMargin={false}>
-    <main class="text-center py-24">
-        <h1 class="text-5xl font-black text-surface-800">You're in the waitlist!</h1>
-        <p class="text-lg font-bold text-surface-800 py-3">You'll be notified via email about any changes to the status of your account.</p>
-        <p class="text-lg font-bold text-surface-800 py-3">If you previously had a <a class="link" href="https://mystl.ink">Mystl.ink</a> account setup with the same email, it will be migrated over during this transition.</p>
-        <p class="text-lg font-bold text-surface-800 py-3">Got questions? Love it. Feel free to join our Discord or mention us on X and we'll get back to you!</p>
-        <div class="flex flex-row gap-3 w-full">
-            <a href="https://doras.to/discord">
-                <Button className="w-full"><RiDiscordFill size={30} /></Button>
-            </a>
-            <a href="https://x.com/doras_to">
-                <Button className="w-full"><RiTwitterXFill size={30} /></Button>
-            </a>
+    <main class="text-center py-24 text-surface-900">
+        <div>
+            <h2 class="font-black text-5xl text-surface-900">Contact Us</h2>
+            <p>Need help with anything? We're here to help</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3 max-w-xl mx-auto mt-9">
+            <div>
+                <h3 class="font-bold text-lg">Support</h3>
+                <Separator className="mb-3" />
+                <ul class="space-y-3">
+                    <li>
+                        <a class="flex items-center" href="https://doras.to/discord">Discord <ExternalLink /></a>
+                    </li>
+                    <li>
+                        <a class="flex items-center" href="mailto:hi@doras.to">Email support <ExternalLink /></a>
+                    </li>
+                    <li>
+                        <a class="flex items-center" href="mailto:hi@doras.to">Billing support <ExternalLink /></a>
+                    </li>
+                    <li>
+                        <a class="flex items-center" href="https://github.com/doras-to/doras/issues">Report a bug (via GitHub)</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg">Legal</h3>
+                <Separator className="mb-3" />
+                <p class="text-left">All legal enquireies should be emailed to <span class="underline">legal@doras.to</span></p>
+            </div>
         </div>
     </main>
 </Layout>
