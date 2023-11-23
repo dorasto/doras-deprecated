@@ -21,12 +21,12 @@ RUN npx pnpm install
 COPY . .
 
 # Run pnpm build to build the application
-RUN pnpm build
+# RUN pnpm build
 
 # Expose port 4321 (optional, depending on your use case)
 # EXPOSE 80
 
 # Set the default command to run the application
-# CMD ["node", "server.js"]
-CMD ["node", "run-server.mjs"]
+CMD ["node", "./dist/server/entry.mjs"]
+# CMD ["node", "run-server.mjs"]
 # CMD ["pnpm", "start"]
