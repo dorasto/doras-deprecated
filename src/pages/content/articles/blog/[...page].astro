@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/blog/sectionhead.astro";
+import Pagination from "@/components/blog/pagination.astro";
+
+// Sort content entries by publication date
+
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+    const PAGE_SIZE = 9;
+    const allPosts = await getCollection("blog", ({ data }) => {
+        return !data.draft && data.publishDate < new Date();
+    });
+
+    const allSortedPosts = allPosts.sort(function (a, b) {
+        return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+    });
+
+    return paginate(allSortedPosts, {
+        pageSize: PAGE_SIZE
+    });
+}
+export const prerender = true;
+
+const { page }: any = Astro.props;
+---
+
+<Layout title="Blog">
+    <Container>
+        <Sectionhead>
+            <Fragment slot="title">Doras Blog</Fragment>
+            <Fragment slot="desc">Get the latest news with some tips and tricks about your brand</Fragment>
+        </Sectionhead>
+        <main class="mt-4">
+            <ul class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+                {
+                    page &&
+                        page.data &&
+                        page.data.map((post: any, index: number) => (
+                            <li>
+                                <a href={`/content/articles/blog/${post.slug}`}>
+                                    <div class="">
+                                        <Image src={post.data.image.src} alt={post.data.image.alt} sizes="(max-width: 800px) 100vw, 800px" width={800} height={600} loading={index <= 2 ? "eager" : "lazy"} decoding={index <= 2 ? "sync" : "async"} class="w-full rounded-md object-cover" transition:name={`post-img-${post.slug}`} />
+                                        <div class="p-3">
+                                            <span class="rounded-xl text-surface-500 uppercase tracking-wider text-xs font-bold">{post.data.category}</span>
+
+                                            <h2 class="text-xl font-bold text-surface-900 leading-snug tracking-tight mt-1" transition:persist>
+                                                {post.data.title}
+                                            </h2>
+
+                                            <div class="flex gap-2 mt-3 text-sm">
+                                                <span class="text-surface-600">{post.data.author}</span>
+                                                <span class="text-surface-600">• </span>
+                                                <time class="text-surface-600" datetime={post.data.publishDate.toISOString()}>
+                                                    {post.data.publishDate.toDateString()}
+                                                </time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        ))
+                }
+            </ul>
+            <Pagination url={page.url} />
+        </main>
+    </Container>
+</Layout>
