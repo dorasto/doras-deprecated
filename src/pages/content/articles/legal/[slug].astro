@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/MDLayout.astro";
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+    // const posts: any = await Astro.glob("../../../content/legal/*.mdx");
+    const posts = await getCollection("legal");
+    return posts.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry }
+    }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+export const prerender = true;
+---
+
+<Layout title={entry.data.title} date={entry.data.date} updated={entry.data.updated}>
+    <article>
+        <div class="mx-auto prose text-surface-900 prose-headings:text-surface-900 prose-a:text-primary-500">
+            <Content />
+        </div>
+    </article>
+</Layout>

@@ -40,7 +40,7 @@ const { page }: any = Astro.props;
                         page.data &&
                         page.data.map((post: any, index: number) => (
                             <li>
-                                <a href={`/blog/${post.slug}`}>
+                                <a href={`/content/articles/blog/${post.slug}`}>
                                     <div>
                                         <Image src={post.data.image.src} alt={post.data.image.alt} sizes="(max-width: 800px) 100vw, 800px" width={800} height={600} loading={index <= 2 ? "eager" : "lazy"} decoding={index <= 2 ? "sync" : "async"} class="w-full rounded-md object-cover" transition:name={`post-img-${post.slug}`} />
                                         <div class="mt-4">
