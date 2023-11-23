@@ -1,32 +1,12 @@
-# Use Node.js version 20.9.0 as the base image
-FROM node:20.9.0
+FROM node:lts AS runtime
+WORKDIR /app
 
-# Set the working directory within the container
-# WORKDIR /app
-WORKDIR /usr/src/app
-
-# Install pnpm globally (uncomment if needed)
-RUN npm install -g pnpm
-
-# Copy only package.json and pnpm-lock.yaml (or pnpm-lock.json) files
-COPY package*.json pnpm-lock.* ./
-
-
-# Run pnpm install to install dependencies
-RUN npx pnpm install
-
-# COPY stack.env .env
-
-# Copy the rest of the application code
 COPY . .
 
-# Run pnpm build to build the application
-# RUN pnpm build
+RUN npm install
+RUN npm run build
 
-# Expose port 4321 (optional, depending on your use case)
-# EXPOSE 80
-
-# Set the default command to run the application
-# CMD ["node", "server.js"]
-# CMD ["node", "run-server.mjs"]
-CMD ["pnpm", "start"]
+ENV HOST=0.0.0.0
+ENV PORT=4321
+EXPOSE 4321
+CMD node ./dist/server/entry.mjs
