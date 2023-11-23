@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "pnpm build && pnpm preview --host",
+    "start": "pnpm build && node ./run-server.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
