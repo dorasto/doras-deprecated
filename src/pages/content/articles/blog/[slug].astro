@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import { Image } from "astro:assets";
+
+// Generate a new path for every collection entry
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("blog");
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry }
+    }));
+}
+export const prerender = true;
+
+// Get the entry directly from the prop on render
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+    <Container>
+        <div class="mx-auto max-w-3xl text-center mt-14">
+            <span class="text-primary-500 uppercase tracking-wider text-sm font-black">
+                {entry.data.category}
+            </span>
+            <h1 class="text-3xl lg:text-4xl font-bold lg:tracking-tight mt-1 lg:leading-tight text-surface-900">
+                {entry.data.title}
+            </h1>
+            <div class="flex gap-2 mt-3 items-center justify-center text-sm flex-wrap md:flex-nowrap">
+                <a href={entry.data.authorURL} class="text-surface-600">
+                    {entry.data.author}
+                </a>
+                <span class="text-surface-600">•</span>
+                <time class="text-surface-600" datetime={entry.data.publishDate.toISOString()}>
+                    {entry.data.publishDate.toDateString()}
+                </time>
+                <span class="text-surface-600 hidden md:block">•</span>
+                <!-- <div class="w-full md:w-auto flex flex-wrap justify-center gap-3">
+                    {entry.data.tags.map((tag) => <span class="text-sm text-primary-500">#{tag}</span>)}
+                </div> -->
+                <a href="/content/articles/blog" class="font-bold text-primary-500 transition">← Back to Blog</a>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-4xl flex place-content-center">
+            <Image src={entry.data.image.src} alt="Feature image" width="100" height="100" class="h-1/2 w-1/2 object-contain object-top rounded-xl mt-6" transition:name={`post-img-${entry.slug}`} />
+        </div>
+
+        <div class="mx-auto prose prose-base mt-6 max-w-3xl prose-headings:mb-2 prose-headings:mt-8 prose-a:text-white">
+            <Content />
+        </div>
+        <div class="text-center py-12">
+            <a href="/content/articles/blog" class="bg-primary-500 text-white font-bold px-5 py-3 rounded-md hover:bg-primary-400 transition">← Back to Blog</a>
+        </div>
+    </Container>
+</Layout>
