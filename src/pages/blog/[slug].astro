@@ -12,6 +12,7 @@ export async function getStaticPaths() {
         props: { entry }
     }));
 }
+export const prerender = true;
 
 // Get the entry directly from the prop on render
 const { entry } = Astro.props;

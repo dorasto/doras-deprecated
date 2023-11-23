@@ -22,8 +22,9 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
         pageSize: PAGE_SIZE
     });
 }
+export const prerender = true;
 
-const { page } = Astro.props;
+const { page }: any = Astro.props;
 ---
 
 <Layout title="Blog">
@@ -37,7 +38,7 @@ const { page } = Astro.props;
                 {
                     page &&
                         page.data &&
-                        page.data.map((post, index) => (
+                        page.data.map((post: any, index: number) => (
                             <li>
                                 <a href={`/blog/${post.slug}`}>
                                     <div>
