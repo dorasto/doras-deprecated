@@ -5,6 +5,7 @@ import { ViewTransitions } from "astro:transitions";
 import Navbar from "@/components/navbar/navbar.astro";
 import { GoogleAnalytics } from "astro-google-analytics";
 import "@fontsource-variable/inter/index.css";
+import Footer from "@/components/ui/footer.astro";
 
 export interface Props {
     title?: string;
@@ -90,6 +91,8 @@ const makeTitle = title ? title + " | " + "doras.to" : "doras.to - For the dream
         <div class="z-0">
             <slot />
         </div>
-        <!-- <Footer margin={footerMargin} /> -->
+        <div class="py-3">
+            <Footer />
+        </div>
     </body>
 </html>

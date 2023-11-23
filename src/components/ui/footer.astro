@@ -1,0 +1,39 @@
+---
+import { SiDiscord } from "react-icons/si";
+import Image from "../Image";
+import { JoinWaitlist } from "../JoinWaitlist";
+import { FaXTwitter } from "react-icons/fa6";
+---
+
+<div class="max-w-7xl rounded-xl mx-auto p-10 bg-gradient-to-bl -pb-2 from-rose-400 to-orange-300 text-surface-900">
+    <footer class="footer">
+        <nav>
+            <header class="font-black text-3xl">Doras</header>
+            <a href="/content/articles/blog" class="link link-hover text-lg font-bold">Our Blog</a>
+            <a href="https://github.com/doras-to" class="link link-hover text-lg font-bold">Open By Design</a>
+            <a href="/content/articles/blog" class="link link-hover text-lg font-bold">Latest News</a>
+            <a href="/#roadmap" class="link link-hover text-lg font-bold">Product Roadmap</a>
+            <a href="/contact-us" class="link link-hover text-lg font-bold">Get In Touch</a>
+        </nav>
+        <nav>
+            <header class="font-black text-3xl">Get Support</header>
+            <a href="https://docs.doras.to/guides/getting-started/" class="link link-hover text-lg font-bold">Getting Started Guide</a>
+            <a href="https://docs.doras.to" class="link link-hover text-lg font-bold">Doras Help Documentation</a>
+            <a href="https://doras.to/discord" class="link link-hover text-lg font-bold">Community Discord</a>
+            <a href="/#faq" class="link link-hover text-lg font-bold">FAQ</a>
+        </nav>
+        <nav>
+            <header class="font-black text-3xl">Legal</header>
+            <a href="https://docs.doras.to/guides/getting-started/" class="link link-hover text-lg font-bold">Terms & Conditions</a>
+            <a href="https://docs.doras.to" class="link link-hover text-lg font-bold">Privacy Policy</a>
+            <a href="/contact-us" class="link link-hover text-lg font-bold">Get In Touch</a>
+        </nav>
+    </footer>
+    <div class="py-6 flex items-center gap-3">
+        <JoinWaitlist text="Join The Waitlist" variant="outline" className="font-black text-3xl p-9 text-surface-900 hover:text-surface-50 border-surface-900" client:load />
+        <div class="ml-auto flex gap-3">
+            <a class="p-2 rounded-xl border-2 border-surface-900" href="https://x.com/doras_to"><FaXTwitter size="60" /></a>
+            <a class="p-2 rounded-xl border-2 border-surface-900" href="https://x.com/doras_to"><SiDiscord size="60" /></a>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,7 @@ import Badge from "@/components/ui/badge.astro";
 const { align = "center" } = Astro.props;
 ---
 
-<div class:list={["mt-16", align === "center" && "text-center"]}>
+<div class="bg-gradient-to-br from-teal-300 to-lime-300 p-3 rounded-xl" class:list={["mt-4", align === "center" && ""]}>
     {
         Astro.slots.has("badge") && (
             <div class="mb-4">
@@ -13,10 +13,10 @@ const { align = "center" } = Astro.props;
             </div>
         )
     }
-    <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-        <slot name="title">Title</slot>
+    <h1 class="text-4xl text-surface-900 lg:text-5xl font-black lg:tracking-tight">
+        <slot class="" name="title">Title</slot>
     </h1>
-    <p class="text-lg mt-4 text-slate-500 mx-auto max-w-xl">
+    <p class="text-lg mt-1 text-surface-600 max-w-xl">
         <slot name="desc">Some description goes here</slot>
     </p>
 </div>

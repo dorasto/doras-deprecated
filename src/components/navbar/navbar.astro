@@ -9,22 +9,25 @@ import Image from "@/components/Image";
 ---
 
 <Container>
-    <div class="navbar bg-primary-500 rounded-t-xl text-surface-50 z-50">
+    <div class="navbar bg-primary-500 rounded-xl text-surface-50 z-50">
         <div class="navbar-start gap-3">
             <div class="block md:hidden">
                 <!-- <DropdownMenuNav client:only /> -->
             </div>
-            <a class="text-xl flex items-center font-bold gap-2"><img loading="lazy" src="/assets/icon.svg" class="w-10 h-10" /><span>Doras.to</span></a>
+            <a href="/" class="text-xl flex items-center font-bold gap-2"><img loading="lazy" src="/assets/icon.svg" class="w-10 h-10" /><span>Doras.to</span></a>
         </div>
         <div class="navbar-center hidden md:flex">
             <!-- <NavMenuDesktop client:only /> -->
         </div>
-        <a class="block md:hidden" href="https://docs.doras.to/mystlink/waitlist">
+        <!-- <a class="block md:hidden" href="https://docs.doras.to/mystlink/waitlist">
             <Button variant="outline" className="text-sm w-full">Mystlink Update</Button>
-        </a>
+        </a> -->
         <div class="navbar-end gap-3">
-            <a class="hidden md:block" href="https://docs.doras.to/mystlink/waitlist">
+            <!-- <a class="hidden md:block" href="https://docs.doras.to/mystlink/waitlist">
                 <Button variant="outline">Attention Mystlink Users</Button>
+            </a> -->
+            <a class="hidden md:block" href="/content/articles/blog">
+                <Button variant="outline">Our Blog</Button>
             </a>
             <a class="" href="https://discord.gg/H6u9DV35kD">
                 <Button className="border-0" variant="outline"><BiLogoDiscord size={35} /></Button>
