@@ -1,25 +1,32 @@
-FROM node:lts AS base
-WORKDIR /app
+# Use Node.js version 20.9.0 as the base image
+FROM node:20.9.0
 
-# By copying only the package.json and package-lock.json here, we ensure that the following `-deps` steps are independent of the source code.
-# Therefore, the `-deps` steps will be skipped if only the source code changes.
-COPY package.json ./
+# Set the working directory within the container
+# WORKDIR /app
+WORKDIR /usr/src/app
 
-FROM base AS prod-deps
-RUN npm install --production
+# Install pnpm globally (uncomment if needed)
+RUN npm install -g pnpm
 
-FROM base AS build-deps
-RUN npm install --production=false
+# Copy only package.json and pnpm-lock.yaml (or pnpm-lock.json) files
+COPY package*.json pnpm-lock.* ./
 
-FROM build-deps AS build
+
+# Run pnpm install to install dependencies
+RUN npx pnpm install
+
+# COPY stack.env .env
+
+# Copy the rest of the application code
 COPY . .
-RUN npm run build
 
-FROM base AS runtime
-COPY --from=prod-deps /app/node_modules ./node_modules
-COPY --from=build /app/dist ./dist
+# Run pnpm build to build the application
+RUN pnpm build
 
-ENV HOST=0.0.0.0
-ENV PORT=4321
-EXPOSE 4321
-CMD ["node", "./dist/server/entry.mjs"]
+# Expose port 4321 (optional, depending on your use case)
+# EXPOSE 80
+
+# Set the default command to run the application
+# CMD ["node", "server.js"]
+CMD ["node", "run-server.mjs"]
+# CMD ["pnpm", "start"]
