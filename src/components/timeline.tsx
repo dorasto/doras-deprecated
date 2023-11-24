@@ -130,15 +130,13 @@ const timelineItems: TimelineItem[] = [
                         <li>Profile designer</li>
                         <li>Analytics</li>
                         <li>Your Story</li>
-                        <li>Brand Accounts*</li>
                     </ul>
-                    <p className=" text-xs font-light">* - subject to change</p>
                 </p>
             </div>
         ),
-        date: "Work in progress - Coming soon",
+        date: "November 24th, 2023",
         versionName: "0.1",
-        progress: "upcoming"
+        progress: "completed"
     },
     {
         title: "Launch of Public Beta",
