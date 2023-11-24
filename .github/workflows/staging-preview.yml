@@ -1,0 +1,23 @@
+name: Cloudflare Staging PR Comment
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+
+jobs:
+  comment:
+    if: github.head_ref == 'staging' # This ensures the job only runs for PRs from staging to main
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Add PR Comment
+        uses: mshick/add-pr-comment@v2.8.1
+        with:
+          message: |
+            **WARNING - You've opened this PR to the main branch.** Please check out staging and ensure all is working as expected: https://staging.doras.pages.dev.
+
+            Once you're happy with that, please proceed with the merge.
