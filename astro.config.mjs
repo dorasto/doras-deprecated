@@ -11,7 +11,7 @@ export default defineConfig({
 	integrations: [tailwind({
 		applyBaseStyles: true
 	}), react(), mdx()],
-	output: "hybrid",
+	output: "server",
 	server: {
 		headers: {
 			"Access-Control-Allow-Origin": "*"
