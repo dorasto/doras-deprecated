@@ -2,6 +2,7 @@ import type { Links } from "@/server_types";
 import React from "react";
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
+import { Button } from "../ui/button";
 interface Props {
     id: string;
     text: string;
@@ -66,17 +67,27 @@ const LinksButtonDialog: React.FC<PropsDialog> = ({ id, title, className, Icon, 
                     <span className={`block w-full text-center px-6 ${colorClasses.textColor} font-bold`}>{text}</span>
                 </button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] bg-surface-800 dark:bg-surface-800 text-white dark:text-white">
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
+                    <DialogDescription>
+                        <a target="_blank" href="https://docs.doras.to/links/#warnings">
+                            Learn more
+                        </a>
+                    </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
-                    <span>{link.url}</span>
-                    <a className="w-full" href={link.url} target="_blank" onClick={() => ClickButton(id, link)}>
-                        <button className={`w-full px-1 py-3 text-xl relative`}>
+                    <div>
+                        <p className="border-2 border-surface-600 px-3 py-1 rounded-xl font-bold text-center">{link.url}</p>
+                    </div>
+                    <a className="w-full text-center" href={link.url} target="_blank" onClick={() => ClickButton(id, link)}>
+                        {/* <button className={`w-full px-1 py-3 text-xl relative`}>
                             <i className={"absolute left-4 top-1/2 transform -translate-y-1/2 " + Icon}></i>
                             <span className={`block w-full text-center px-6 font-bold`}>{text}</span>
-                        </button>
+                        </button> */}
+                        <Button variant="outline" className="mx-auto">
+                            Continue to site
+                        </Button>
                     </a>
                 </div>
             </DialogContent>
