@@ -95,8 +95,10 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                     return twitch;
                                 }
                                 if (link.type == "textblock") {
+                                    const backgroundColor = getTextColorForBackground(link.colour.background);
+                                    const textColor = "black";
                                     return (
-                                        <p class="p-2 rounded-lg" style={{ background: link.colour.toggle ? link.colour.background : "#6c2bd9", color: getTextColorForBackground(link.colour.toggle ? link.colour.background : "#6c2bd9") }}>
+                                        <p class="p-2 rounded-lg" style={{ background: backgroundColor, color: textColor }}>
                                             {link.message}
                                         </p>
                                     );
