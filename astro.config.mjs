@@ -11,11 +11,12 @@ export default defineConfig({
 	integrations: [tailwind({
 		applyBaseStyles: true
 	}), react(), mdx()],
-	output: "server",
+	output: "hybrid",
 	server: {
 		headers: {
 			"Access-Control-Allow-Origin": "*"
 		}
 	},
+	compressHTML: true,
 	adapter: cloudflare()
 });
