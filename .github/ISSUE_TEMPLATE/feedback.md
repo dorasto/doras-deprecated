@@ -1,10 +1,10 @@
 ---
 name: Feedback
 about: Got feedback? Let us know!
-title: Feedback - enter_title_here
+title: ''
 labels: feedback
-assignees: trent-gezel, tommerty
+assignees: tommerty, trent-gezel
 
 ---
 
-Feel free to let us know any feedback and we'll be sure to take a look! Don't forget to update the `enter_title_here` in the title! ❤️
+Feel free to let us know any feedback and we'll be sure to take a look  ❤️
