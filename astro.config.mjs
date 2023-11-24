@@ -17,7 +17,5 @@ export default defineConfig({
 			"Access-Control-Allow-Origin": "*"
 		}
 	},
-	adapter: node({
-		mode: "standalone",
-	})
+	adapter: cloudflare()
 });
