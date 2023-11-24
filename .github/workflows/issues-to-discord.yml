@@ -1,0 +1,21 @@
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+    steps:
+      - id: thread
+        # Let's assume that you're setting a `link` output in this step
+        # For example, you could get this from a project
+
+      - uses: EndBug/discuss-on-discord@v1.1.0
+        with:
+          discord_bot_token: ${{ secrets.CROSSPOST_BOT_TOKEN }}
+          existing_discord_thread: ${{ steps.thread.outputs.link }}
+          destination: https://discord.com/channels/1172459860114284564/1177650950282956900
+          
