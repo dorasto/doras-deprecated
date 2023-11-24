@@ -18,5 +18,8 @@ export default defineConfig({
 		}
 	},
 	compressHTML: true,
-	adapter: cloudflare()
+	adapter: cloudflare(),
+	experimental: {
+		optimizeHoistedScript: true,
+	},
 });
