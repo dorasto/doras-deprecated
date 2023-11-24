@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Button } from "@/components/ui/button";
+import { BsDiscord } from "react-icons/bs/index.js";
+---
+
+<Layout title="Rip, that's a 404">
+    <main class="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-primary-500 via-surface-700 to-surface-700 h-screen flex items-center">
+        <div class="mx-auto max-w-xl text-center">
+            <h1 class="font-black text-5xl">That's a 404, bud</h1>
+            <p class="mb-7 mt-3">Sorry, we couldn't find what you were looking for. It either never existed, or we've messed something up!</p>
+            <div class="flex items-center place-content-center gap-3">
+                <a href="/"><Button variant="outline" className="!border-surface-100 text-surface-100 p-4 font-bold w-full">Back to the dash</Button></a>
+                <a href="https://doras.to/discord"><Button variant="outline" className="!border-surface-100 text-surface-100 p-4 font-bold w-full flex gap-2"><BsDiscord /> Report an issue</Button></a>
+            </div>
+        </div>
+    </main>
+</Layout>
