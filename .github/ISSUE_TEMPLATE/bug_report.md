@@ -3,7 +3,8 @@ name: Bug report
 about: Create a report to help us improve Doras
 title: "[BUG] - issue_title_here"
 labels: bug
-assignees: tommerty, trent-gezel
+assignees: trent-gezel, tommerty
+
 ---
 
 ## Please keep `[BUG]` in the issue title, and replace `issue_title_here` with your title.

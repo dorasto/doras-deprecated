@@ -3,7 +3,8 @@ name: Feature request
 about: Suggest an idea for Doras
 title: "[SUG] - title_goes_here"
 labels: enhancement
-assignees: trent-gezel, tommerty
+assignees: tommerty, trent-gezel
+
 ---
 
 ## Please keep `[SUG]` in the title, but replace `title_goes_here` with your title.
