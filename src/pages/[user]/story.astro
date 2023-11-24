@@ -7,11 +7,11 @@ import StoryBlock from "@/components/linkspage/story";
 
 const { user } = Astro.params;
 if (!user) {
-    return Astro.redirect("/");
+    return;
 }
 const user_user = await getUserUsername(user);
 if (!user_user) {
-    return Astro.redirect("/doras");
+    return;
 }
 if (!Astro.url.searchParams.get("preview")) {
     const { error } = await supabase.from("profiles").upsert({
