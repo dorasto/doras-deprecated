@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import cloudflare from "@astrojs/cloudflare";
-import node from "@astrojs/node";
+// import node from "@astrojs/node";
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
