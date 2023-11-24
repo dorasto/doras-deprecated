@@ -59,7 +59,7 @@ export function NavMenuDesktop() {
                             <ListItem href="#introduction" title="Introduction">
                                 We've built tools for creators, streamers, and brands to help them grow their audience and make money.
                             </ListItem>
-                            <ListItem href="https://blog.doras.to/our-story" title="The Story Behind">
+                            <ListItem href="https:/blog.doras.to/our-story" title="The Story Behind">
                                 Learn more about us, and why we've built Doras.
                             </ListItem>
                             <ListItem href="#opensource" title="Community Driven">

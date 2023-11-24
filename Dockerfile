@@ -3,7 +3,7 @@ FROM node:20.9.0
 
 # Set the working directory within the container
 # WORKDIR /app
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install pnpm globally (uncomment if needed)
 RUN npm install -g pnpm
@@ -27,6 +27,6 @@ COPY . .
 # EXPOSE 80
 
 # Set the default command to run the application
-# CMD ["node", "server.js"]
+# CMD ["node", "./dist/server/entry.mjs"]
 # CMD ["node", "run-server.mjs"]
 CMD ["pnpm", "start"]
