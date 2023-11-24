@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "pnpm build && node ./dist/server/entry.mjs",
+    "start": "pnpm build && HOST=0.0.0.0 PORT=8989 node ./dist/server/entry.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
