@@ -39,8 +39,8 @@ user &&
             disabled: false
         });
     });
-if (!story && page && user.pages.find((pages) => pages.url == page)) {
-    user.links = user.pages.find((pages) => pages.url == page)?.blocks || [];
+if (!story && page && user && user.pages.find((pagess) => pagess.url == page)) {
+    user.links = user.pages.find((pagess) => pagess.url == page)?.blocks || [];
 } else if (!story && page) {
     error = true;
 }
