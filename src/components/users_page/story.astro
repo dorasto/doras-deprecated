@@ -34,7 +34,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
     <main class="max-w-xl mx-auto h-full">
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
-                <BioBlock user={user_user} textColorSolid={textColorSolid} client:load />
+                <BioBlock img={downloadImageUser(user_user.pic)} user={user_user} textColorSolid={textColorSolid} client:load />
                 <StoryBlock user={user_user} />
             </div>
         </div>

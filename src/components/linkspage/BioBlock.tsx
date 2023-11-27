@@ -6,6 +6,7 @@ import Image from "@/components/Image";
 import { Tooltip } from "react-tooltip";
 
 interface Props {
+    img: string;
     user: ServerDataItem;
     textColorSolid: string;
 }
@@ -13,10 +14,10 @@ interface Props {
 //mask-squircle
 //mask-hexagon
 //mask-hexagon-2
-const BioBlock: React.FC<Props> = ({ user, textColorSolid }) => {
+const BioBlock: React.FC<Props> = ({ img, user, textColorSolid }) => {
     return (
         <div className="flex flex-col justify-center items-center">
-            <Image src={downloadImageUser(user.pic)} className={"w-44 h-44 object-cover mask " + user.design.profile_pic_shape} />
+            <Image src={img} className={"w-44 h-44 object-cover mask " + user.design.profile_pic_shape} />
             <div className="flex items-center mx-auto text-center">
                 <h2 className="flex items-center text-4xl font-black" style={{ color: textColorSolid }}>
                     {user.displayname}
