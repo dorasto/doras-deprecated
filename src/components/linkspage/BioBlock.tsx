@@ -9,6 +9,10 @@ interface Props {
     user: ServerDataItem;
     textColorSolid: string;
 }
+//mask-circle
+//mask-squircle
+//mask-hexagon
+//mask-hexagon-2
 const BioBlock: React.FC<Props> = ({ user, textColorSolid }) => {
     return (
         <div className="flex flex-col justify-center items-center">

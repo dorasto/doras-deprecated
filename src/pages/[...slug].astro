@@ -1,0 +1,27 @@
+---
+import ErrorPage from "@/components/users_page/user_not_found.astro";
+import Links from "@/components/users_page/index.astro";
+import Story from "@/components/users_page/story.astro";
+import { getUserUsername } from "@/supabase";
+const { slug } = Astro.params;
+let error = false;
+let main_page = slug?.split("/")[0];
+let page = slug?.split("/")[1];
+let story = page == "story";
+let story_disabled = true;
+let user = await getUserUsername(main_page || "");
+if (user && user.story.toggle) {
+    story_disabled = false;
+}
+if (page && user.pages.find((pages) => pages.url == page)) {
+    user.links = user.pages.find((pages) => pages.url == page)?.blocks || [];
+} else if (page) {
+    error = true;
+}
+---
+
+{error && <ErrorPage title="Users page not found" />}
+{!error && !user && main_page && <ErrorPage title="User not found" />}
+{!error && user && main_page && !story && <Links user={user} />}
+{!error && user && main_page && story && !story_disabled && <Story user={user} />}
+{!error && story && story_disabled && <ErrorPage title="Users page not found" />}

@@ -1,34 +1,23 @@
 ---
 import Layout from "../../layouts/UserLayout.astro";
-import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
+import { downloadImageUser, supabase } from "@/supabase";
 import { getTextColorForBackground } from "@/lib/utils";
 import BioBlock from "@/components/linkspage/BioBlock";
 import StoryBlock from "@/components/linkspage/story";
+import type { ServerDataItem } from "@/server_types";
+interface Props {
+    user: ServerDataItem;
+}
+const { user }: Props = Astro.props;
 
-const { user } = Astro.params;
-if (!user) {
-    return;
-}
-const user_user = await getUserUsername(user);
-if (!user_user) {
-    return;
-}
+const user_user = user;
 if (!Astro.url.searchParams.get("preview")) {
     const { error } = await supabase.from("profiles").upsert({
         id: user_user.id as string,
         views: user_user.views + 1 || 1
     });
 }
-let VerifiedlinksData: any = await supabase.from("verified_links").select();
-VerifiedlinksData = VerifiedlinksData?.data;
-if (!user_user.story.toggle) {
-    return Astro.redirect(user_user.username);
-}
 const textColorSolid = getTextColorForBackground(user_user.theme.background);
-let style: any = { backgroundColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
-if (user_user.theme.inset) {
-    style = { backgroundColor: "#00000000", borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.background) };
-}
 let font_style = {};
 if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
     font_style = {};
@@ -37,10 +26,6 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
         fontFamily: user_user.theme.font?.font + "," + user_user.theme.font?.family
     };
 }
-//mask-circle
-//mask-squircle
-//mask-hexagon
-//mask-hexagon-2
 ---
 
 <Layout user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
