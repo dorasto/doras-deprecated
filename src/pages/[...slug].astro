@@ -46,8 +46,8 @@ if (!story && page && user.pages.find((pages) => pages.url == page)) {
 }
 ---
 
-{error && <ErrorPage title="Users page not found" />}
 {!error && !user && main_page && <ErrorPage title="User not found" />}
 {!error && user && main_page && !story && <Links user={user} tabs={tabs} />}
 {!error && user && main_page && story && !story_disabled && <Story user={user} tabs={tabs} />}
-{!error && story && story_disabled && <ErrorPage title="Users page not found" />}
+{!error && story && story_disabled && <ErrorPage title="Users page not found" page="btu" user={main_page} />}
+{error && <ErrorPage title="Users page not found" page="btu" user={main_page} />}
