@@ -1,11 +1,18 @@
 ---
-const { title, date, updated, snippet } = Astro.props;
+const {
+    title,
+    date,
+    updated,
+    snippet,
+    image: { src }
+} = Astro.props;
 import { SEO } from "astro-seo";
 import Navbar from "@/components/navbar/navbar.astro";
 import { GoogleAnalytics } from "astro-google-analytics";
 import "@fontsource-variable/inter/index.css";
 import { ViewTransitions } from "astro:transitions";
 import Footer from "@/components/ui/footer.astro";
+import { Image, imageConfig } from "astro:assets";
 ---
 
 <!doctype html>
@@ -41,7 +48,7 @@ import Footer from "@/components/ui/footer.astro";
                 basic: {
                     title: "Doras -" + title,
                     type: "A type.",
-                    image: "/assets/icon.png"
+                    image: Image({ src, alt: "blog photo" })
                 }
             }}
             twitter={{
