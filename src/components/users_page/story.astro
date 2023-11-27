@@ -5,10 +5,12 @@ import { getTextColorForBackground } from "@/lib/utils";
 import BioBlock from "@/components/linkspage/BioBlock";
 import StoryBlock from "@/components/linkspage/story";
 import type { ServerDataItem } from "@/server_types";
+import type { ILinksPageTabs } from "../linkspage/tabs";
 interface Props {
     user: ServerDataItem;
+    tabs: ILinksPageTabs[];
 }
-const { user }: Props = Astro.props;
+const { user, tabs }: Props = Astro.props;
 
 const user_user = user;
 if (!Astro.url.searchParams.get("preview")) {
@@ -28,7 +30,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
 }
 ---
 
-<Layout user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
+<Layout tabs={tabs} user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
     <main class="max-w-xl mx-auto h-full">
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 const { title } = Astro.props;
 ---
 
-<Layout title="Rip, that's a 404">
+<Layout title={title}>
     <main class="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-primary-500 via-surface-700 to-surface-700 h-screen flex items-center">
         <div class="mx-auto max-w-xl text-center">
             <h1 class="font-black text-5xl">{title}</h1>
