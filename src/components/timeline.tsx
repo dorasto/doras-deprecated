@@ -108,7 +108,9 @@ const timelineItems: TimelineItem[] = [
         date: "Early December 2023",
         title: "Twitch Panel Integration",
         details: "We're adding a feature under the \"Share\" options to generate an image based on your profile to add it to your Twitch panels. It's automatically sized, and is perfect for directing your viewers to your profile.",
-        progress: "upcoming"
+        progress: "completed",
+        buttontext: "Read the blog post",
+        releaseNotes: "/blog/twitch-panel"
     },
     {
         title: "Launch of Public Beta",
