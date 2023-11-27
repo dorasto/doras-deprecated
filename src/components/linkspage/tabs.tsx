@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import type { ServerDataItem } from "@/server_types";
 import { getTextColorForBackground } from "@/lib/utils";
 export type ILinksPageTabs = {

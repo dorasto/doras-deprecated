@@ -1,4 +1,3 @@
-import { downloadImageUser } from "@/supabase";
 import BioCheck from "./bio";
 import type { ServerDataItem } from "@/server_types";
 import * as lucide from "lucide-react";
