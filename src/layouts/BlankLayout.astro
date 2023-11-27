@@ -1,0 +1,22 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter/index.css";
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <title>{title}</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <ViewTransitions />
+    </head>
+    <body class="bg-gradient-to-bl from-sky-100 to-indigo-100">
+        <div class="z-0">
+            <slot />
+        </div>
+    </body>
+</html>

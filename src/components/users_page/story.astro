@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/UserLayout.astro";
+import { downloadImageUser, supabase } from "@/supabase";
+import { getTextColorForBackground } from "@/lib/utils";
+import BioBlock from "@/components/linkspage/BioBlock";
+import StoryBlock from "@/components/linkspage/story";
+import type { ServerDataItem } from "@/server_types";
+import type { ILinksPageTabs } from "../linkspage/tabs";
+interface Props {
+    user: ServerDataItem;
+    tabs: ILinksPageTabs[];
+}
+const { user, tabs }: Props = Astro.props;
+
+const user_user = user;
+if (!Astro.url.searchParams.get("preview")) {
+    const { error } = await supabase.from("profiles").upsert({
+        id: user_user.id as string,
+        views: user_user.views + 1 || 1
+    });
+}
+const textColorSolid = getTextColorForBackground(user_user.theme.background);
+let font_style = {};
+if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
+    font_style = {};
+} else {
+    font_style = {
+        fontFamily: user_user.theme.font?.font + "," + user_user.theme.font?.family
+    };
+}
+---
+
+<Layout tabs={tabs} user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
+    <main class="max-w-xl mx-auto h-full">
+        <div>
+            <div class="flex flex-col mx-auto px-3 justify-center items-center pb-3" style={font_style}>
+                <BioBlock img={downloadImageUser(user_user.pic)} user={user_user} textColorSolid={textColorSolid} client:load />
+                <StoryBlock user={user_user} />
+            </div>
+        </div>
+    </main>
+</Layout>
+<!-- end slot -->

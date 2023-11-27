@@ -1,29 +1,19 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import type { ServerDataItem } from "@/server_types";
 import { getTextColorForBackground } from "@/lib/utils";
-
+export type ILinksPageTabs = {
+    id: number;
+    name: string;
+    url: string;
+    disabled: boolean;
+}
 interface Props {
     user: ServerDataItem;
     url: string;
+    tabs: ILinksPageTabs[];
 }
 
-const tabs = [
-    {
-        id: 0,
-        name: "Home",
-        url: "",
-        disabled: false
-    },
-    {
-        id: 1,
-        name: "Story",
-        url: "/story",
-        disabled: false
-    }
-];
-
-const ChipTabs = ({ user, url }: Props) => {
+const ChipTabs = ({ user, url, tabs }: Props) => {
     const [selected, setSelected] = useState(url);
     const [loading, setLoading] = useState(false);
 
@@ -36,7 +26,7 @@ const ChipTabs = ({ user, url }: Props) => {
         <>
             <div style={{ backgroundColor: user.theme.button, color: getTextColorForBackground(user.theme.button) }} className="max-w-xl mx-auto flex fixed bottom-0 items-center flex-wrap gap-2 w-full place-content-center py-3 rounded-t-xl">
                 {tabs.map((tab) => {
-                    if (tab.url == "/story" && !user.story.toggle) {
+                    if (tab.disabled) {
                         return;
                     }
                     return <Chip color={getTextColorForBackground(user.theme.button)} key={tab.id} text={tab.name} url={"/" + user.username + tab.url} selected={selected === "/" + user.username + tab.url} onTabClick={handleTabClick} />;
