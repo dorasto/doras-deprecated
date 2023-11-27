@@ -1,23 +1,18 @@
 ---
 import Layout from "../../layouts/UserLayout.astro";
-import { downloadImageUser, getUserUsername, supabase } from "@/supabase";
-import Branding from "@/components/Branding";
+import { downloadImageUser, supabase } from "@/supabase";
 import LinksButton from "@/components/linkspage/LinksButton";
-import * as lucide from "lucide-react";
-import BioCheck from "@/components/linkspage/bio";
-import ChipTabs from "@/components/linkspage/tabs";
 import { getTextColorForBackground } from "@/lib/utils";
 import BioBlock from "@/components/linkspage/BioBlock";
-const { page } = Astro.props;
+import type { ServerDataItem } from "@/server_types";
+import type { ILinksPageTabs } from "../linkspage/tabs";
+interface Props {
+    user: ServerDataItem;
+    tabs: ILinksPageTabs[];
+}
 
-const { user } = Astro.params;
-if (!user) {
-    return;
-}
-const user_user = await getUserUsername(user);
-if (!user_user) {
-    return;
-}
+const { user, tabs }: Props = Astro.props;
+const user_user = user;
 if (!Astro.url.searchParams.get("preview")) {
     const { error } = await supabase.from("profiles").upsert({
         id: user_user.id as string,
@@ -27,11 +22,6 @@ if (!Astro.url.searchParams.get("preview")) {
 let VerifiedlinksData: any = await supabase.from("verified_links").select();
 VerifiedlinksData = VerifiedlinksData?.data;
 let blocks = user_user.links;
-if (page && user_user.pages.find((pages) => pages.url == page)) {
-    blocks = user_user.pages.find((pages) => pages.url == page)?.blocks || [];
-} else {
-    Astro.redirect(user_user.username);
-}
 const textColorSolid = getTextColorForBackground(user_user.theme.background);
 let style: any = { backgroundColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.button) };
 if (user_user.theme.inset) {
@@ -45,17 +35,13 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
         fontFamily: user_user.theme.font?.font + "," + user_user.theme.font?.family
     };
 }
-//mask-circle
-//mask-squircle
-//mask-hexagon
-//mask-hexagon-2
 ---
 
-<Layout user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
+<Layout tabs={tabs} user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
     <main class="max-w-xl mx-auto pb-0">
         <div>
             <div class="flex flex-col mx-auto px-3 justify-center items-center" style={font_style}>
-                <BioBlock user={user_user} textColorSolid={textColorSolid} client:load />
+                <BioBlock img={downloadImageUser(user_user.pic)} user={user_user} textColorSolid={textColorSolid} client:load />
                 <div id="items" class="flex flex-col w-full gap-4">
                     {/* LINK */}
                     {

@@ -1,0 +1,53 @@
+---
+let tabs = [
+    {
+        id: 0,
+        name: "Home",
+        url: "",
+        disabled: false
+    },
+    {
+        id: 1,
+        name: "Story",
+        url: "/story",
+        disabled: false
+    }
+];
+import ErrorPage from "@/components/users_page/user_not_found.astro";
+import Links from "@/components/users_page/index.astro";
+import Story from "@/components/users_page/story.astro";
+import { getUserUsername } from "@/supabase";
+const { slug } = Astro.params;
+let error = false;
+let main_page = slug?.split("/")[0];
+let page = slug?.split("/")[1];
+let story = page == "story";
+let story_disabled = true;
+let user = await getUserUsername(main_page || "");
+if (user && user.story.toggle) {
+    story_disabled = false;
+} else {
+    //@ts-ignore
+    tabs.find((tab) => tab.url == "/story").disabled = true;
+}
+user &&
+    user.pages.map((page) => {
+        tabs.push({
+            id: tabs.length,
+            name: page.name,
+            url: "/" + page.url,
+            disabled: false
+        });
+    });
+if (!story && page && user.pages.find((pages) => pages.url == page)) {
+    user.links = user.pages.find((pages) => pages.url == page)?.blocks || [];
+} else if (!story && page) {
+    error = true;
+}
+---
+
+{!error && !user && main_page && <ErrorPage title="User not found" />}
+{!error && user && main_page && !story && <Links user={user} tabs={tabs} />}
+{!error && user && main_page && story && !story_disabled && <Story user={user} tabs={tabs} />}
+{!error && story && story_disabled && <ErrorPage title="Users page not found" page="btu" user={main_page} />}
+{error && <ErrorPage title="Users page not found" page="btu" user={main_page} />}

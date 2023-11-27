@@ -29,6 +29,7 @@ export interface Links {
     message: string;
     group: Links[];
     options?: any;
+    clicks: any[];
 }
 export interface Pages {
     id: string;
