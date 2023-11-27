@@ -41,8 +41,8 @@ const { page }: any = Astro.props;
                         page.data.map((post: any, index: number) => (
                             <li>
                                 <a href={`/blog/${post.slug}`}>
-                                    <div class="">
-                                        <Image src={post.data.image.src} alt={post.data.image.alt} sizes="(max-width: 800px) 100vw, 800px" width={800} height={600} loading={index <= 2 ? "eager" : "lazy"} decoding={index <= 2 ? "sync" : "async"} class="w-full rounded-md object-cover" transition:name={`post-img-${post.slug}`} />
+                                    <div class=" w-full h-3/4 object-cover">
+                                        <Image src={post.data.image.src} alt={post.data.image.alt} sizes="(max-width: 800px) 100vw, 800px" width={300} height={300} loading={index <= 2 ? "eager" : "lazy"} decoding={index <= 2 ? "sync" : "async"} class="w-full h-1/2 rounded-md object-cover object-top" transition:name={`post-img-${post.slug}`} />
                                         <div class="p-3">
                                             <span class="rounded-xl text-surface-500 uppercase tracking-wider text-xs font-bold">{post.data.category}</span>
 
