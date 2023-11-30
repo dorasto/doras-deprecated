@@ -22,7 +22,11 @@ export default defineConfig({
     }
   },
   compressHTML: true,
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    routes: {
+      strategy: "include"
+    }
+  }),
   experimental: {
     optimizeHoistedScript: true
   }
