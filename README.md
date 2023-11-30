@@ -1,18 +1,98 @@
-# Deploying to Cloudflare (for @Developers only)
+routes output:
 
-1. Install Wrangler via https://docs.astro.build/en/guides/deploy/cloudflare/
-2. .1 `npm install -g wrangler` to install wrangler
-3. `wrangler login` to login to cloudflare
-4. `pnpm cloud-build` to build the site and deploy it to Cloudflare.
-    - Choose `Gezel io` account
-    - Choose `Doras landing` project
-
-## Example Release Notes
-
-Tag: `Version number`: `0.0.1`
-Title: `Version number`: `0.0.1`
-Contents:
 ```
-- Updated x
-- Fixed [y](linktogithubissue.com)
+{
+  "version": 1,
+  "include": [
+    "/",
+    "/*"
+  ],
+  "exclude": [
+    "/blog/",
+    "/discord",
+    "/404.html",
+    "/icon.svg",
+    "/robots.txt",
+    "/favicon.svg",
+    "/blog/v0-0-10/",
+    "/assets/icon.png",
+    "/assets/icon.svg",
+    "/blog/index.html",
+    "/twittercard.webp",
+    "/youtubecard.webp",
+    "/livenowasset.webp",
+    "/roundedstats.webp",
+    "/stats-mockup.webp",
+    "/linkshortener.webp",
+    "/markdownblock.webp",
+    "/blog/alpha-launch/",
+    "/blog/twitch-panel/",
+    "/assets/employee.jpg",
+    "/backdropitems1.webp",
+    "/yellowbeaniegirl.png",
+    "/assets/features/1.png",
+    "/assets/features/2.png",
+    "/assets/features/3.png",
+    "/assets/features/4.png",
+    "/assets/features/5.png",
+    "/assets/features/6.png",
+    "/mediakitbackdrop.webp",
+    "/yellowbeaniegirl.webp",
+    "/legal/privacy-policy/",
+    "/assets/hero-source.svg",
+    "/assets/integrations.svg",
+    "/blog/v0-0-10/index.html",
+    "/livestreambackdrop.webp",
+    "/_astro/tabs.d3c4c64d.js",
+    "/legal/terms-of-service/",
+    "/assets/brands/stripe.svg",
+    "/linkshortenerbutton.webp",
+    "/_astro/Image.0b8da16d.js",
+    "/_astro/index.b1c91e20.js",
+    "/_astro/index.ede832e8.js",
+    "/_astro/utils.2da7ef33.js",
+    "/blog/why-we-built-doras/",
+    "/backdropwithmarkdown.webp",
+    "/_astro/button.ab053db5.js",
+    "/_astro/client.def56dae.js",
+    "/_astro/dialog.342a01d5.js",
+    "/_astro/motion.8011d3e2.js",
+    "/assets/hero-screenshot.png",
+    "/_astro/hoisted.382ac49c.js",
+    "/_astro/_slug_.704d091d.css",
+    "/_astro/_slug_.70577d6d.css",
+    "/assets/brands/pinterest.svg",
+    "/mediakitbackdropmobile.webp",
+    "/_astro/BioBlock.348fe3ae.js",
+    "/blankbackdropwimageblrd.webp",
+    "/blog/alpha-launch/index.html",
+    "/blog/twitch-panel/index.html",
+    "/blankbackdropyellowgreen.webp",
+    "/_astro/jsx-runtime.a8d50e8b.js",
+    "/_astro/LinksButton.7446c7a2.js",
+    "/dummyitemsforblankbackdrop.webp",
+    "/legal/privacy-policy/index.html",
+    "/_astro/JoinWaitlist.ba035657.js",
+    "/_astro/JoinWaitlist.c572ded4.js",
+    "/_astro/Testimonials.ad29d721.js",
+    "/legal/terms-of-service/index.html",
+    "/_astro/BounceFeatures.01359f1b.js",
+    "/blog/why-we-built-doras/index.html",
+    "/_astro/createLucideIcon.f1a4c413.js",
+    "/_astro/inter-greek-wght-normal.d92c6cbc.woff2",
+    "/_astro/inter-latin-wght-normal.88df0b5a.woff2",
+    "/_astro/inter-cyrillic-wght-normal.eba94878.woff2",
+    "/_astro/inter-greek-ext-wght-normal.81f77e51.woff2",
+    "/_astro/inter-latin-ext-wght-normal.a2bfd9fe.woff2",
+    "/_astro/inter-vietnamese-wght-normal.15df7612.woff2",
+    "/_astro/inter-tight-greek-wght-normal.a19a0179.woff2",
+    "/_astro/inter-tight-latin-wght-normal.ca34455f.woff2",
+    "/_astro/inter-cyrillic-ext-wght-normal.1c3007b8.woff2",
+    "/_astro/inter-tight-cyrillic-wght-normal.36d6dc00.woff2",
+    "/_astro/inter-tight-greek-ext-wght-normal.95c9252c.woff2",
+    "/_astro/inter-tight-latin-ext-wght-normal.8f1438b2.woff2",
+    "/_astro/inter-tight-vietnamese-wght-normal.27889a9b.woff2",
+    "/_astro/inter-tight-cyrillic-ext-wght-normal.f39990f8.woff2"
+  ]
+}
 ```
