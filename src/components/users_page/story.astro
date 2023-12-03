@@ -14,9 +14,19 @@ const { user, tabs }: Props = Astro.props;
 
 const user_user = user;
 if (!Astro.url.searchParams.get("preview")) {
+    const Referer = Astro.request.headers.get("Referer");
+    if (Referer != null) {
+        let RefererFound = user_user.referer.find((e: any) => e.referer == Referer);
+        if (!RefererFound) {
+            user_user.referer.push({ referer: Referer, views: 1 });
+        } else {
+            user_user.referer.find((e: any) => e.referer == Referer).views += 1;
+        }
+    }
     const { error } = await supabase.from("profiles").upsert({
         id: user_user.id as string,
-        views: user_user.views + 1 || 1
+        views: user_user.views + 1 || 1,
+        referer: user_user.referer
     });
 }
 const textColorSolid = getTextColorForBackground(user_user.theme.background);
