@@ -1,8 +1,6 @@
 ---
-import { downloadImageUser, getUserId, supabase } from "@/supabase";
+import { getUserId, supabase } from "@/supabase";
 const { user, button } = Astro.params;
-console.log("user,button: ", user, button);
-
 const user_user = await getUserId(user || "");
 if (!user_user) {
     return new Response(null, {
@@ -26,21 +24,11 @@ if (!user_user) {
     }
 
     const updatedLinks = user_user.links.map((e) => (e.id === button ? link : e));
-    console.log("updatedLinks: ", updatedLinks);
-
     const { error } = await supabase.from("profiles").upsert({
         id: user_user.id as string,
         links: updatedLinks
     });
-    console.error("error: ", error);
-
-    const data = {
-        username: user_user.username,
-        displayname: user_user.displayname,
-        pic: downloadImageUser(user_user.pic)
-    };
-
-    return new Response(JSON.stringify(data), {
+    return new Response(JSON.stringify(error), {
         status: 200,
         statusText: "OK"
     });

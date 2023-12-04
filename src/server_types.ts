@@ -59,7 +59,8 @@ export interface ServerDataItem {
         text: string;
         toggle: boolean;
     };
-    pages: Pages[]
+    pages: Pages[],
+    referer: any[]
 }
 
 export interface Server {

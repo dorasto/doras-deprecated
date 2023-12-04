@@ -1,3 +1,5 @@
 # _headers
 /*
   Access-Control-Allow-Origin: *
+/rss.xml
+Access-Control-Allow-Origin: *
