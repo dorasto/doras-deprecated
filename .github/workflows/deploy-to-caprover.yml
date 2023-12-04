@@ -3,7 +3,7 @@ name: Push to CapRover
 on:
     push:
         branches:
-            - main
+            - master
 
 jobs:
     my-job:

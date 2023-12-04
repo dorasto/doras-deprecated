@@ -1,12 +1,11 @@
 ---
 name: Feature request
 about: Suggest an idea for Doras
-title: "[SUG] - title_goes_here"
+title: ''
 labels: enhancement
-assignees: trent-gezel, tommerty
----
+assignees: tommerty, trent-gezel
 
-## Please keep `[SUG]` in the title, but replace `title_goes_here` with your title.
+---
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]

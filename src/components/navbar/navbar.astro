@@ -6,6 +6,7 @@ import { JoinWaitlist } from "@/components/JoinWaitlist";
 import { Button } from "@/components/ui/button";
 import { BiLogoDiscord } from "react-icons/bi/index.js";
 import Image from "@/components/Image";
+import { LogIn } from "lucide-react";
 ---
 
 <Container>
@@ -14,7 +15,7 @@ import Image from "@/components/Image";
             <div class="block md:hidden">
                 <!-- <DropdownMenuNav client:only /> -->
             </div>
-            <a href="/" class="text-xl flex items-center font-bold gap-2"><img loading="lazy" src="/assets/icon.svg" class="w-10 h-10" /><span>Doras.to</span></a>
+            <a href="/" class="text-xl flex items-center font-bold gap-2"><img loading="lazy" src="/assets/icon.svg" class="w-10 h-10" /><span class="hidden md:block">Doras.to</span></a>
         </div>
         <div class="navbar-center hidden md:flex">
             <!-- <NavMenuDesktop client:only /> -->
@@ -34,7 +35,9 @@ import Image from "@/components/Image";
             </a>
             <JoinWaitlist text="Join" variant="outline" client:load />
             <a class="" href="https://admin.doras.to">
-                <Button variant="outline" className="bg-surface-700 hover:bg-primary-500 w-32">Sign In</Button>
+                <Button variant="outline" className="bg-surface-700 hover:bg-primary-500">
+                    <LogIn /><span class="hidden md:block">Sign In</span>
+                </Button>
             </a>
         </div>
     </div>
