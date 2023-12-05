@@ -6,7 +6,9 @@ import Navbar from "@/components/navbar/navbar.astro";
 import { GoogleAnalytics } from "astro-google-analytics";
 import "@fontsource-variable/inter/index.css";
 import Footer from "@/components/ui/footer.astro";
-
+import posthog from "posthog-js";
+posthog.init("phc_rJeWBYHRnqdd66pXTrkRLNYf3IaNXue0MFICXekLztW", { api_host: "https://eu.posthog.com" });
+posthog.capture("my event", { property: "value" });
 export interface Props {
     title?: string;
     footerMargin?: boolean;
