@@ -11,6 +11,7 @@ import { ViewTransitions } from "astro:transitions";
 import "@fontsource-variable/inter-tight";
 import ChipTabs from "@/components/linkspage/tabs";
 import Branding from "@/components/Branding";
+import { PostHog } from "@/components/posthog";
 
 interface Props {
     title: string;
@@ -79,6 +80,7 @@ const parms = Astro.params;
             }}
         />
     </head>
+    <PostHog client:only />
     <ViewTransitions />
     <body transition:animate="none" class="min-h-full">
         <div class="py-3">
