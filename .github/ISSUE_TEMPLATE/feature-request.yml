@@ -1,7 +1,6 @@
 name: Feature Request
 description: Have a feature you'd like to see added? Use this template to request it.
 labels: ["enhancement"]
-
 body:
     - type: markdown
       attributes:
