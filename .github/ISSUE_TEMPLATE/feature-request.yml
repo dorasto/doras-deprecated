@@ -20,6 +20,6 @@ body:
           label: Expanded Description
           description: Let us know the details of the feature you'd like to see added, and why you think it'd be a good addition.
           placeholder: I think it'd be cool if...
-          value: ""
+          value: "Please enter your detailed feature description here."
       validations:
           required: true
