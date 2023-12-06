@@ -6,20 +6,12 @@ body:
       attributes:
           value: |
               Thanks for taking the time to let us know your thoughts!
-    - type: input
-      id: brief
-      attributes:
-          label: Brief Overview
-          description: Briefly describe the feature you'd like to see added.
-          placeholder: It'd be cool if you added X feature
-      validations:
-          required: true
     - type: textarea
       id: detailed
       attributes:
-          label: Expanded Description
+          label: Tell us what you think!
           description: Let us know the details of the feature you'd like to see added, and why you think it'd be a good addition.
           placeholder: I think it'd be cool if...
-          value: "Please enter your detailed feature description here."
+          value: "I think it'd be cool if..."
       validations:
           required: true
