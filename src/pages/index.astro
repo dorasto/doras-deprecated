@@ -7,15 +7,17 @@ import FeatureGrid from "@/components/feature-grid.astro";
 import Hero from "@/components/hero.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Timeline, timelineItems } from "@/components/timeline";
+import PartnersContainer from "@/components/Partners";
 ---
 
 <Layout footerMargin={false} title="Build Your Brand Precense | Doras.to">
-    <div class="mx-auto min-h-screen flex items-center justify-center py-9 z-0">
+    <div class="mx-auto flex items-center justify-center py-9 z-0">
         <Hero />
     </div>
     <Container>
-        <ScrollingTestimonials client:load />
+        <PartnersContainer client:load />
         <FeatureGrid />
+        <ScrollingTestimonials client:load />
         <h2 id="roadmap" class="text-center font-bold text-6xl mt-9 mb-3 text-surface-950">Roadmap</h2>
         <Timeline items={timelineItems} />
         <!-- <DetailBlockGrid /> -->
