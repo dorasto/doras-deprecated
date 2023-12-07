@@ -22,6 +22,13 @@ if (!Astro.url.searchParams.get("preview")) {
         } else {
             user_user.referer.find((e: any) => e.referer == Referer).views += 1;
         }
+    } else {
+        let RefererFound = user_user.referer.find((e: any) => e.referer == Referer);
+        if (!RefererFound) {
+            user_user.referer.push({ referer: "Direct", views: 1 });
+        } else {
+            user_user.referer.find((e: any) => e.referer == "Direct").views += 1;
+        }
     }
     const { error } = await supabase.from("profiles").upsert({
         id: user_user.id as string,
