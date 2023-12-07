@@ -36,10 +36,11 @@ if (Astro.url.searchParams.get("preview")) {
     }
     const { error } = await supabase.from("profiles").upsert({
         id: user_user.id as string,
-        stats: (user_user.stats = {
+        stats: {
             unique_views: user_user.stats.unique_views,
             referer: user_user.stats.referer
-        })
+        },
+        views: (user_user.views += 1)
     });
 }
 let VerifiedlinksData: any = await supabase.from("verified_links").select();
