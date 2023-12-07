@@ -59,8 +59,24 @@ export interface ServerDataItem {
         text: string;
         toggle: boolean;
     };
-    pages: Pages[],
-    referer: any[]
+    pages: Pages[];
+    users: any[];
+    checklist: boolean;
+    referer: any[];
+    stats: IUserStats;
+}
+
+export interface IUniqueViews {
+    ip: string;
+    date: string;
+}
+export interface IReferer {
+    url: string;
+    views: any[];
+}
+export interface IUserStats {
+    unique_views: IUniqueViews[];
+    referer: IReferer[];
 }
 
 export interface Server {
