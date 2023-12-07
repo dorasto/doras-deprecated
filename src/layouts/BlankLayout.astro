@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import "@fontsource-variable/inter/index.css";
+import { PostHog } from "@/components/posthog";
 const { title } = Astro.props;
 ---
 
@@ -12,6 +13,7 @@ const { title } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/icon.svg" />
         <meta name="generator" content={Astro.generator} />
+        <PostHog client:only />
         <ViewTransitions />
     </head>
     <body class="bg-gradient-to-bl from-sky-100 to-indigo-100">

@@ -6,6 +6,7 @@ import { GoogleAnalytics } from "astro-google-analytics";
 import "@fontsource-variable/inter/index.css";
 import { ViewTransitions } from "astro:transitions";
 import Footer from "@/components/ui/footer.astro";
+import { PostHog } from "@/components/posthog";
 ---
 
 <!doctype html>
@@ -70,6 +71,7 @@ import Footer from "@/components/ui/footer.astro";
                 content-visibility: auto;
             }
         </style>
+        <PostHog client:only />
         <ViewTransitions />
     </head>
     <body class="bg-gradient-to-bl from-sky-100 to-indigo-100">

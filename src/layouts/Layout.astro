@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/navbar.astro";
 import { GoogleAnalytics } from "astro-google-analytics";
 import "@fontsource-variable/inter/index.css";
 import Footer from "@/components/ui/footer.astro";
+import { PostHog } from "@/components/posthog";
 
 export interface Props {
     title?: string;
@@ -84,6 +85,7 @@ const { title, footerMargin = true } = Astro.props;
                 content-visibility: auto;
             }
         </style>
+        <PostHog client:only />
         <ViewTransitions />
     </head>
     <body class="bg-gradient-to-bl from-sky-100 to-indigo-100">

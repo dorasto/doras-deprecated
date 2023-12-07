@@ -14,6 +14,14 @@ interface Props {
 //mask-hexagon
 //mask-hexagon-2
 const BioBlock: React.FC<Props> = ({ img, user, textColorSolid }) => {
+    fetch("https://speed.cloudflare.com/meta").then(json => json.json()).then(info => {
+        fetch("https://api.doras.to/unique_views", {
+            method: "POST", body: JSON.stringify({
+                user_id: user.id,
+                info: info
+            })
+        })
+    })
     return (
         <div className="flex flex-col justify-center items-center">
             <Image src={img} className={"w-44 h-44 object-cover mask " + user.design.profile_pic_shape} />

@@ -5,6 +5,7 @@ import { ViewTransitions } from "astro:transitions";
 import Navbar from "@/components/navbar/navbar.astro";
 
 import "@fontsource-variable/inter/index.css";
+import { PostHog } from "@/components/posthog";
 
 export interface Props {
     title?: string;
@@ -59,6 +60,7 @@ const makeTitle = title ? title + " | " + "doras.to" : "doras.to - Build a beaut
                 content-visibility: auto;
             }
         </style>
+        <PostHog client:only />
         <ViewTransitions />
     </head>
     <body class="bg-gradient-to-tr from-surface-50 to-primary-200 min-h-screen">

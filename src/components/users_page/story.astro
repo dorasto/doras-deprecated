@@ -13,20 +13,34 @@ interface Props {
 const { user, tabs }: Props = Astro.props;
 
 const user_user = user;
-if (!Astro.url.searchParams.get("preview")) {
+if (Astro.url.searchParams.get("preview")) {
+    return;
+} else {
     const Referer = Astro.request.headers.get("Referer");
     if (Referer != null) {
-        let RefererFound = user_user.referer.find((e: any) => e.referer == Referer);
+        let RefererFound = user_user.stats.referer.find((e: any) => e.url == Referer);
         if (!RefererFound) {
-            user_user.referer.push({ referer: Referer, views: 1 });
+            user_user.stats.referer.push({ url: Referer, views: [new Date().toISOString()] });
         } else {
-            user_user.referer.find((e: any) => e.referer == Referer).views += 1;
+            //@ts-ignore
+            user_user.stats.referer.find((e: any) => e.url == Referer).views.push(new Date().toISOString());
+        }
+    } else {
+        let RefererFound = user_user.stats.referer.find((e: any) => e.url == "direct");
+        if (!RefererFound) {
+            user_user.stats.referer.push({ url: "direct", views: [new Date().toISOString()] });
+        } else {
+            //@ts-ignore
+            user_user.stats.referer.find((e: any) => e.url == "direct").views.push(new Date().toISOString());
         }
     }
     const { error } = await supabase.from("profiles").upsert({
         id: user_user.id as string,
-        views: user_user.views + 1 || 1,
-        referer: user_user.referer
+        stats: {
+            unique_views: user_user.stats.unique_views,
+            referer: user_user.stats.referer
+        },
+        views: (user_user.views += 1)
     });
 }
 const textColorSolid = getTextColorForBackground(user_user.theme.background);

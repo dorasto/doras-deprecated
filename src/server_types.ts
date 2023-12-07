@@ -46,7 +46,7 @@ export interface ServerDataItem {
     pic: string;
     bio: string;
     links: Links[],
-    account_type: "user" | "premium",
+    account_type: "user" | "premium" | "brand",
     access: "user" | "staff" | "admin",
     verified_links?: {
         find: string;
@@ -59,10 +59,26 @@ export interface ServerDataItem {
         text: string;
         toggle: boolean;
     };
-    pages: Pages[],
-    referer: any[]
+    pages: Pages[];
+    users: any[];
+    checklist: boolean;
+    referer: any[];
+    stats: IUserStats;
 }
 
+export interface IUniqueViews {
+    ip: string;
+    date: string;
+    country: string;
+}
+export interface IReferer {
+    url: string;
+    views: any[];
+}
+export interface IUserStats {
+    unique_views: IUniqueViews[];
+    referer: IReferer[];
+}
 export interface Server {
     error?: string;
     data: ServerDataItem[];
