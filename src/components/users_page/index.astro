@@ -13,7 +13,9 @@ interface Props {
 
 const { user, tabs }: Props = Astro.props;
 const user_user = user;
-if (!Astro.url.searchParams.get("preview")) {
+if (Astro.url.searchParams.get("preview")) {
+    return;
+} else {
     const Referer = Astro.request.headers.get("Referer");
     if (Referer != null) {
         let RefererFound = user_user.referer.find((e: any) => e.referer == Referer);
@@ -23,7 +25,7 @@ if (!Astro.url.searchParams.get("preview")) {
             user_user.referer.find((e: any) => e.referer == Referer).views += 1;
         }
     } else {
-        let RefererFound = user_user.referer.find((e: any) => e.referer == Referer);
+        let RefererFound = user_user.referer.find((e: any) => e.referer == "Direct");
         if (!RefererFound) {
             user_user.referer.push({ referer: "Direct", views: 1 });
         } else {
