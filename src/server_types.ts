@@ -64,6 +64,10 @@ export interface ServerDataItem {
     checklist: boolean;
     referer: any[];
     stats: IUserStats;
+    badges: {
+        name: string;
+        icon: string;
+    }[];
 }
 
 export interface IUniqueViews {
