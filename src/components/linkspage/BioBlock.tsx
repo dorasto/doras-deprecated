@@ -40,12 +40,12 @@ const BioBlock: React.FC<Props> = ({ img, user, textColorSolid }) => {
                     )}
                     {user.access == "staff" && (
                         <div>
-                            <lucide.ShieldCheck className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Doras staff" />
+                            <lucide.Shield className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Doras staff" />
                         </div>
                     )}
                     {user.access == "admin" && (
                         <div>
-                            <lucide.Shield className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Doras administrator" />
+                            <lucide.ShieldCheck className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Doras administrator" />
                         </div>
                     )}
                 </h2>
