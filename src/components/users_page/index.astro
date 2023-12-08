@@ -104,8 +104,15 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                     return twitch;
                                 }
                                 if (link.type == "textblock") {
+                                    let custom: string = "";
+                                    if (link.options?.bold_text) {
+                                        custom += "font-bold ";
+                                    }
+                                    if (link.options?.center_text) {
+                                        custom += "text-center";
+                                    }
                                     return (
-                                        <p class="p-2 rounded-lg" style={{ background: link.colour.toggle ? link.colour.background : user_user.theme.button, color: getTextColorForBackground(link.colour.toggle ? link.colour.background : user_user.theme.button) }}>
+                                        <p class={"p-2 rounded-lg " + custom} style={{ background: link.colour.toggle ? link.colour.background : user_user.theme.button, color: getTextColorForBackground(link.colour.toggle ? link.colour.background : user_user.theme.button) }}>
                                             {link.message}
                                         </p>
                                     );

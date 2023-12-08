@@ -28,22 +28,24 @@ const BioBlock: React.FC<Props> = ({ img, user, textColorSolid }) => {
             <div className="flex items-center mx-auto text-center">
                 <h2 className="flex items-center text-4xl font-black" style={{ color: textColorSolid }}>
                     {user.displayname}
-                    {user.account_type == "premium" && (
-                        // <div className="tooltip" data-tip="Premium">
-                        //     <lucide.BadgeCheck className="ml-1" />
-                        // </div>
+                    {user.badges.find(badge => badge.name == "verified") && user.account_type != "premium" && (
                         <div>
-                            <lucide.BadgeCheck className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="This user has Doras Pro" />
+                            <lucide.BadgeCheck className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Verified" />
+                        </div>
+                    )}
+                    {user.account_type == "premium" && (
+                        <div>
+                            <lucide.BadgeCheck className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Verified" />
                         </div>
                     )}
                     {user.access == "staff" && (
-                        <div className="tooltip" data-tip="Staff">
-                            <lucide.ShieldPlus className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="This user has Doras Pro" />
+                        <div>
+                            <lucide.Shield className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Doras staff" />
                         </div>
                     )}
                     {user.access == "admin" && (
                         <div>
-                            <lucide.ShieldCheck className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="This user is an administrator of Doras" />
+                            <lucide.ShieldCheck className="ml-1" data-tooltip-id="badgetooltips" data-tooltip-content="Doras administrator" />
                         </div>
                     )}
                 </h2>
