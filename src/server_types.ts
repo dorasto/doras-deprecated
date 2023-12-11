@@ -23,7 +23,7 @@ export interface Links {
         background: string;
         toggle: boolean;
     };
-    type: "link" | "divider" | "textblock" | "twitch" | "youtube" | "youtube_video" | "github_user" | "spotify" | "group";
+    type: "link" | "divider" | "textblock" | "twitch" | "youtube" | "youtube_video" | "github_user" | "spotify" | "group" | "img";
     adult: boolean;
     show: boolean;
     message: string;
@@ -47,7 +47,7 @@ export interface ServerDataItem {
     bio: string;
     links: Links[],
     account_type: "user" | "premium" | "brand",
-    access: "user" | "staff" | "admin",
+    access: "user" | "nua" | "staff" | "admin",
     verified_links?: {
         find: string;
         adult: boolean;
