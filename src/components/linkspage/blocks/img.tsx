@@ -1,11 +1,9 @@
-import type { Links, ServerDataItem } from "@/server_types";
+import type { Links } from "@/server_types";
 
 interface Props {
-    user: ServerDataItem;
     link: Links
 }
-const ImgBlock: React.FC<Props> = ({ user, link }) => {
-    console.log('link: ', link);
+const ImgBlock: React.FC<Props> = ({ link }) => {
     return (
         <img src={link.url}></img>
     )
