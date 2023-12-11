@@ -73,7 +73,7 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                             .filter((e) => e.show)
                             .map(async (link) => {
                                 if (link.type == "img") {
-                                    return <ImgBlock link={link} />;
+                                    return <ImgBlock link={link} className="" />;
                                 }
                                 if (link.type == "youtube") {
                                     let youtube = await fetch(`https://api.doras.to/links/youtube/${link.url}`)
