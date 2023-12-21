@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import type { ServerDataItem } from "@/server_types";
-import { downloadImageUser, supabase } from "@/supabase";
-import { Mail, MapPin, Twitch, Twitter, User } from "lucide-react";
+import { downloadImageUser } from "@/supabase";
+import { MapPin, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { IconBrandThreads, IconBrandTwitch, IconBrandX, IconBrandYoutube, IconCloud, IconMail } from "@tabler/icons-react";
 import CardBasic from "../ui/CardBasic";
 import moment from "moment";
 import CountUp from "react-countup";
-import { Line } from "react-chartjs-2";
-import ReachChart from "./Chart";
 import { Progress } from "../ui/progress";
 
 interface Props {
@@ -17,11 +15,12 @@ interface Props {
 
 const MediaKitRender: React.FC<Props> = ({ user }) => {
     const mediakit = user.mediakit;
-    let Twitch = mediakit.platforms.platforms.find((e) => e.type == "twitch");
-    let Youtube = mediakit.platforms.platforms.find((e) => e.type == "youtube");
-    let Twitter = mediakit.platforms.platforms.find((e) => e.type == "twitter");
-    let Bluesky = mediakit.platforms.platforms.find((e) => e.type == "bluesky");
-    let Threads = mediakit.platforms.platforms.find((e) => e.type == "threads");
+    const platforms = mediakit.platforms.platforms;
+    let Twitch = platforms.find((e) => e.type == "twitch");
+    let Youtube = platforms.find((e) => e.type == "youtube");
+    let Twitter = platforms.find((e) => e.type == "twitter");
+    let Bluesky = platforms.find((e) => e.type == "bluesky");
+    let Threads = platforms.find((e) => e.type == "threads");
     function formatNumber(num: number) {
         if (num >= 1000000) {
             return (num / 1000000).toFixed(2) + "M";
@@ -33,14 +32,14 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
     }
     const totalFollowers = (Twitch?.followers || 0) + (Youtube?.subscribers || 0) + (Twitter?.followers || 0) + (Bluesky?.followers || 0) + (Threads?.followers || 0) || 0;
     const formattedTotalFollowers = formatNumber(totalFollowers);
-    const platformList = [
-        { name: "Youtube", followers: Youtube?.subscribers, color: "bg-primary-500", Icon: IconBrandYoutube },
-        { name: "Threads", followers: Threads?.followers, color: "bg-surface-600", Icon: IconBrandThreads },
-        { name: "Twitch", followers: Twitch?.followers, color: "bg-[#A970FF]", Icon: IconBrandTwitch },
-        { name: "Twitter", followers: Twitter?.followers, color: "bg-[#1E9BF0]", Icon: IconBrandX },
-        { name: "Bluesky", followers: Bluesky?.followers, color: "bg-[#0085FF]", Icon: IconCloud }
+    let platformList = [
+        { name: "Youtube", followers: Youtube?.subscribers, color: "bg-primary-500", Icon: IconBrandYoutube, disabled: Youtube ? false : true },
+        { name: "Threads", followers: Threads?.followers, color: "bg-surface-600", Icon: IconBrandThreads, disabled: Threads ? false : true },
+        { name: "Twitch", followers: Twitch?.followers, color: "bg-[#A970FF]", Icon: IconBrandTwitch, disabled: Twitch ? false : true },
+        { name: "Twitter", followers: Twitter?.followers, color: "bg-[#1E9BF0]", Icon: IconBrandX, disabled: Twitter ? false : true },
+        { name: "Bluesky", followers: Bluesky?.followers, color: "bg-[#0085FF]", Icon: IconCloud, disabled: Bluesky ? false : true }
     ];
-
+    platformList = platformList.filter(e => !e.disabled)
     const sortedPlatforms = platformList.sort((a, b) => (b.followers || 0) - (a.followers || 0));
     return (
         <div className="w-full">
@@ -87,7 +86,7 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                 <div className="grid grid-cols-3 gap-3 w-full">
                     <CardBasic className="flex-col col-span-2">
                         <h4>Statistics</h4>
-                        <p className="text-xs mb-2">Last updated: {moment(user.mediakit.platforms.updated).format("MMMM Do, h:mm a")}</p>
+                        <p className="text-xs mb-2">Last updated: {moment(mediakit.platforms.updated).format("MMMM Do, h:mm a")}</p>
                         <div className="w-full flex flex-col gap-1 mb-3">
                             <div className="py-3 border-y-2">
                                 <h4>Total Reach</h4>
