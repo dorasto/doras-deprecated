@@ -35,11 +35,11 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
     const totalFollowers = (Twitch?.followers || 0) + (Youtube?.subscribers || 0) + (Twitter?.followers || 0) + (Bluesky?.followers || 0) + (Threads?.followers || 0) || 0;
     const formattedTotalFollowers = formatNumber(totalFollowers);
     let platformList = [
-        { name: "Youtube", followers: Youtube?.subscribers, color: "bg-primary-500", Icon: IconBrandYoutube, disabled: Youtube ? false : true },
-        { name: "Threads", followers: Threads?.followers, color: "bg-surface-600", Icon: IconBrandThreads, disabled: Threads ? false : true },
-        { name: "Twitch", followers: Twitch?.followers, color: "bg-[#A970FF]", Icon: IconBrandTwitch, disabled: Twitch ? false : true },
-        { name: "Twitter", followers: Twitter?.followers, color: "bg-[#1E9BF0]", Icon: IconBrandX, disabled: Twitter ? false : true },
-        { name: "Bluesky", followers: Bluesky?.followers, color: "bg-[#0085FF]", Icon: IconCloud, disabled: Bluesky ? false : true }
+        { name: "YouTube", url: "https://youtube.com/channel/" + Youtube?.channel_id, followers: Youtube?.subscribers, color: "bg-primary-500", Icon: IconBrandYoutube, disabled: Youtube ? false : true },
+        { name: "Threads", url: "https://threads.net/" + Threads?.username, followers: Threads?.followers, color: "bg-surface-600", Icon: IconBrandThreads, disabled: Threads ? false : true },
+        { name: "Twitch", url: "https://twitch.tv/" + Twitch?.username, followers: Twitch?.followers, color: "bg-[#A970FF]", Icon: IconBrandTwitch, disabled: Twitch ? false : true },
+        { name: "Twitter", url: "https://x.com/" + Twitter?.username, followers: Twitter?.followers, color: "bg-[#1E9BF0]", Icon: IconBrandX, disabled: Twitter ? false : true },
+        { name: "Bluesky", url: "https://bsky.app/profile/" + Bluesky?.username, followers: Bluesky?.followers, color: "bg-[#0085FF]", Icon: IconCloud, disabled: Bluesky ? false : true }
     ];
     platformList = platformList.filter((e) => !e.disabled);
     const sortedPlatforms = platformList.sort((a, b) => (b.followers || 0) - (a.followers || 0));
@@ -110,8 +110,10 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                                 {sortedPlatforms.map((platform, index) => (
                                     <div className="py-1">
                                         <div key={index} className={`w-full text-white flex items-center gap-1`}>
-                                            <platform.Icon />
-                                            <p className="font-bold">{platform.name}</p>
+                                            <a href={platform.url} target="_blank" className="font-bold flex items-center gap-1 hover:underline">
+                                                <platform.Icon />
+                                                {platform.name}
+                                            </a>
                                             <div className="flex ml-auto">
                                                 <p className="font-bold">
                                                     <CountUp end={platform.followers || 0} formattingFn={formatNumber} />
