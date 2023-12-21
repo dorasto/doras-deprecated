@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/UserLayout.astro";
+import { downloadImageUser } from "@/supabase";
+import type { ServerDataItem } from "@/server_types";
+import type { ILinksPageTabs } from "../linkspage/tabs";
+import MediaKitRender from "@/components/mediakit/MediaKit";
+interface Props {
+    user: ServerDataItem;
+    tabs: ILinksPageTabs[];
+}
+
+const { user, tabs }: Props = Astro.props;
+const user_user = user;
+---
+
+<Layout tabs={tabs} user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
+    <MediaKitRender user={user_user} />
+</Layout>
