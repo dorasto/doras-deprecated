@@ -14,5 +14,5 @@ const user_user = user;
 ---
 
 <Layout tabs={tabs} user={user_user} title={`${user_user.displayname} | Doras.to`} bio={user_user?.bio || ""} img={downloadImageUser(user_user.pic)} theme={user_user.theme}>
-    <MediaKitRender user={user_user} />
+    <MediaKitRender user={user_user} client:only />
 </Layout>
