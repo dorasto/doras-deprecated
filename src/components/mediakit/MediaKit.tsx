@@ -11,6 +11,11 @@ interface Props {
 
 const MediaKitRender: React.FC<Props> = ({ user }) => {
     const mediakit = user.mediakit;
+    let Twitch = mediakit.platforms.platforms.find(e => e.type == "twitch");
+    let Youtube = mediakit.platforms.platforms.find(e => e.type == "youtube");
+    let Twitter = mediakit.platforms.platforms.find(e => e.type == "twitter");
+    let Bluesky = mediakit.platforms.platforms.find(e => e.type == "bluesky");
+    let Threads = mediakit.platforms.platforms.find(e => e.type == "threads");
     return (
         <div className="w-full max-w-xl mx-auto">
             <div className="relative p-3 overflow-hidden rounded-md bg-fill bg-cover bg-center h-full" style={{ backgroundImage: `url(${mediakit.heading.background_image || ""})` }}>
@@ -19,15 +24,14 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                         <img src={downloadImageUser(user.pic)} alt="Media Kit" className="w-36 rounded-full z-10" />
                         <div className="space-y-2">
                             <h1 className="text-5xl text-text-900 font-bold mb-1">{user.displayname}</h1>
-
                             <div className="w-full flex justify-between gap-1 mb-3 flex-wrap">
                                 <div className="bg-primary-500 p-1 px-2 rounded-full text-white flex items-center gap-1">
                                     <IconBrandYoutube />
-                                    1,234
+                                    {Youtube?.subscribers}
                                 </div>
                                 <div className="bg-surface-500 p-1 px-2 rounded-full text-white flex items-center gap-1">
                                     <IconBrandThreads />
-                                    1,234
+                                    {Threads?.followers}
                                 </div>
                                 <div className="bg-[#A970FF] p-1 px-2 rounded-full text-white flex items-center gap-1">
                                     <IconBrandTwitch />
