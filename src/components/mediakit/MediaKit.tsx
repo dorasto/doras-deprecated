@@ -9,9 +9,10 @@ interface Props {
 }
 
 const MediaKitRender: React.FC<Props> = ({ user }) => {
+    const mediakit = user.mediakit
     return (
         <div className="w-full">
-            <div className="relative p-3 bg-[url(https://s.hdnux.com/photos/26/52/32/5940889/6/rawImage.jpg)] overflow-hidden rounded-md bg-fill bg-center h-full">
+            <div className="relative p-3 overflow-hidden rounded-md bg-fill bg-center h-full" style={{ backgroundImage: `url(${mediakit.heading.background_image || "https://s.hdnux.com/photos/26/52/32/5940889/6/rawImage.jpg"})` }}>
                 <div className="flex flex-col gap-3 object-cover max-w-lg mx-auto">
                     <div className="flex gap-3 items-center">
                         <img src={downloadImageUser(user.pic)} alt="Media Kit" className="w-48 rounded-full z-10" />
@@ -22,21 +23,21 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                     </div>
                 </div>
                 <div className="flex flex-row items-center max-w-xl gap-3 mx-auto justify-between dark:text-white">
-                    {user.mediakit.heading.pronouns && (
+                    {mediakit.heading.pronouns && (
                         <div className="flex gap-1">
                             <User />
-                            <p>{user.mediakit.heading.pronouns}</p>
+                            <p>{mediakit.heading.pronouns}</p>
                         </div>
                     )}
-                    {user.mediakit.heading.location && (
+                    {mediakit.heading.location && (
                         <div className="flex gap-1">
                             <MapPin />
-                            <p>{user.mediakit.heading.location}</p>
+                            <p>{mediakit.heading.location}</p>
                         </div>
                     )}
-                    {user.mediakit.heading.contact_button && (
+                    {mediakit.heading.contact_button && (
                         <div className="flex gap-1">
-                            <a href={"mailto:" + user.mediakit.heading.contact_button} target="blank">
+                            <a href={"mailto:" + mediakit.heading.contact_button} target="blank">
                                 <Button variant="secondary">Get In Touch</Button>
                             </a>
                         </div>

@@ -14,7 +14,7 @@ let tabs = [
     },
     {
         id: 2,
-        name: "MediaKit",
+        name: "Mediakit",
         url: "/mediakit",
         disabled: false
     }
@@ -45,7 +45,6 @@ if (user && user.mediakit.enabled) {
     //@ts-ignore
     tabs.find((tab) => tab.url == "/mediakit").disabled = true;
 }
-console.log("tabs: ", tabs);
 user &&
     user.pages.map((page) => {
         tabs.push({
