@@ -8,6 +8,8 @@ import CardBasic from "../ui/CardBasic";
 import moment from "moment";
 import CountUp from "react-countup";
 import { Progress } from "../ui/progress";
+import Contact from "./Contact";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 interface Props {
     user: ServerDataItem;
@@ -39,7 +41,7 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
         { name: "Twitter", followers: Twitter?.followers, color: "bg-[#1E9BF0]", Icon: IconBrandX, disabled: Twitter ? false : true },
         { name: "Bluesky", followers: Bluesky?.followers, color: "bg-[#0085FF]", Icon: IconCloud, disabled: Bluesky ? false : true }
     ];
-    platformList = platformList.filter(e => !e.disabled)
+    platformList = platformList.filter((e) => !e.disabled);
     const sortedPlatforms = platformList.sort((a, b) => (b.followers || 0) - (a.followers || 0));
     return (
         <div className="w-full">
@@ -55,12 +57,21 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                                 </Button>
                                 {mediakit.heading.contact_button && (
                                     <div className="flex gap-1">
-                                        <a href={"mailto:" + mediakit.heading.contact_button} target="blank">
-                                            <Button variant="secondary" className="flex items-center gap-1 bg-primary-500 dark:bg-primary-500 font-black">
-                                                <IconMail />
-                                                Contact Me
-                                            </Button>
-                                        </a>
+                                        <Sheet>
+                                            <SheetTrigger>
+                                                <Button variant="secondary" className="flex items-center gap-1 bg-primary-500 dark:bg-primary-500 font-black">
+                                                    <IconMail />
+                                                    Contact Me
+                                                </Button>
+                                            </SheetTrigger>
+                                            <SheetContent side="top" className="max-w-xl mx-auto rounded-xl">
+                                                <SheetHeader>
+                                                    <SheetTitle className="text-white -mb-3">Get in touch</SheetTitle>
+                                                    <SheetDescription className="text-white dark:text-white pb-6 ">Don't hesitate to reach out to me to discuss anything!</SheetDescription>
+                                                </SheetHeader>
+                                                <Contact user={user} />
+                                            </SheetContent>
+                                        </Sheet>
                                     </div>
                                 )}
                             </div>
@@ -83,7 +94,7 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                 </div>
             </div>
             <div className="pb-9 pt-3 text-white flex flex-row justify-between gap-3 w-full max-w-2xl mx-auto">
-                <div className="grid grid-cols-3 gap-3 w-full">
+                <div className="md:grid grid-cols-3 gap-3 w-full">
                     <CardBasic className="flex-col col-span-2">
                         <h4>Statistics</h4>
                         <p className="text-xs mb-2">Last updated: {moment(mediakit.platforms.updated).format("MMMM Do, h:mm a")}</p>
@@ -116,13 +127,8 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                         </div>
                     </CardBasic>
                     <CardBasic className="flex-col gap-2">
-                        <h4>Contact Me</h4>
-                        <Button variant="secondary" className="dark:bg-primary-500 bg-primary-500">
-                            Email
-                        </Button>
-                        <Button variant="secondary" className="dark:bg-primary-500 bg-primary-500">
-                            Discord
-                        </Button>
+                        <h4 id="contact">Contact Me</h4>
+                        <Contact user={user} />
                     </CardBasic>
                 </div>
             </div>
