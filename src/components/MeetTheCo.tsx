@@ -10,9 +10,9 @@ interface User {
 }
 
 const users: User[] = [
-    { username: "tommerty", name: "Tommy Lundy", bio: "Founder, Head, Frontend Engineer, Designer, User Experience", category: "Administration" },
-    { username: "trent", name: "Trent Hopton", bio: "Co-founder, Chief of Tech, Backend Engineer, React Engineer", category: "Administration" },
-    { username: "lady-d-22", name: "Dannielle O'Sullivan", bio: "Chief of Content, Documentation & Blog Author", category: "Support, Docs & Content" },
+    { username: "tommerty", name: "Tommy Lundy", bio: "Admiral of the Fleet", category: "Founders" },
+    { username: "trent", name: "Trent Hopton", bio: "Adminral of Technology", category: "Founders" },
+    { username: "lady-d-22", name: "Dannielle O'Sullivan", bio: "Wordsmith Commodore", category: "Support, Docs & Content" },
     { username: "braaimeesterza", category: "Nua Testers" },
     { username: "no-classs", category: "Nua Testers" },
     { username: "ibailzy", category: "Nua Testers" } // Add more users as needed
@@ -42,7 +42,7 @@ const MeetTheCo: React.FC = () => {
                 Meet the team who are building <span className="text-transparent bg-clip-text bg-gradient-to-r to-[#fd8583] from-[#fc987b]">Doras.to</span>
             </h1>
             {categories.map((category, index) => (
-                <div key={index} className="text-center py-3 my-3 bg-gradient-to-r from-teal-200 to-lime-200 rounded-lg">
+                <div key={index} className="text-center py-3 my-3">
                     <h2 className="font-black text-2xl text-black">{category}</h2>
                     <div className="flex flex-wrap gap-3 mx-auto items-center justify-center">
                         {userData
