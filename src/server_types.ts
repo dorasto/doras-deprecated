@@ -75,6 +75,7 @@ export interface IMediaKit {
     enabled: boolean;
     heading: {
         background_image: string;
+        text_colour: string;
         pronouns: string;
         location: string;
         contact_button: string;

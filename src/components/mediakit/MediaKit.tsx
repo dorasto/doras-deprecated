@@ -45,40 +45,38 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
     const sortedPlatforms = platformList.sort((a, b) => (b.followers || 0) - (a.followers || 0));
     return (
         <div className="w-full">
-            <div className="relative p-3 overflow-hidden rounded-md bg-fill bg-cover bg-center h-full w-full max-w-xl mx-auto" style={{ backgroundImage: `url(${mediakit.heading.background_image || ""})` }}>
+            <div className={"relative p-3 overflow-hidden rounded-md bg-fill bg-cover bg-center h-full w-full max-w-xl mx-auto "} style={{ color: mediakit.heading.text_colour || "black", backgroundImage: `url(${mediakit.heading.background_image || ""})` }}>
                 <div className="flex flex-col gap-3 object-cover max-w-lg mx-auto">
                     <div className="flex gap-3 items-center">
                         <img src={downloadImageUser(user.pic)} alt="Media Kit" className="w-36 rounded-full z-10" />
-                        <div className="space-y-2">
-                            <h1 className="text-5xl text-text-900 font-bold mb-1">{user.displayname}</h1>
+                        <div className="space-y-2 ">
+                            <h1 className="text-5xl font-bold mb-1">{user.displayname}</h1>
                             <div className="w-full flex justify-between">
                                 <Button className="pointer-events-none font-black" variant="secondary">
                                     <span className="font-bold mr-1">Total Followers:</span> {formattedTotalFollowers}
                                 </Button>
-                                {mediakit.heading.contact_button && (
-                                    <div className="flex gap-1">
-                                        <Sheet>
-                                            <SheetTrigger>
-                                                <Button variant="secondary" className="flex items-center gap-1 bg-primary-500 dark:bg-primary-500 font-black">
-                                                    <IconMail />
-                                                    Contact Me
-                                                </Button>
-                                            </SheetTrigger>
-                                            <SheetContent side="top" className="max-w-xl mx-auto rounded-xl">
-                                                <SheetHeader>
-                                                    <SheetTitle className="text-white -mb-3">Get in touch</SheetTitle>
-                                                    <SheetDescription className="text-white dark:text-white pb-6 ">Don't hesitate to reach out to me to discuss anything!</SheetDescription>
-                                                </SheetHeader>
-                                                <Contact user={user} />
-                                            </SheetContent>
-                                        </Sheet>
-                                    </div>
-                                )}
+                                <div className="flex gap-1">
+                                    <Sheet>
+                                        <SheetTrigger>
+                                            <Button variant="secondary" className="flex items-center gap-1 bg-primary-500 dark:bg-primary-500 font-black">
+                                                <IconMail />
+                                                Contact Me
+                                            </Button>
+                                        </SheetTrigger>
+                                        <SheetContent side="top" className="max-w-xl mx-auto rounded-xl">
+                                            <SheetHeader>
+                                                <SheetTitle className="text-white -mb-3">Get in touch</SheetTitle>
+                                                <SheetDescription className="text-white dark:text-white pb-6 ">Don't hesitate to reach out to me to discuss anything!</SheetDescription>
+                                            </SheetHeader>
+                                            <Contact user={user} />
+                                        </SheetContent>
+                                    </Sheet>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row items-center max-w-xl gap-3 mx-auto justify-between dark:text-white">
+                <div className="flex flex-row items-center max-w-xl gap-3 mx-auto justify-between">
                     {mediakit.heading.pronouns && (
                         <div className="flex gap-1">
                             <User />

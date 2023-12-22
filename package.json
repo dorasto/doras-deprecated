@@ -69,7 +69,6 @@
     "@fontsource-variable/inter": "^5.0.15",
     "@tailwindcss/typography": "^0.5.10",
     "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.1",
-    "sharp": "^0.32.6"
+    "prettier-plugin-astro": "^0.12.1"
   }
 }
