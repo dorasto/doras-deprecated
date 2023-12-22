@@ -1,0 +1,5 @@
+{
+    "version": 1,
+    "include": ["/*"],
+    "exclude": ["/404.html", "/icon.svg", "/favicon.svg", "/icon-light.svg", "/Icon AF.afdesign", "/_astro/*.js", "/_astro/*.css", "/_astro/*.woff", "/_astro/*.woff2"]
+}
