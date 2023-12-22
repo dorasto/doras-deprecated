@@ -105,12 +105,18 @@ const timelineItems: TimelineItem[] = [
         releaseNotes: "https://doras.to/blog/alpha-launch"
     },
     {
-        date: "Early December 2023",
+        date: "November 27th 2023",
         title: "Twitch Panel Integration",
         details: "We're adding a feature under the \"Share\" options to generate an image based on your profile to add it to your Twitch panels. It's automatically sized, and is perfect for directing your viewers to your profile.",
         progress: "completed",
         buttontext: "Read the blog post",
         releaseNotes: "/blog/twitch-panel"
+    },
+    {
+        date: "December 22nd 2023",
+        title: "Media Kit Launch",
+        details: "Mediakit has launched in an alpha state supporting YouTube, Twitch, Twitter, Bluesky & Threads.",
+        progress: "completed"
     },
     {
         title: "Launch of Public Beta",
