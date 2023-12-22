@@ -1,0 +1,50 @@
+name: Bug Report
+description: Found a bug or problem? Use this template to report it to our team.
+labels: ["bug"]
+assignees:
+    - tommerty
+    - trent-gezel
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for taking the time to fill out this bug report!
+    - type: input
+      id: brief
+      attributes:
+          label: Brief Overview
+          description: Can you give us a brief overview of the problem?
+          placeholder: Button on the home page doesn't work
+      validations:
+          required: true
+    - type: textarea
+      id: what-happened
+      attributes:
+          label: Expanded Description
+          description: What happened, and what should have happened?
+          placeholder: Tell us what you see!
+          value: "When I clicked the 'hello' button it brought me to a 404 error and not the 'hello' page."
+      validations:
+          required: true
+    - type: dropdown
+      id: site
+      attributes:
+          label: Which site is this issue on?
+          description: Which site is this issue on?
+          options:
+              - admin.doras.to (Admin Dashboard)
+              - doras.to (Main Site) including on a users profile
+              - nua.doras.to
+          default: 0
+      validations:
+          required: true
+    - type: dropdown
+      id: browsers
+      attributes:
+          label: What browsers are you seeing the problem on (if applicable)?
+          multiple: true
+          options:
+              - Firefox
+              - Chrome
+              - Safari
+              - Microsoft Edge
