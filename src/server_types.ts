@@ -1,6 +1,6 @@
 export interface Theme {
     background: string;
-    button: string
+    button: string;
     button_rounded: string;
     inset: boolean;
     font?: {
@@ -9,7 +9,7 @@ export interface Theme {
     };
 }
 export interface Design {
-    profile_pic_shape: string
+    profile_pic_shape: string;
 }
 export interface Links {
     id: string;
@@ -45,9 +45,9 @@ export interface ServerDataItem {
     displayname: string;
     pic: string;
     bio: string;
-    links: Links[],
-    account_type: "user" | "premium" | "brand",
-    access: "user" | "nua" | "staff" | "admin",
+    links: Links[];
+    account_type: "user" | "premium" | "brand";
+    access: "user" | "nua" | "staff" | "admin";
     verified_links?: {
         find: string;
         adult: boolean;
@@ -68,8 +68,40 @@ export interface ServerDataItem {
         name: string;
         icon: string;
     }[];
+    // mediakit: { enabled: boolean, data: IMediaKitPlatform[], updated: string };
+    mediakit: IMediaKit;
 }
-
+export interface IMediaKit {
+    enabled: boolean;
+    heading: {
+        background_image: string;
+        pronouns: string;
+        location: string;
+        contact_button: string;
+    };
+    contact: {
+        email: string;
+        discord_username: string;
+    };
+    platforms: {
+        updated: string;
+        platforms: IMediaKitPlatform[];
+    };
+}
+export interface IMediaKitPlatform {
+    type: "twitch" | "youtube" | "twitter" | "bluesky" | "threads";
+    id: string;
+    username?: string;
+    channel_id?: string;
+    enabled?: boolean;
+    followers?: number;
+    posts?: number;
+    follows?: number;
+    subscribers?: number;
+    videos?: number;
+    tweets?: number;
+    following?: number;
+}
 export interface IUniqueViews {
     ip: string;
     date: string;

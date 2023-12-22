@@ -11,24 +11,39 @@ let tabs = [
         name: "Story",
         url: "/story",
         disabled: false
+    },
+    {
+        id: 2,
+        name: "Mediakit",
+        url: "/mediakit",
+        disabled: false
     }
 ];
 import ErrorPage from "@/components/users_page/user_not_found.astro";
 import Links from "@/components/users_page/index.astro";
 import Story from "@/components/users_page/story.astro";
+import Mediakit from "@/components/users_page/mediakit.astro";
 import { getUserUsername } from "@/supabase";
 const { slug } = Astro.params;
 let error = false;
 let main_page = slug?.split("/")[0];
 let page = slug?.split("/")[1];
 let story = page == "story";
+let mediakit = page == "mediakit";
 let story_disabled = true;
+let mediakit_disabled = true;
 let user = await getUserUsername(main_page || "");
 if (user && user.story.toggle) {
     story_disabled = false;
 } else {
     //@ts-ignore
     tabs.find((tab) => tab.url == "/story").disabled = true;
+}
+if (user && user.mediakit.enabled) {
+    mediakit_disabled = false;
+} else {
+    //@ts-ignore
+    tabs.find((tab) => tab.url == "/mediakit").disabled = true;
 }
 user &&
     user.pages.map((page) => {
@@ -39,15 +54,17 @@ user &&
             disabled: false
         });
     });
-if (!story && page && user && user.pages.find((pagess) => pagess.url == page)) {
+if (!mediakit && !story && page && user && user.pages.find((pagess) => pagess.url == page)) {
     user.links = user.pages.find((pagess) => pagess.url == page)?.blocks || [];
-} else if (!story && page) {
+} else if (!mediakit && !story && page) {
     error = true;
 }
 ---
 
 {!error && !user && main_page && <ErrorPage title="User not found" />}
-{!error && user && main_page && !story && <Links user={user} tabs={tabs} />}
+{!error && user && main_page && !mediakit && !story && <Links user={user} tabs={tabs} />}
 {!error && user && main_page && story && !story_disabled && <Story user={user} tabs={tabs} />}
+{!error && user && main_page && mediakit && !story && !mediakit_disabled && <Mediakit user={user} tabs={tabs} />}
 {!error && story && story_disabled && <ErrorPage title="Users page not found" page="btu" user={main_page} />}
+{!error && mediakit && mediakit_disabled && <ErrorPage title="Users page not found" page="btu" user={main_page} />}
 {error && <ErrorPage title="Users page not found" page="btu" user={main_page} />}
