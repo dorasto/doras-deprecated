@@ -50,6 +50,9 @@ dependencies:
   '@radix-ui/react-navigation-menu':
     specifier: ^1.1.4
     version: 1.1.4(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+  '@radix-ui/react-progress':
+    specifier: ^1.0.3
+    version: 1.0.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-separator':
     specifier: ^1.0.3
     version: 1.0.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -68,6 +71,9 @@ dependencies:
   '@supabase/supabase-js':
     specifier: ^2.38.4
     version: 2.38.4
+  '@tabler/icons-react':
+    specifier: ^2.44.0
+    version: 2.44.0(react@18.2.0)
   '@types/react':
     specifier: ^18.2.37
     version: 18.2.37
@@ -83,6 +89,12 @@ dependencies:
   astro-seo:
     specifier: ^0.8.0
     version: 0.8.0
+  chart.js:
+    specifier: ^4.4.1
+    version: 4.4.1
+  chartjs-plugin-gradient:
+    specifier: ^0.6.1
+    version: 0.6.1(chart.js@4.4.1)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -101,12 +113,21 @@ dependencies:
   lucide-react:
     specifier: ^0.292.0
     version: 0.292.0(react@18.2.0)
+  moment:
+    specifier: ^2.29.4
+    version: 2.29.4
   posthog-js:
     specifier: ^1.93.6
     version: 1.93.6
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-chartjs-2:
+    specifier: ^5.2.0
+    version: 5.2.0(chart.js@4.4.1)(react@18.2.0)
+  react-countup:
+    specifier: ^6.5.0
+    version: 6.5.0(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -1431,6 +1452,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  /@kurkle/color@0.3.2:
+    resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
+    dev: false
+
   /@lukeed/ms@2.0.1:
     resolution: {integrity: sha512-Xs/4RZltsAL7pkvaNStUQt7netTkyxrS0K+RILcVr3TRMS/ToOg4I6uNfhB9SlGsnWBym4U+EaXq0f0cEMNkHA==}
     engines: {node: '>=8'}
@@ -2080,6 +2105,28 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /@radix-ui/react-progress@1.0.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-5G6Om/tYSxjSeEdrb1VfKkfZfn/1IlPWd731h2RfPuSbIfNUgfqAwbKfJCg/PP6nuUCTrYzalwHSpSinoWoCag==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.2
+      '@radix-ui/react-context': 1.0.1(@types/react@18.2.37)(react@18.2.0)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@types/react': 18.2.37
+      '@types/react-dom': 18.2.15
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@radix-ui/react-roving-focus@1.0.4(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-2mUg5Mgcu001VkGy+FfzZyzbmuUWzgWkj3rvv4yu+mLw03+mTzbxZHvfcGyFp2b8EkQeMkpRQ5FiA2Vr2O6TeQ==}
     peerDependencies:
@@ -2537,6 +2584,20 @@ packages:
       '@supabase/storage-js': 2.5.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@tabler/icons-react@2.44.0(react@18.2.0):
+    resolution: {integrity: sha512-10qwrqJ/QBNgY4YYer9PjWmCwm3wv9aVK8kGAkFKkwu6UJURVLZ2ea+oFh5j6vSXnA1zMtUG+X8anR5fZ67Isw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.44.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons@2.44.0:
+    resolution: {integrity: sha512-WPPtihDcAwEm1QZM9MXQw6+r/R2/qx7KMU1eegsi9DsqBLAb0W2kbt6e/syvd6j9c+6XNpRVBW1ziGqSWQAWOg==}
     dev: false
 
   /@tailwindcss/typography@0.5.10(tailwindcss@3.3.5):
@@ -3184,6 +3245,21 @@ packages:
     resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==}
     dev: false
 
+  /chart.js@4.4.1:
+    resolution: {integrity: sha512-C74QN1bxwV1v2PEujhmKjOZ7iUM4w6BWs23Md/6aOZZSlwMzeCIDGuZay++rBgChYru7/+QFeoQW0fQoP534Dg==}
+    engines: {pnpm: '>=7'}
+    dependencies:
+      '@kurkle/color': 0.3.2
+    dev: false
+
+  /chartjs-plugin-gradient@0.6.1(chart.js@4.4.1):
+    resolution: {integrity: sha512-TGHNIh8KqQMLdb+UfY80cBHYRyOC47eeokmgkeajRdKGbFt462lJiyiq4ZJ25fiM7BGsmzoBLhmVyEw4B3gQxw==}
+    peerDependencies:
+      chart.js: '>=2.6.0'
+    dependencies:
+      chart.js: 4.4.1
+    dev: false
+
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -3346,6 +3422,10 @@ packages:
 
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
+    dev: false
+
+  /countup.js@2.8.0:
+    resolution: {integrity: sha512-f7xEhX0awl4NOElHulrl4XRfKoNH3rB+qfNSZZyjSZhaAoUk6elvhH+MNxMmlmuUJ2/QNTWPSA7U4mNtIAKljQ==}
     dev: false
 
   /cross-spawn@7.0.3:
@@ -6022,6 +6102,10 @@ packages:
       minimist: 1.2.8
     dev: false
 
+  /moment@2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+    dev: false
+
   /mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -6635,6 +6719,14 @@ packages:
       sisteransi: 1.0.5
     dev: false
 
+  /prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: false
+
   /property-information@6.4.0:
     resolution: {integrity: sha512-9t5qARVofg2xQqKtytzt+lZ4d1Qvj8t5B8fEwXK6qOfgRLgH/b13QlgEyDh033NOS31nXeFbYv7CLUDG1CeifQ==}
     dev: false
@@ -6686,6 +6778,25 @@ packages:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
+  /react-chartjs-2@5.2.0(chart.js@4.4.1)(react@18.2.0):
+    resolution: {integrity: sha512-98iN5aguJyVSxp5U3CblRLH67J8gkfyGNbiK3c+l1QI/G4irHMPQw44aEPmjVag+YKTyQ260NcF82GTQ3bdscA==}
+    peerDependencies:
+      chart.js: ^4.1.1
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      chart.js: 4.4.1
+      react: 18.2.0
+    dev: false
+
+  /react-countup@6.5.0(react@18.2.0):
+    resolution: {integrity: sha512-26JFHbUHsHxu8SetkJwWVIUEkaNnrj4P9msxNGC8tS4hGr1bngRzbwtJYOgXD2G/ItjaKJ3JfYKd85sw7qRVeA==}
+    peerDependencies:
+      react: '>= 16.3.0'
+    dependencies:
+      countup.js: 2.8.0
+      react: 18.2.0
+    dev: false
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -6727,6 +6838,10 @@ packages:
       react: '*'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
   /react-markdown@9.0.1(@types/react@18.2.37)(react@18.2.0):
