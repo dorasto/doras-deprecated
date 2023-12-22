@@ -18,6 +18,7 @@ a.nocss {
     border-radius: inherit !important;
     font-weight: inherit !important;
     text-decoration: inherit !important;
+}
 h4 {
     @apply font-bold text-xl;
 }
