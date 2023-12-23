@@ -8,7 +8,7 @@ interface Props {
     text: string;
     href: string;
     bgColor: string;
-    textColor: string;
+    textColor?: string;
     Icon: string;
     className: string;
     style: any;
