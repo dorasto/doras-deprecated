@@ -161,9 +161,9 @@ if (!user_user.theme.font || user_user.theme.font.font.length == 0) {
                                 if (link.type == "link") {
                                     if (link.colour?.toggle) {
                                         let userstyle: any = { backgroundColor: link.colour.background, color: getTextColorForBackground(link.colour.background) };
-                                        if (user_user.theme.inset) {
-                                            userstyle = { backgroundColor: link.colour.background, borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.background) };
-                                        }
+                                        // if (user_user.theme.inset) {
+                                        //     userstyle = { backgroundColor: link.colour.background, borderWidth: "2px", borderColor: user_user.theme.button, color: getTextColorForBackground(user_user.theme.background) };
+                                        // }
                                         return <LinksButton client:load id={user_user.id} verifiedData={VerifiedlinksData} link={link} style={userstyle} className={user_user.theme.button_rounded} text={link.name} href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
                                     }
                                     return <LinksButton client:load id={user_user.id} verifiedData={VerifiedlinksData} link={link} style={style} className={user_user.theme.button_rounded} text={link.name} href={link.url || ""} bgColor="primary-500" Icon={link.icon || ""} />;
