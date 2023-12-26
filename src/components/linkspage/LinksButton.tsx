@@ -1,6 +1,7 @@
 import type { Links } from "@/server_types";
 import React from "react";
-
+import * as tabler from "@tabler/icons-react";
+import DorasIcons from "@/lib/DorasIcons";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 interface Props {
@@ -20,6 +21,16 @@ function ClickButton(id: any, link: any) {
 }
 
 const LinksButton: React.FC<Props> = ({ id, text, href, bgColor, textColor, Icon, link, verifiedData, className, style }) => {
+    if (Icon.startsWith("Icon")) {
+        //@ts-ignore
+        Icon = (<div className={"absolute left-4 top-1/2 transform -translate-y-1/2"}>{React.createElement(tabler[link.icon], { size: 20 })}</div>)
+    } else if (Icon.startsWith("Doras")) {
+        let icon_item = DorasIcons.find(i => i.value == link.icon);
+        if (icon_item) {
+            //@ts-ignore
+            Icon = (<div className={"absolute left-4 top-1/2 transform -translate-y-1/2"}>{icon_item.icon}</div>)
+        }
+    }
     const colorClasses = {
         bgColor: `bg-${bgColor}`,
         textColor: `text-${textColor} dark:text-${textColor}`
@@ -35,7 +46,8 @@ const LinksButton: React.FC<Props> = ({ id, text, href, bgColor, textColor, Icon
         return (
             <a className="w-full" href={href} target="_blank" onClick={() => ClickButton(id, link)}>
                 <button className={`w-full px-1 py-3 text-xl ${className} relative`} style={style}>
-                    <i className={"absolute left-4 top-1/2 transform -translate-y-1/2 " + Icon}></i>
+                    {/* <i className={"absolute left-4 top-1/2 transform -translate-y-1/2 " + Icon}></i> */}
+                    {Icon}
                     <span className={`block w-full text-center px-6 ${colorClasses.textColor} font-bold`}>{text}</span>
                 </button>
             </a>
@@ -63,7 +75,8 @@ const LinksButtonDialog: React.FC<PropsDialog> = ({ id, title, className, Icon, 
         <Dialog>
             <DialogTrigger asChild>
                 <button className={`w-full px-1 py-3 text-xl ${className} relative`} style={style}>
-                    <i className={"absolute left-4 top-1/2 transform -translate-y-1/2 " + Icon}></i>
+                    {/* <i className={"absolute left-4 top-1/2 transform -translate-y-1/2 " + Icon}></i> */}
+                    {Icon}
                     <span className={`block w-full text-center px-6 ${colorClasses.textColor} font-bold`}>{text}</span>
                 </button>
             </DialogTrigger>
