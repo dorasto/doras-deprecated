@@ -28,7 +28,14 @@ const LinksButton: React.FC<Props> = ({ id, text, href, bgColor, textColor, Icon
         let icon_item = DorasIcons.find(i => i.value == link.icon);
         if (icon_item) {
             //@ts-ignore
-            Icon = (<div className={"absolute left-4 top-1/2 transform -translate-y-1/2"}>{icon_item.icon}</div>)
+            let img: string;
+            if (style.color == "white") {
+                img = icon_item.light
+            } else {
+                img = icon_item.dark
+            }
+            //@ts-ignore
+            Icon = (<img src={img} className={"absolute left-4 top-1/2 transform -translate-y-1/2"} style={{ width: 20, height: 20 }} />)
         }
     }
     const colorClasses = {
