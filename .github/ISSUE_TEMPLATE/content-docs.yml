@@ -1,0 +1,41 @@
+# Metadata for the issue
+name: Content or Documentation
+description: Have an issue about our written content or documentation? Create an issue here.
+labels: ["SDC"]
+assignees:
+    - lady-d-22
+
+# Body of the issue
+body:
+    # Introduction
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for taking the time to fill out this report!
+
+    # Expanded description of the problem
+    - type: textarea
+      id: what-happened
+      attributes:
+          label: Tell us what's going on!
+          description: This can be anything from a typo, broken link, or issue/request with the documentation as a whole.
+          placeholder: Tell us what you see!
+          value: "there's a typo with...."
+      validations:
+          required: true
+
+    # Brief overview of the problem
+    - type: input
+      id: brief
+      attributes:
+          label: Where do you see the issue?
+          description: Please copy and paste the URL of the page where you see the issue.
+          placeholder: https://doras.to/...
+      validations:
+          required: true
+
+    # Tagging the developers team
+    - type: markdown
+      attributes:
+          value: |
+              /cc @doras-to/support-documentation-content

@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-    - name: Doras Documentation
-      url: https://docs.doras.to
-      about: File an issue or make an improvement to the docs website.
     - name: 💁 Support
       url: https://doras.to/discord
       about: "If you need help with your account or have a question, a better option is to join our Discord server."

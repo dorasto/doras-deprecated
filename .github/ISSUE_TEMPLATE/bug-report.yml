@@ -1,22 +1,20 @@
+# Metadata for the issue
 name: Bug Report
 description: Found a bug or problem? Use this template to report it to our team.
 labels: ["bug"]
 assignees:
     - tommerty
     - trent-gezel
+
+# Body of the issue
 body:
+    # Introduction
     - type: markdown
       attributes:
           value: |
               Thanks for taking the time to fill out this bug report!
-    - type: input
-      id: brief
-      attributes:
-          label: Brief Overview
-          description: Can you give us a brief overview of the problem?
-          placeholder: Button on the home page doesn't work
-      validations:
-          required: true
+
+    # Expanded description of the problem
     - type: textarea
       id: what-happened
       attributes:
@@ -26,6 +24,8 @@ body:
           value: "When I clicked the 'hello' button it brought me to a 404 error and not the 'hello' page."
       validations:
           required: true
+
+    # Site where the problem occurred
     - type: dropdown
       id: site
       attributes:
@@ -38,6 +38,8 @@ body:
           default: 0
       validations:
           required: true
+
+    # Browsers where the problem occurred
     - type: dropdown
       id: browsers
       attributes:
@@ -48,3 +50,9 @@ body:
               - Chrome
               - Safari
               - Microsoft Edge
+
+    # Tagging the developers team
+    - type: markdown
+      attributes:
+          value: |
+              /cc @doras-to/developers
