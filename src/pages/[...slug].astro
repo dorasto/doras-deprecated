@@ -24,7 +24,12 @@ import Links from "@/components/users_page/index.astro";
 import Story from "@/components/users_page/story.astro";
 import Mediakit from "@/components/users_page/mediakit.astro";
 import { getUserUsername } from "@/supabase";
-const { slug } = Astro.params;
+let { slug } = Astro.params;
+if (Astro.request.headers.get("host")?.split(".")[0] != "localhost:4321") {
+    let host = Astro.request.headers.get("host")?.split(".")[0];
+    console.log("host: ", host);
+    slug = host + "/" + slug;
+}
 let error = false;
 let main_page = slug?.split("/")[0];
 let page = slug?.split("/")[1];

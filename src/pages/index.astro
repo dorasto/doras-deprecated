@@ -1,5 +1,4 @@
 ---
-import DetailBlockGrid from "@/components/DetailBlockGrid.astro";
 import ScrollingTestimonials from "@/components/Testimonials";
 import Container from "@/components/container.astro";
 import Cta from "@/components/cta.astro";
@@ -8,9 +7,56 @@ import Hero from "@/components/hero.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Timeline, timelineItems } from "@/components/timeline";
 import MeetTheCo from "@/components/MeetTheCo";
+let tabs = [
+    {
+        id: 0,
+        name: "Home",
+        url: "",
+        disabled: false
+    },
+    {
+        id: 1,
+        name: "Story",
+        url: "/story",
+        disabled: false
+    },
+    {
+        id: 2,
+        name: "Mediakit",
+        url: "/mediakit",
+        disabled: false
+    }
+];
+import ErrorPage from "@/components/users_page/user_not_found.astro";
+import Links from "@/components/users_page/index.astro";
+import { getUserUsername } from "@/supabase";
+let slug = Astro.request.headers.get("host")?.split(".")[0];
+console.log("slug: ", slug);
+let error = false;
+let main_page = slug?.split("/")[0];
+let user = await getUserUsername(main_page || "");
+if (user && user.story.toggle) {
+} else {
+    //@ts-ignore
+    tabs.find((tab) => tab.url == "/story").disabled = true;
+}
+if (user && user.mediakit.enabled) {
+} else {
+    //@ts-ignore
+    tabs.find((tab) => tab.url == "/mediakit").disabled = true;
+}
+user &&
+    user.pages.map((page) => {
+        tabs.push({
+            id: tabs.length,
+            name: page.name,
+            url: "/" + page.url,
+            disabled: false
+        });
+    });
 ---
-
-<Layout footerMargin={false} title="Build Your Brand Presence | Doras.to">
+{slug == "localhost:4321"&&(
+    <Layout footerMargin={false} title="Build Your Brand Presence | Doras.to">
     <div class="mx-auto min-h-screen flex items-center justify-center py-9 z-0">
         <Hero />
     </div>
@@ -32,3 +78,8 @@ import MeetTheCo from "@/components/MeetTheCo";
         <Cta />
     </Container>
 </Layout>
+)}
+
+{slug != "localhost:4321"&&!error && !user && main_page && <ErrorPage title="User not found" />}
+{slug != "localhost:4321"&&!error && user && main_page && <Links user={user} tabs={tabs} />}
+{slug != "localhost:4321"&&error && <ErrorPage title="Users page not found" page="btu" user={main_page} />}
