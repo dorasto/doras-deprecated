@@ -47,7 +47,7 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
         <div className="w-full">
             <div className={"relative p-3 overflow-hidden rounded-md bg-fill bg-cover bg-center h-full w-full max-w-xl mx-auto "} style={{ color: mediakit.heading.text_colour || "black", backgroundImage: `url(${mediakit.heading.background_image || ""})` }}>
                 <div className="flex flex-col gap-3 object-cover max-w-lg mx-auto">
-                    <div className="flex gap-3 items-center">
+                    <div className="flex flex-col sm:flex-row gap-3 items-center">
                         <img src={downloadImageUser(user.pic)} alt="Media Kit" className="w-36 rounded-full z-10" />
                         <div className="space-y-2 ">
                             <h1 className="text-5xl font-bold mb-1">{user.displayname}</h1>
@@ -91,7 +91,7 @@ const MediaKitRender: React.FC<Props> = ({ user }) => {
                     )}
                 </div>
             </div>
-            <div className="pb-9 pt-3 text-white flex flex-row justify-between gap-3 w-full max-w-2xl mx-auto">
+            <div className="pb-9 pt-3 px-3 text-white flex flex-row justify-between gap-3 w-full max-w-2xl mx-auto">
                 <div className="md:grid grid-cols-3 gap-3 w-full">
                     <CardBasic className="flex-col col-span-2">
                         <h4>Statistics</h4>
