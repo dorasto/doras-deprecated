@@ -1,10 +1,9 @@
 # Metadata for the issue
-name: Bug Report
-description: Found a bug or problem? Use this template to report it to our team.
-labels: ["bug"]
+name: Content or Documentation
+description: Have an issue about our written content or documentation? Create an issue here.
+labels: ["SDC"]
 assignees:
-    - tommerty
-    - trent-gezel
+    - lady-d-22
 
 # Body of the issue
 body:
@@ -12,16 +11,16 @@ body:
     - type: markdown
       attributes:
           value: |
-              Thanks for taking the time to fill out this bug report!
+              Thanks for taking the time to fill out this report!
 
     # Expanded description of the problem
     - type: textarea
       id: what-happened
       attributes:
-          label: Expanded Description
-          description: What happened, and what should have happened?
+          label: Tell us what's going on!
+          description: This can be anything from a typo, broken link, or issue/request with the documentation as a whole.
           placeholder: Tell us what you see!
-          value: "When I clicked the 'hello' button it brought me to a 404 error and not the 'hello' page."
+          value: "there's a typo with...."
       validations:
           required: true
 
@@ -39,20 +38,18 @@ body:
       validations:
           required: true
 
-    # Browsers where the problem occurred
-    - type: dropdown
-      id: browsers
+    # Brief overview of the problem
+    - type: input
+      id: brief
       attributes:
-          label: What browsers are you seeing the problem on (if applicable)?
-          multiple: true
-          options:
-              - Firefox
-              - Chrome
-              - Safari
-              - Microsoft Edge
+          label: Where do you see the issue?
+          description: Please copy and paste the URL of the page where you see the issue.
+          placeholder: https://doras.to/...
+      validations:
+          required: true
 
     # Tagging the developers team
     - type: markdown
       attributes:
           value: |
-              /cc @doras-to/developers
+              /cc @doras-to/support-documentation-content
