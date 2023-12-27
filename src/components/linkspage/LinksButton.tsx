@@ -37,6 +37,9 @@ const LinksButton: React.FC<Props> = ({ id, text, href, bgColor, textColor, Icon
             //@ts-ignore
             Icon = (<img src={img} className={"absolute left-4 top-1/2 transform -translate-y-1/2"} style={{ width: 20, height: 20 }} />)
         }
+    } else {
+        //@ts-ignore
+        Icon = (<i className={"absolute left-4 top-1/2 transform -translate-y-1/2 " + Icon}></i>)
     }
     const colorClasses = {
         bgColor: `bg-${bgColor}`,
