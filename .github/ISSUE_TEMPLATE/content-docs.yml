@@ -24,20 +24,6 @@ body:
       validations:
           required: true
 
-    # Site where the problem occurred
-    - type: dropdown
-      id: site
-      attributes:
-          label: Which site is this issue on?
-          description: Which site is this issue on?
-          options:
-              - admin.doras.to (Admin Dashboard)
-              - doras.to (Main Site) including on a users profile
-              - nua.doras.to
-          default: 0
-      validations:
-          required: true
-
     # Brief overview of the problem
     - type: input
       id: brief
