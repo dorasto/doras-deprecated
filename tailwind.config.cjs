@@ -3,7 +3,7 @@ import { color } from "framer-motion";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
-    content: ["./pages/**/*.{ts,tsx,astro}", "./components/**/*.{ts,tsx,astro}", "./app/**/*.{ts,tsx,astro}", "./src/**/*.{ts,tsx,astro}"],
+    content: ["./pages/**/*.{ts,tsx,astro,md,mdx}", "./components/**/*.{ts,tsx,astro,md,mdx}", "./app/**/*.{ts,tsx,astro,md,mdx}", "./src/**/*.{ts,tsx,astro,md,mdx}"],
     theme: {
         container: {
             center: true,
