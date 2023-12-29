@@ -75,8 +75,13 @@ export async function getStaticPaths() {
                 <span class="text-primary-500 uppercase tracking-wider text-sm font-black">{category.name}</span>
                 <h1 class="text-3xl lg:text-4xl font-bold lg:tracking-tight mt-1 lg:leading-tight text-surface-900" set:html={post.title.rendered} />
                 <div class="flex gap-2 mt-3 items-center justify-center text-sm flex-wrap md:flex-nowrap">
-                    <span class="text-surface-600">By {user.displayname}</span>
-                    <span class="text-surface-600 hidden md:block">•</span>
+                    <a href={`https://doras.to/${user.username}`} class="text-surface-600">
+                        <div class="flex items-center gap-2">
+                            <img src={user.pic} class="w-6 rounded-xl" />
+                            <span class="font-bold">{user.displayname}</span>
+                        </div>
+                    </a>
+                    <!-- <span class="text-surface-600 hidden md:block">•</span> -->
                     <!-- <div class="w-full md:w-auto flex flex-wrap justify-center gap-3">
                         {entry.data.tags.map((tag) => <span class="text-sm text-primary-500">#{tag}</span>)}
                     </div> -->
