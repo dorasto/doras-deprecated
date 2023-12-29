@@ -8,8 +8,6 @@ import Hero from "@/components/hero.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Timeline, timelineItems } from "@/components/timeline";
 import MeetTheCo from "@/components/MeetTheCo";
-const res = await fetch("https://cms.doras.to/wp-json/wp/v2/posts");
-const posts = await res.json();
 ---
 
 <Layout footerMargin={false} title="Build Your Brand Presence | Doras.to">
@@ -19,14 +17,6 @@ const posts = await res.json();
     <Container>
         <ScrollingTestimonials client:load />
         <FeatureGrid />
-        {
-            posts.map((post) => (
-                <>
-                    <h2 set:html={post.title.rendered} />
-                    <p set:html={post.content.rendered} />
-                </>
-            ))
-        }
         <h2 id="roadmap" class="text-center font-bold text-6xl mt-9 mb-3 text-surface-950">Roadmap</h2>
         <Timeline items={timelineItems} />
         <MeetTheCo client:load />

@@ -23,3 +23,18 @@ a.nocss {
         @apply font-bold text-xl;
     }
 }
+
+article {
+    @apply prose prose-base;
+    @apply prose-headings:text-black;
+    @apply prose-p:text-black;
+}
+
+article :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    color: inherit !important;
+    background-color: transparent !important;
+    padding: inherit !important;
+    border-radius: inherit !important;
+    font-weight: inherit !important;
+    text-decoration: inherit !important;
+}
