@@ -38,9 +38,12 @@ interface Post {
 }
 
 import Layout from "@/layouts/MDLayout.astro";
+import BlankLayout from "@/layouts/BlankLayout.astro";
 import Container from "@/components/container.astro";
 const { slug } = Astro.params;
 import { Image } from "astro:assets";
+import { Button } from "@/components/ui/button";
+import { BsDiscord } from "react-icons/bs/index.js";
 let res = await fetch(`https://cms.doras.to/wp-json/wp/v2/posts?slug=${slug}`);
 let [post]: Post[] = await res.json();
 // Fetch the category name
@@ -81,7 +84,18 @@ export async function getStaticPaths() {
 ---
 
 {!post && 
-<div class="flex items-center justify-center h-screen" />
+<BlankLayout title="Rip, that's a 404">
+    <div class="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-primary-500 via-surface-700 to-surface-700 h-screen flex items-center">
+        <div class="mx-auto max-w-xl text-center text-white">
+            <h1 class="font-black text-5xl">That's a 404, bud</h1>
+            <p class="mb-7 mt-3">Sorry, we couldn't find what you were looking for. It either never existed, or we've messed something up!</p>
+            <div class="flex items-center place-content-center gap-3">
+                <a href="/"><Button variant="outline" className="!border-surface-100 text-surface-100 p-4 font-bold w-full">Back home</Button></a>
+                <a href="https://doras.to/discord"><Button variant="outline" className="!border-surface-100 text-surface-100 p-4 font-bold w-full flex gap-2"><BsDiscord /> Report an issue</Button></a>
+            </div>
+        </div>
+    </div>
+</BlankLayout>
 ||
 (
 <Layout title={post.title.rendered}>
