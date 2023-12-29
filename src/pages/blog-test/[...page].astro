@@ -106,7 +106,7 @@ const { page }: any = Astro.props;
                                                     <span class="text-surface-600">{user.displayname}</span>
                                                     <span class="text-surface-600">• </span>
                                                     <time class="text-surface-600" datetime={post.date}>
-                                                        {post.date}
+                                                        {new Date(post.date).toLocaleDateString()}
                                                     </time>
                                                 </div>
                                             </div>
