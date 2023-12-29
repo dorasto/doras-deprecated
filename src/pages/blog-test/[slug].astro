@@ -101,12 +101,12 @@ export async function getStaticPaths() {
 <Layout title={post.title.rendered}>
     <Container>
         <div class="mx-auto max-w-3xl text-center mt-6">
-            <article class="mx-auto">
                 <span class="text-primary-500 uppercase tracking-wider text-sm font-black">{category.name}</span>
-                <h1 class="text-3xl lg:text-4xl font-bold lg:tracking-tight mt-1 lg:leading-tight text-surface-900" set:html={post.title.rendered} />
-                <div class="flex gap-2 mt-3 items-center justify-center text-sm flex-wrap md:flex-nowrap">
+                <h1 class="text-3xl lg:text-4xl font-bold lg:tracking-tight mt-1 lg:leading-tight text-surface-900 mb-0" set:html={post.title.rendered} />
+                <span class="font-bold text-sm">{new Date(post.date).toLocaleDateString()}</span>
+                <div class="flex gap-2 mt-1 items-center justify-center text-sm flex-wrap md:flex-nowrap">
                     <a href={`https://doras.to/${user.username}`} class="text-surface-600">
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2 w-full">
                             <img src={user.pic} class="w-6 rounded-xl" />
                             <span class="font-bold">{user.displayname}</span>
                         </div>
@@ -117,11 +117,15 @@ export async function getStaticPaths() {
                     </div> -->
                     <a href="/blog-test" class="font-bold text-primary-500 transition">← Back to Blog</a>
                 </div>
+                <article class="mx-auto">
                 <div class="mx-auto max-w-4xl flex place-content-center">
-                    {featuredmedia.guid?.rendered && <Image src={featuredmedia?.guid?.rendered} alt="Feature image" width="100" height="100" class="h-1/2 w-1/2 object-contain object-top rounded-xl mt-6" />}
+                    {featuredmedia.guid?.rendered && <Image src={featuredmedia?.guid?.rendered} alt="Feature image" width="100" height="100" class="h-1/2 w-1/2 object-contain object-top rounded-xl mt-6" transition:name={`post-img-${post.slug}`} />}
                 </div>
                 <Fragment set:html={post.content.rendered} />
             </article>
+            <div class="text-center py-12">
+            <a href="/blog" class="bg-primary-500 text-white font-bold px-5 py-3 rounded-md hover:bg-primary-400 transition">← Back to Blog</a>
+        </div>
         </div>
     </Container>
 </Layout>

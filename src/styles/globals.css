@@ -25,16 +25,21 @@ a.nocss {
 }
 
 article {
-    @apply prose prose-base;
+    @apply prose prose-base text-left;
     @apply prose-headings:text-black;
     @apply prose-p:text-black;
+    @apply mx-auto prose prose-base mt-6 max-w-3xl prose-headings:mb-2 prose-headings:mt-8 prose-a:text-white;
 }
 
-article :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+/* article :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
     color: inherit !important;
     background-color: transparent !important;
     padding: inherit !important;
     border-radius: inherit !important;
     font-weight: inherit !important;
     text-decoration: inherit !important;
+} */
+
+.profile-button a {
+    @apply text-2xl px-4 py-2 rounded-md;
 }
