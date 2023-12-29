@@ -43,24 +43,32 @@ const { slug } = Astro.params;
 import { Image } from "astro:assets";
 let res = await fetch(`https://cms.doras.to/wp-json/wp/v2/posts?slug=${slug}`);
 let [post]: Post[] = await res.json();
-
 // Fetch the category name
-let categoryRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/categories/${post.categories[0]}`);
-let category = await categoryRes.json();
+let category;
+if (post) {
+    let categoryRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/categories/${post.categories[0]}`);
+    category = await categoryRes.json();
+}
 
 // Fetch the author name
-let authorRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/users/${post.author}`);
-let author = await authorRes.json();
+let author;
+if (post) {
+    let authorRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/users/${post.author}`);
+    author = await authorRes.json();
+}
 
 // The getStaticPaths() is required for static Astro sites.
 // If using SSR, you will not need this function.
-
-let userRes = await fetch(`https://api.doras.to/user/${author.name}`);
-let user: { username: string; displayname: string; pic: string } = await userRes.json();
-
-let featuredmediaRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/media/${post.featured_media}`);
-let featuredmedia: { guid: { rendered: string } } = await featuredmediaRes.json();
-console.log("post: ", post);
+let user: { username: string; displayname: string; pic: string } = { username: "", displayname: "", pic: "" };
+if (post) {
+    let userRes = await fetch(`https://api.doras.to/user/${author.name}`);
+    user = await userRes.json();
+}
+let featuredmedia: { guid: { rendered: string } } = { guid: { rendered: "" } };
+if (post) {
+    let featuredmediaRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/media/${post.featured_media}`);
+    featuredmedia = await featuredmediaRes.json();
+}
 export async function getStaticPaths() {
     let data = await fetch("`https://cms.doras.to/wp-json/wp/v2/posts");
     let posts = await data.json();
@@ -72,6 +80,10 @@ export async function getStaticPaths() {
 }
 ---
 
+{!post && 
+<div class="flex items-center justify-center h-screen" />
+||
+(
 <Layout title={post.title.rendered}>
     <Container>
         <div class="mx-auto max-w-3xl text-center mt-6">
@@ -99,3 +111,4 @@ export async function getStaticPaths() {
         </div>
     </Container>
 </Layout>
+)}
