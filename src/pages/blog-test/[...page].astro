@@ -7,17 +7,50 @@ import Sectionhead from "@/components/blog/sectionhead.astro";
 import Pagination from "@/components/blog/pagination.astro";
 
 // Sort content entries by publication date
-
+interface Post {
+    id: number;
+    date: string;
+    date_gmt: string;
+    guid: { rendered: string };
+    modified: string;
+    modified_gmt: string;
+    slug: string;
+    status: string;
+    type: string;
+    link: string;
+    title: { rendered: string };
+    content: { rendered: string; protected: boolean };
+    excerpt: { rendered: string; protected: boolean };
+    author: number;
+    featured_media: number;
+    comment_status: string;
+    ping_status: string;
+    sticky: boolean;
+    template: string;
+    format: string;
+    meta: { footnotes: string };
+    categories: number[];
+    tags: string[];
+    _links: {
+        self: { href: string }[];
+        collection: { href: string }[];
+        about: { href: string }[];
+        author: { embeddable: boolean; href: string }[];
+        replies: { embeddable: boolean; href: string }[];
+        versionHistory: { count: number; href: string }[];
+        predecessorVersion: { id: number; href: string }[];
+        "wp:attachment": { href: string }[];
+        "wp:term": { taxonomy: string; embeddable: boolean; href: string }[];
+        curies: { name: string; href: string; templated: boolean }[];
+    };
+}
 export async function getStaticPaths({ paginate }: { paginate: any }) {
     const PAGE_SIZE = 9;
-    const allPosts = await getCollection("blog", ({ data }) => {
-        return !data.draft && data.publishDate < new Date();
+    let data = await fetch("https://cms.doras.to/wp-json/wp/v2/posts");
+    let posts = await data.json();
+    const allSortedPosts = posts.sort(function (a: any, b: any) {
+        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
     });
-
-    const allSortedPosts = allPosts.sort(function (a, b) {
-        return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-    });
-
     return paginate(allSortedPosts, {
         pageSize: PAGE_SIZE
     });
@@ -38,30 +71,50 @@ const { page }: any = Astro.props;
                 {
                     page &&
                         page.data &&
-                        page.data.map((post: any, index: number) => (
-                            <li>
-                                <a href={`/blog/${post.slug}`}>
-                                    <div class=" w-full h-3/4 object-cover">
-                                        <Image src={post.data.image.src} alt={post.data.image.alt} sizes="(max-width: 800px) 100vw, 800px" width={300} height={300} loading={index <= 2 ? "eager" : "lazy"} decoding={index <= 2 ? "sync" : "async"} class="w-full h-1/2 rounded-md object-cover object-top" transition:name={`post-img-${post.slug}`} />
-                                        <div class="p-3">
-                                            <span class="rounded-xl text-surface-500 uppercase tracking-wider text-xs font-bold">{post.data.category}</span>
-
-                                            <h2 class="text-xl font-bold text-surface-900 leading-snug tracking-tight mt-1" transition:persist>
-                                                {post.data.title}
-                                            </h2>
-
-                                            <div class="flex gap-2 mt-3 text-sm">
-                                                <span class="text-surface-600">{post.data.author}</span>
-                                                <span class="text-surface-600">• </span>
-                                                <time class="text-surface-600" datetime={post.data.publishDate.toISOString()}>
-                                                    {post.data.publishDate.toDateString()}
-                                                </time>
+                        page.data.map(async (post: Post, index: number) => {
+                            let category;
+                            if (post) {
+                                let categoryRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/categories/${post.categories[0]}`);
+                                category = await categoryRes.json();
+                            }
+                            let author;
+                            if (post) {
+                                let authorRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/users/${post.author}`);
+                                author = await authorRes.json();
+                            }
+                            let user: { username: string; displayname: string; pic: string } = { username: "", displayname: "", pic: "" };
+                            if (post) {
+                                let userRes = await fetch(`https://api.doras.to/user/${author.name}`);
+                                user = await userRes.json();
+                            }
+                            let featuredmedia: { guid: { rendered: string } } = { guid: { rendered: "" } };
+                            if (post) {
+                                let featuredmediaRes = await fetch(`https://cms.doras.to/wp-json/wp/v2/media/${post.featured_media}`);
+                                featuredmedia = await featuredmediaRes.json();
+                            }
+                            return (
+                                <li>
+                                    <a href={`/blog-test/${post.slug}`}>
+                                        <div class=" w-full h-3/4 object-cover">
+                                            {featuredmedia.guid?.rendered && <Image src={featuredmedia?.guid?.rendered} alt={""} sizes="(max-width: 800px) 100vw, 800px" width={300} height={300} loading={index <= 2 ? "eager" : "lazy"} decoding={index <= 2 ? "sync" : "async"} class="w-full h-1/2 rounded-md object-cover object-top" transition:name={`post-img-${post.slug}`} />}
+                                            <div class="p-3">
+                                                <span class="rounded-xl text-surface-500 uppercase tracking-wider text-xs font-bold">{category.name}</span>
+                                                <h2 class="text-xl font-bold text-surface-900 leading-snug tracking-tight mt-1" transition:persist>
+                                                    {post.title.rendered}
+                                                </h2>
+                                                <div class="flex gap-2 mt-3 text-sm">
+                                                    <span class="text-surface-600">{user.displayname}</span>
+                                                    <span class="text-surface-600">• </span>
+                                                    <time class="text-surface-600" datetime={post.date}>
+                                                        {post.date}
+                                                    </time>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </li>
-                        ))
+                                    </a>
+                                </li>
+                            );
+                        })
                 }
             </ul>
             <Pagination url={page.url} />
